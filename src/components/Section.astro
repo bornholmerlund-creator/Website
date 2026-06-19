@@ -1,0 +1,22 @@
+---
+interface Props {
+  id?: string;
+  tone?: "default" | "ink" | "sand" | "tint";
+  class?: string;
+  /** Vertical padding density */
+  pad?: "default" | "tight";
+}
+const { id, tone = "default", class: cls = "", pad = "default" } = Astro.props;
+const toneClass = {
+  default: "bg-sand-50 text-ink-900",
+  sand: "bg-sand-100 text-ink-900",
+  tint: "bg-ink-50 text-ink-900",
+  ink: "bg-ink-950 text-ink-100",
+}[tone];
+const padClass = pad === "tight" ? "py-14 lg:py-20" : "py-20 lg:py-28";
+---
+<section id={id} class:list={[toneClass, padClass, cls]}>
+  <div class="container-page">
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import { site } from "../config/site";
+---
+<BaseLayout title="Privacy Notice" description="How Keelstone collects, uses and protects your personal data." canonical="/privacy/" noindex={true}>
+  <Section>
+    <div class="mx-auto max-w-2xl prose-article text-ink-700">
+      <h1 class="font-serif text-4xl font-semibold text-ink-900">Privacy notice</h1>
+      <p class="mt-4 text-sm text-ink-400">Last updated: June 2026 · Template — review with legal counsel before launch.</p>
+      <h2>What we collect</h2>
+      <p>When you contact us or submit the working-session form, we collect the details you provide: name, company, work email, phone (optional) and your message. We use privacy-friendly analytics that do not use cookies or track individuals.</p>
+      <h2>How we use it</h2>
+      <p>Solely to respond to your enquiry and, with your consent, to follow up about relevant services. We do not sell your data or share it with third parties for marketing.</p>
+      <h2>Legal basis</h2>
+      <p>We process contact-form data on the basis of your request to be contacted, and our legitimate interest in responding to business enquiries.</p>
+      <h2>Retention</h2>
+      <p>We retain enquiry data only as long as needed to handle your request and any resulting relationship, after which it is deleted.</p>
+      <h2>Your rights</h2>
+      <p>You may request access to, correction of, or deletion of your data at any time by emailing <a href={`mailto:${site.email}`} class="text-signal-700 underline">{site.email}</a>.</p>
+      <h2>Contact</h2>
+      <p>{site.legalName} · {site.location} · <a href={`mailto:${site.email}`} class="text-signal-700 underline">{site.email}</a></p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style is:global>
+  .prose-article h2 { font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 600; color: var(--color-ink-900); margin-top: 2rem; margin-bottom: 0.5rem; }
+  .prose-article p { line-height: 1.7; margin-bottom: 1rem; }
+</style>

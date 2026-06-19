@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Section from "../../components/Section.astro";
+import CaseStudyCard from "../../components/CaseStudyCard.astro";
+import CTABand from "../../components/CTABand.astro";
+import { getCollection } from "astro:content";
+
+const studies = (await getCollection("caseStudies")).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Case Studies"
+  description="Real ERP and data outcomes for mid-sized businesses — measured in time saved, accuracy gained and cost avoided. Manufacturing, distribution and healthcare clients."
+  canonical="/case-studies/"
+>
+  <PageHero
+    eyebrow="Case Studies"
+    title="The outcomes, not the adjectives."
+    lead="Every engagement is reported in the units that matter to a board: time, accuracy and cash. Here are a few, anonymised where clients prefer."
+  />
+  <Section>
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {studies.map((cs) => (
+        <CaseStudyCard
+          href={`/case-studies/${cs.slug}/`}
+          client={cs.data.client}
+          industry={cs.data.industry}
+          title={cs.data.title}
+          metric={cs.data.metric}
+          metricLabel={cs.data.metricLabel}
+        />
+      ))}
+    </div>
+  </Section>
+  <CTABand
+    heading="Your situation isn't a case study yet."
+    sub="Let's change that. Book a working session and we'll show you the path from where your data is today to an outcome worth writing up."
+  />
+</BaseLayout>

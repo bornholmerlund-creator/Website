@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import { site, services } from "../config/site";
+
+const expectations = [
+  "A 45-minute working session with a senior consultant — not a sales rep.",
+  "A prioritised view of the biggest risks in your ERP and data.",
+  "Honest guidance on whether to act now, later, or not at all.",
+  "No obligation, and no pressure to engage.",
+];
+---
+<BaseLayout
+  title="Contact"
+  description="Book a working session with Keelstone — a vendor-neutral ERP and data consultancy. A 45-minute conversation with a senior consultant, not a sales pitch."
+  canonical="/contact/"
+>
+  <section class="relative overflow-hidden border-b border-ink-100 bg-ink-950 text-white">
+    <div class="absolute inset-0 opacity-[0.06]" aria-hidden="true" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 28px 28px;"></div>
+    <div class="container-page relative py-16 lg:py-20">
+      <Eyebrow tone="dark">Contact</Eyebrow>
+      <h1 class="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight sm:text-5xl">Book a working session.</h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-300">Tell us where it hurts. We'll come prepared with questions, not a deck.</p>
+    </div>
+  </section>
+
+  <Section>
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+      <!-- What to expect -->
+      <div>
+        <h2 class="font-serif text-2xl font-semibold text-ink-900">What to expect</h2>
+        <ul class="mt-6 space-y-4">
+          {expectations.map((e) => (
+            <li class="flex items-start gap-3 text-sm leading-relaxed text-ink-700">
+              <svg class="mt-0.5 h-5 w-5 flex-none text-signal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>{e}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-10 rounded-2xl border border-ink-100 bg-white p-6 shadow-card">
+          <h3 class="font-serif text-lg font-semibold text-ink-900">Prefer to reach us directly?</h3>
+          <dl class="mt-4 space-y-3 text-sm">
+            <div><dt class="text-ink-400">Email</dt><dd><a href={`mailto:${site.email}`} class="font-medium text-signal-700 hover:text-signal-800">{site.email}</a></dd></div>
+            <div><dt class="text-ink-400">Phone</dt><dd><a href={`tel:${site.phoneHref}`} class="font-medium text-ink-900">{site.phone}</a></dd></div>
+            <div><dt class="text-ink-400">Where</dt><dd class="font-medium text-ink-900">{site.location}</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="rounded-2xl border border-ink-100 bg-white p-7 shadow-card lg:p-9">
+        <form id="contact-form" action={site.formEndpoint} method="POST" class="space-y-5">
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="name" class="block text-sm font-medium text-ink-800">Full name <span class="text-signal-600">*</span></label>
+              <input id="name" name="name" type="text" required autocomplete="name" class="mt-1.5 w-full rounded-lg border border-ink-200 bg-sand-50 px-3.5 py-2.5 text-sm text-ink-900 outline-none transition focus:border-signal-500 focus:bg-white" />
+            </div>
+            <div>
+              <label for="company" class="block text-sm font-medium text-ink-800">Company <span class="text-signal-600">*</span></label>
+              <input id="company" name="company" type="text" required autocomplete="organization" class="mt-1.5 w-full rounded-lg border border-ink-200 bg-sand-50 px-3.5 py-2.5 text-sm text-ink-900 outline-none transition focus:border-signal-500 focus:bg-white" />
+            </div>
+          </div>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="email" class="block text-sm font-medium text-ink-800">Work email <span class="text-signal-600">*</span></label>
+              <input id="email" name="email" type="email" required autocomplete="email" class="mt-1.5 w-full rounded-lg border border-ink-200 bg-sand-50 px-3.5 py-2.5 text-sm text-ink-900 outline-none transition focus:border-signal-500 focus:bg-white" />
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-ink-800">Phone <span class="text-ink-400">(optional)</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" class="mt-1.5 w-full rounded-lg border border-ink-200 bg-sand-50 px-3.5 py-2.5 text-sm text-ink-900 outline-none transition focus:border-signal-500 focus:bg-white" />
+            </div>
+          </div>
+          <div>
+            <label for="interest" class="block text-sm font-medium text-ink-800">What's the focus?</label>
+            <select id="interest" name="interest" class="mt-1.5 w-full rounded-lg border border-ink-200 bg-sand-50 px-3.5 py-2.5 text-sm text-ink-900 outline-none transition focus:border-signal-500 focus:bg-white">
+              <option value="">Not sure yet — help me work it out</option>
+              {services.map((s) => <option value={s.title}>{s.title}</option>)}
+              <option value="Rescue / second opinion">Rescue or second opinion</option>
+            </select>
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-ink-800">What's going on? <span class="text-signal-600">*</span></label>
+            <textarea id="message" name="message" rows="4" required class="mt-1.5 w-full rounded-lg border border-ink-200 bg-sand-50 px-3.5 py-2.5 text-sm text-ink-900 outline-none transition focus:border-signal-500 focus:bg-white" placeholder="A sentence or two on the system, the data, and what's hurting."></textarea>
+          </div>
+          <!-- Honeypot anti-spam -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+          <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-signal-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-signal-700 sm:w-auto">
+            Request a working session
+          </button>
+          <p id="form-status" role="status" aria-live="polite" class="text-sm"></p>
+          <p class="text-xs leading-relaxed text-ink-400">By submitting, you agree we may contact you about your enquiry. We never sell your data. See our <a href="/privacy/" class="underline hover:text-ink-600">privacy notice</a>.</p>
+        </form>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const status = document.getElementById("form-status");
+  if (form && status) {
+    form.addEventListener("submit", async (e) => {
+      // Only intercept when configured with a real endpoint; otherwise allow native POST.
+      if (form.action.includes("your-form-id")) {
+        e.preventDefault();
+        status.textContent = "Form endpoint not configured yet. Set site.formEndpoint to your Formspree URL.";
+        status.className = "text-sm text-ink-500";
+        return;
+      }
+      e.preventDefault();
+      const btn = form.querySelector("button[type=submit]") as HTMLButtonElement;
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+      status.textContent = "";
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          form.reset();
+          status.textContent = "Thank you — we'll be in touch within one business day.";
+          status.className = "text-sm font-medium text-signal-700";
+        } else {
+          throw new Error("Bad response");
+        }
+      } catch {
+        status.textContent = "Something went wrong. Please email hello@keelstone.io directly.";
+        status.className = "text-sm font-medium text-red-600";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Request a working session";
+      }
+    });
+  }
+</script>

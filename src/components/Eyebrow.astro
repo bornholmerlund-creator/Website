@@ -1,0 +1,9 @@
+---
+interface Props { tone?: "light" | "dark"; class?: string }
+const { tone = "light", class: cls = "" } = Astro.props;
+const color = tone === "dark" ? "text-signal-300" : "text-signal-700";
+---
+<p class:list={["flex items-center gap-2.5 text-xs font-semibold uppercase tracking-widest", color, cls]}>
+  <span class="inline-block h-px w-7 bg-current opacity-60"></span>
+  <slot />
+</p>

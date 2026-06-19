@@ -1,0 +1,19 @@
+---
+interface Stat { value: string; label: string; source?: string }
+interface Props { stats: Stat[]; tone?: "light" | "dark" }
+const { stats, tone = "light" } = Astro.props;
+const valColor = tone === "dark" ? "text-white" : "text-ink-900";
+const labelColor = tone === "dark" ? "text-ink-300" : "text-ink-500";
+const divide = tone === "dark" ? "divide-ink-800" : "divide-ink-100";
+---
+<dl class:list={["grid gap-px overflow-hidden rounded-2xl sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x", divide]}>
+  {stats.map((s) => (
+    <div class="px-6 py-7">
+      <dt class:list={["font-serif text-4xl font-semibold tracking-tight", valColor]}>{s.value}</dt>
+      <dd class:list={["mt-2 text-sm leading-snug", labelColor]}>
+        {s.label}
+        {s.source && <span class="block text-xs opacity-70 mt-1">{s.source}</span>}
+      </dd>
+    </div>
+  ))}
+</dl>

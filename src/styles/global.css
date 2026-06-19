@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* =============================================================
+   KEELSTONE DESIGN SYSTEM
+   Tailwind v4 design tokens. Edit here to retheme the whole site.
+   ============================================================= */
+@theme {
+  /* ---- Color: Ink (primary brand navy) ---- */
+  --color-ink-50: #f3f6f9;
+  --color-ink-100: #e1e9f0;
+  --color-ink-200: #c3d2e0;
+  --color-ink-300: #95aec5;
+  --color-ink-400: #5f81a1;
+  --color-ink-500: #3d6086;
+  --color-ink-600: #2c4869;
+  --color-ink-700: #1c3350;
+  --color-ink-800: #122340;
+  --color-ink-900: #0b1f33;
+  --color-ink-950: #06121f;
+
+  /* ---- Color: Signal (teal accent) ---- */
+  --color-signal-50: #e9fbf8;
+  --color-signal-100: #c8f5ee;
+  --color-signal-200: #94ebe0;
+  --color-signal-300: #5cd9cb;
+  --color-signal-400: #2cc1b4;
+  --color-signal-500: #0fb5a6;
+  --color-signal-600: #0a9187;
+  --color-signal-700: #0c746e;
+  --color-signal-800: #0f5c58;
+  --color-signal-900: #114c49;
+
+  /* ---- Color: Sand (warm neutral) ---- */
+  --color-sand-50: #fbfaf7;
+  --color-sand-100: #f5f2ea;
+  --color-sand-200: #e9e3d4;
+  --color-sand-300: #d8ceb6;
+
+  /* ---- Typography ---- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+
+  /* ---- Modular type scale (1.25 major third) ---- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 2.875rem;
+  --text-5xl: 3.5rem;
+  --text-6xl: 4.5rem;
+
+  /* ---- Radius & shadow ---- */
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+  --shadow-card: 0 1px 2px rgba(11, 31, 51, 0.04), 0 8px 24px -12px rgba(11, 31, 51, 0.18);
+  --shadow-lift: 0 2px 4px rgba(11, 31, 51, 0.06), 0 24px 48px -20px rgba(11, 31, 51, 0.28);
+}
+
+/* ---- Base ---- */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink-900);
+  background-color: var(--color-sand-50);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-weight: 600;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 3px solid var(--color-signal-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-signal-200);
+  color: var(--color-ink-950);
+}
+
+/* ---- Reusable utility compositions ---- */
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .container-page { padding-inline: 2rem; }
+  }
+
+  .prose-lead {
+    font-size: var(--text-xl);
+    line-height: 1.55;
+    color: var(--color-ink-600);
+  }
+
+  /* Subtle animated entrance, respects reduced-motion via base rule above */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes reveal-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

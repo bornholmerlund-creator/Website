@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import ProcessStep from "../components/ProcessStep.astro";
+import StatBand from "../components/StatBand.astro";
+import CTABand from "../components/CTABand.astro";
+
+const principles = [
+  { t: "Data before software", d: "We assess and fix the data foundation first, because that's where most projects quietly fail — long after the software was blamed." },
+  { t: "Evidence over opinion", d: "Findings are quantified in hours, error rates and cash. You decide on numbers, not narrative." },
+  { t: "Accountable to outcomes", d: "We commit to the result — reconciled ledgers, adopted processes — not just to configuring a screen." },
+  { t: "Right-sized for the mid-market", d: "Enterprise rigour without enterprise bureaucracy. Methods scaled to a business that has to keep running." },
+];
+---
+<BaseLayout
+  title="Our Approach"
+  description="The Keelstone method: a data-first, evidence-led approach to ERP and data programmes — assess, design, prove, deliver, embed — built for mid-sized businesses."
+  canonical="/approach/"
+>
+  <PageHero
+    eyebrow="Our Approach"
+    title="A method built around the reasons projects fail."
+    lead="We reverse-engineered our process from post-mortems of failed ERP programmes. Every phase exists to remove a known cause of failure before it can take hold."
+  />
+
+  <Section tone="sand" pad="tight">
+    <div class="mb-10 max-w-2xl">
+      <Eyebrow>Principles</Eyebrow>
+      <h2 class="mt-4 font-serif text-3xl font-semibold sm:text-4xl">Four commitments that shape every engagement.</h2>
+    </div>
+    <dl class="grid gap-px overflow-hidden rounded-2xl bg-ink-100 sm:grid-cols-2">
+      {principles.map((p) => (
+        <div class="bg-white p-7">
+          <dt class="font-serif text-xl font-semibold text-ink-900">{p.t}</dt>
+          <dd class="mt-2 text-sm leading-relaxed text-ink-600">{p.d}</dd>
+        </div>
+      ))}
+    </dl>
+  </Section>
+
+  <Section>
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
+      <div>
+        <Eyebrow>The method</Eyebrow>
+        <h2 class="mt-4 font-serif text-3xl font-semibold sm:text-4xl">Five phases, each with an exit you can verify.</h2>
+        <p class="prose-lead mt-5">No phase ends on a feeling. Each has explicit exit criteria — so progress is real, not reported.</p>
+      </div>
+      <ol class="list-none">
+        <ProcessStep step={1} title="Assess">
+          We map your operating model, systems and data quality, and quantify the gaps. You get an honest, evidence-based picture — including when the answer is "don't do this yet."
+        </ProcessStep>
+        <ProcessStep step={2} title="Design">
+          We design the target state — process, architecture, data model and ownership — and a sequenced roadmap prioritised by business value, not vendor roadmap.
+        </ProcessStep>
+        <ProcessStep step={3} title="Prove">
+          Before cutover, we prove it works: reconciled migration dry runs, tested integrations, validated reports. Risk is retired in rehearsal, not discovered live.
+        </ProcessStep>
+        <ProcessStep step={4} title="Deliver">
+          A rehearsed cutover, a reconciliation pack that ties out, and senior support through the first month-end close.
+        </ProcessStep>
+        <ProcessStep step={5} title="Embed" last={true}>
+          Ownership, governance and enablement so the improvements survive our departure. We measure success by what holds after we leave.
+        </ProcessStep>
+      </ol>
+    </div>
+  </Section>
+
+  <Section tone="ink">
+    <div class="mb-10 max-w-2xl">
+      <Eyebrow tone="dark">What this protects against</Eyebrow>
+      <h2 class="mt-4 font-serif text-3xl font-semibold text-white sm:text-4xl">The failure modes we design out.</h2>
+    </div>
+    <StatBand
+      tone="dark"
+      stats={[
+        { value: "Slipped dates", label: "Defended with a rehearsed, reconciled cutover" },
+        { value: "Dirty data", label: "Surfaced and fixed in the Assess phase, not at 2am on go-live" },
+        { value: "Low adoption", label: "Designed against process and ownership from day one" },
+        { value: "Scope creep", label: "Bounded by fixed-scope phases and exit criteria" },
+      ]}
+    />
+  </Section>
+
+  <CTABand />
+</BaseLayout>

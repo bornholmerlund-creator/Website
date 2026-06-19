@@ -1,0 +1,21 @@
+---
+import Button from "./Button.astro";
+interface Props { heading?: string; sub?: string }
+const {
+  heading = "Find out what your data is really costing you.",
+  sub = "A 45-minute working session with a senior consultant — not a sales pitch. You leave with a prioritised view of the risks in your ERP and data, whether or not we work together.",
+} = Astro.props;
+---
+<section class="relative overflow-hidden bg-ink-950">
+  <div class="absolute inset-0 opacity-[0.07]" aria-hidden="true" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 28px 28px;"></div>
+  <div class="container-page relative py-16 lg:py-20">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="font-serif text-3xl font-semibold text-white sm:text-4xl">{heading}</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-ink-300">{sub}</p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <Button href="/contact/" variant="primary" class="group">Book a working session</Button>
+        <Button href="/approach/" variant="onInk" class="group">See how we work</Button>
+      </div>
+    </div>
+  </div>
+</section>
