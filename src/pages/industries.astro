@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import CTABand from "../components/CTABand.astro";
+
+const industries = [
+  {
+    name: "Manufacturing",
+    pain: "BOM accuracy, shop-floor data, and costing that finance and operations can both trust.",
+    points: ["Bill-of-material and routing data integrity", "Inventory and WIP accuracy at cutover", "Costing models reconciled across ops and finance", "MES / shop-floor integration"],
+  },
+  {
+    name: "Wholesale & Distribution",
+    pain: "Stock that disagrees between systems, and margins eroded by manual reconciliation.",
+    points: ["Real-time stock across warehouse and ERP", "Order-to-cash and EDI integration", "Pricing and rebate data governance", "Demand and replenishment reporting"],
+  },
+  {
+    name: "Professional Services",
+    pain: "Project, time and billing data scattered across tools no one reconciles.",
+    points: ["Project accounting and revenue recognition", "Time, utilisation and WIP reporting", "CRM-to-ERP integration", "Resourcing and profitability dashboards"],
+  },
+  {
+    name: "Healthcare & Care Services",
+    pain: "Multi-site records that conflict, under governance and compliance pressure.",
+    points: ["Master-data consolidation across sites", "Governance for sensitive, regulated data", "Funding, billing and payroll integration", "Trusted, audit-ready reporting"],
+  },
+];
+---
+<BaseLayout
+  title="Industries"
+  description="ERP and data consulting tailored to manufacturing, wholesale distribution, professional services and healthcare — with the data and process nuances each sector demands."
+  canonical="/industries/"
+>
+  <PageHero
+    eyebrow="Industries"
+    title="Sector-specific where it matters, disciplined everywhere else."
+    lead="The data that breaks an implementation differs by industry — a BOM is not an invoice. We bring patterns proven in your sector, not a generic template."
+  />
+  <Section>
+    <div class="grid gap-6 md:grid-cols-2">
+      {industries.map((ind) => (
+        <article class="flex flex-col rounded-2xl border border-ink-100 bg-white p-8 shadow-card">
+          <h2 class="font-serif text-2xl font-semibold text-ink-900">{ind.name}</h2>
+          <p class="mt-3 text-sm leading-relaxed text-ink-600">{ind.pain}</p>
+          <ul class="mt-6 grid gap-2.5 border-t border-ink-100 pt-6">
+            {ind.points.map((p) => (
+              <li class="flex items-start gap-2.5 text-sm text-ink-700">
+                <svg class="mt-0.5 h-4 w-4 flex-none text-signal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+    <p class="mt-8 text-sm text-ink-500">Working in a sector not listed? The discipline transfers. <a href="/contact/" class="font-semibold text-signal-700 hover:text-signal-800">Tell us about your data →</a></p>
+  </Section>
+  <CTABand />
+</BaseLayout>

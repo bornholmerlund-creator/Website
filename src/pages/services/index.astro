@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Section from "../../components/Section.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import CTABand from "../../components/CTABand.astro";
+import { services } from "../../config/site";
+---
+<BaseLayout
+  title="Services"
+  description="ERP implementation, optimization, data strategy, governance, migration, system integration and business intelligence — delivered by a vendor-neutral consultancy for mid-sized business."
+  canonical="/services/"
+>
+  <PageHero
+    eyebrow="Services"
+    title="One partner across the data-to-decision chain."
+    lead="ERP and data problems don't respect org-chart boundaries — and neither do we. Engage us for a single discipline or the whole programme; either way you get one accountable team."
+  />
+  <Section>
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {services.map((s, i) => (
+        <ServiceCard index={i} title={s.title} short={s.short} blurb={s.blurb} href={`/services/${s.slug}/`} />
+      ))}
+    </div>
+  </Section>
+  <CTABand
+    heading="Not sure where the risk is?"
+    sub="Start with a working session. We'll help you locate the weakest link in your data and systems — and tell you honestly whether it's worth fixing now."
+  />
+</BaseLayout>

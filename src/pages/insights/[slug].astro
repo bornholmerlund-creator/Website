@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/Section.astro";
+import CTABand from "../../components/CTABand.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("insights");
+  return posts.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const d = entry.data;
+const fmt = (dt: Date) => dt.toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" });
+
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: d.title,
+  description: d.description,
+  datePublished: d.publishDate.toISOString(),
+  author: { "@type": "Organization", name: d.author },
+  publisher: { "@type": "Organization", name: "Northbound Data" },
+  keywords: d.tags.join(", "),
+};
+---
+<BaseLayout title={d.title} description={d.description} canonical={`/insights/${entry.slug}/`} ogType="article" jsonLd={ld}>
+  <section class="border-b border-ink-100 bg-ink-950 text-white">
+    <div class="container-page py-16 lg:py-20">
+      <a href="/insights/" class="text-sm font-medium text-signal-300 hover:text-signal-200">← All insights</a>
+      <div class="mt-6 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wider text-ink-400">
+        <time datetime={d.publishDate.toISOString()}>{fmt(d.publishDate)}</time>
+        {d.tags.map((t) => <span class="text-signal-300">{t}</span>)}
+      </div>
+      <h1 class="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-tight sm:text-5xl">{d.title}</h1>
+    </div>
+  </section>
+  <Section>
+    <article class="prose-article mx-auto max-w-3xl text-ink-700">
+      <Content />
+    </article>
+  </Section>
+  <CTABand />
+</BaseLayout>
+
+<style is:global>
+  .prose-article h2 { font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 600; color: var(--color-ink-900); margin-top: 2.5rem; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+  .prose-article p { font-size: var(--text-lg); line-height: 1.7; margin-bottom: 1.25rem; }
+  .prose-article ol, .prose-article ul { margin: 1.25rem 0; padding-left: 1.4rem; }
+  .prose-article ol { list-style: decimal; }
+  .prose-article ul { list-style: disc; }
+  .prose-article li { margin-bottom: 0.6rem; line-height: 1.65; }
+  .prose-article strong { color: var(--color-ink-900); font-weight: 600; }
+</style>

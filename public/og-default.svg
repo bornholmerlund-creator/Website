@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#06121f"/>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <defs>
+    <radialGradient id="g" cx="85%" cy="15%" r="70%">
+      <stop offset="0%" stop-color="#0fb5a6" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#06121f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g transform="translate(80,72)">
+    <path d="M28 0L52 17V40C52 50 41 56 28 56C15 56 4 50 4 40V17L28 0Z" stroke="#0fb5a6" stroke-width="4" fill="none" stroke-linejoin="round"/>
+    <path d="M28 11L40 20V35L28 44L16 35V20L28 11Z" fill="#0fb5a6"/>
+    <text x="74" y="40" font-family="Georgia, serif" font-size="34" font-weight="600" fill="#ffffff">Northbound Data</text>
+  </g>
+  <text x="80" y="320" font-family="Georgia, serif" font-size="76" font-weight="600" fill="#ffffff">We fix the data before</text>
+  <text x="80" y="408" font-family="Georgia, serif" font-size="76" font-weight="600" fill="#ffffff">we touch the system.</text>
+  <text x="80" y="500" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#95aec5">Vendor-neutral ERP &amp; data consultancy for mid-sized business</text>
+</svg>

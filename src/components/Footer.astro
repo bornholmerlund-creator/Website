@@ -1,0 +1,46 @@
+---
+import { site, footerNav } from "../config/site";
+import Logo from "./Logo.astro";
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-ink-100 bg-ink-950 text-ink-200">
+  <div class="container-page py-16">
+    <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
+      <div class="max-w-sm">
+        <a href="/" class="flex items-center gap-2.5" aria-label={`${site.name} home`}>
+          <Logo class="h-7 w-7 text-signal-400" />
+          <span class="font-serif text-xl font-semibold text-white">{site.name}</span>
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-ink-300">{site.tagline}</p>
+        <p class="mt-6 text-sm text-ink-400">{site.location}</p>
+        <div class="mt-4 flex flex-col gap-1 text-sm">
+          <a href={`mailto:${site.email}`} class="text-signal-300 hover:text-signal-200">{site.email}</a>
+          <a href={`tel:${site.phoneHref}`} class="text-ink-300 hover:text-white">{site.phone}</a>
+        </div>
+      </div>
+
+      {footerNav.map((col) => (
+        <nav aria-label={col.heading}>
+          <h2 class="font-sans text-xs font-semibold uppercase tracking-widest text-ink-400">{col.heading}</h2>
+          <ul class="mt-4 space-y-2.5">
+            {col.items.map((item) => (
+              <li>
+                <a href={item.href} class="text-sm text-ink-200 transition-colors hover:text-signal-300">{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
+    </div>
+
+    <div class="mt-14 flex flex-col items-start justify-between gap-4 border-t border-ink-800 pt-8 text-xs text-ink-400 sm:flex-row sm:items-center">
+      <p>&copy; {year} {site.legalName}. Vendor-neutral by design.</p>
+      <div class="flex items-center gap-5">
+        <a href={site.social.linkedin} rel="noopener" class="hover:text-white">LinkedIn</a>
+        <a href="/privacy/" class="hover:text-white">Privacy</a>
+        <a href="/contact/" class="hover:text-white">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>

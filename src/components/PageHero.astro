@@ -1,0 +1,17 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+interface Props { eyebrow?: string; title: string; lead?: string }
+const { eyebrow, title, lead } = Astro.props;
+---
+<section class="relative overflow-hidden border-b border-ink-100 bg-ink-950 text-white">
+  <div class="absolute inset-0 opacity-[0.06]" aria-hidden="true" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 28px 28px;"></div>
+  <div class="absolute -right-40 -top-40 h-96 w-96 rounded-full bg-signal-500/20 blur-3xl" aria-hidden="true"></div>
+  <div class="container-page relative py-20 lg:py-28">
+    <div class="max-w-3xl">
+      {eyebrow && <Eyebrow tone="dark">{eyebrow}</Eyebrow>}
+      <h1 class="mt-5 font-serif text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">{title}</h1>
+      {lead && <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-300">{lead}</p>}
+      <slot />
+    </div>
+  </div>
+</section>

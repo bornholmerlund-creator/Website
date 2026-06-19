@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Section from "../../components/Section.astro";
+import CTABand from "../../components/CTABand.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("insights")).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" });
+---
+<BaseLayout
+  title="Insights"
+  description="Practical, no-nonsense thinking on ERP implementation, data migration, governance and optimisation for mid-sized businesses — from the Northbound Data team."
+  canonical="/insights/"
+>
+  <PageHero
+    eyebrow="Insights"
+    title="Field notes from the projects that hold."
+    lead="No thought-leadership theatre. Practical thinking on the data and system decisions that decide whether a programme succeeds."
+  />
+  <Section>
+    <div class="mx-auto max-w-3xl divide-y divide-ink-100">
+      {posts.map((post) => (
+        <article class="py-8 first:pt-0">
+          <div class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wider text-ink-400">
+            <time datetime={post.data.publishDate.toISOString()}>{fmt(post.data.publishDate)}</time>
+            {post.data.tags.map((t) => <span class="text-signal-700">{t}</span>)}
+          </div>
+          <h2 class="mt-3 font-serif text-2xl font-semibold text-ink-900">
+            <a href={`/insights/${post.slug}/`} class="hover:text-signal-700">{post.data.title}</a>
+          </h2>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">{post.data.description}</p>
+          <a href={`/insights/${post.slug}/`} class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-ink-900 hover:text-signal-700">
+            Read
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </Section>
+  <CTABand />
+</BaseLayout>
