@@ -36,4 +36,4 @@ We were brought in alongside the chosen platform partner with one mandate: make 
 
 The go-live hit its original date. The reconciliation pack tied out record counts and financial balances from source to target before the operations team logged in on Monday morning. The first month-end close completed in eleven days — faster than the legacy system had managed in years.
 
-> "The previous attempt taught us that the software is the easy part. Keelstone treated our data like it mattered, because it did." — CFO, Precision Components Group
+> "The previous attempt taught us that the software is the easy part. Northbound Data treated our data like it mattered, because it did." — CFO, Precision Components Group

@@ -1,7 +1,7 @@
 ---
 title: "Why ERP data migration fails — and the four checks that prevent it"
 description: "Poor data migration sits behind the majority of failed ERP go-lives. Here's why it happens in mid-sized businesses, and the four checks that make cutover weekend boring."
-author: "Keelstone"
+author: "Northbound Data"
 publishDate: 2026-02-11
 tags: ["Data Migration", "ERP Implementation"]
 ---

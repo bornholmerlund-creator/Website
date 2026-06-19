@@ -10,7 +10,7 @@
   <g transform="translate(80,72)">
     <path d="M28 0L52 17V40C52 50 41 56 28 56C15 56 4 50 4 40V17L28 0Z" stroke="#0fb5a6" stroke-width="4" fill="none" stroke-linejoin="round"/>
     <path d="M28 11L40 20V35L28 44L16 35V20L28 11Z" fill="#0fb5a6"/>
-    <text x="74" y="40" font-family="Georgia, serif" font-size="34" font-weight="600" fill="#ffffff">Keelstone</text>
+    <text x="74" y="40" font-family="Georgia, serif" font-size="34" font-weight="600" fill="#ffffff">Northbound Data</text>
   </g>
   <text x="80" y="320" font-family="Georgia, serif" font-size="76" font-weight="600" fill="#ffffff">We fix the data before</text>
   <text x="80" y="408" font-family="Georgia, serif" font-size="76" font-weight="600" fill="#ffffff">we touch the system.</text>

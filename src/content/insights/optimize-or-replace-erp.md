@@ -1,7 +1,7 @@
 ---
 title: "Optimise or replace? A board-level test for your ERP"
 description: "Replacing an ERP is the most expensive way to fix problems that configuration and integration could solve in a quarter. Five questions to tell the difference."
-author: "Keelstone"
+author: "Northbound Data"
 publishDate: 2026-04-03
 tags: ["ERP Optimization", "ERP Implementation"]
 ---

@@ -21,7 +21,7 @@ const insights = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    author: z.string().default("Keelstone"),
+    author: z.string().default("Northbound Data"),
     publishDate: z.coerce.date(),
     tags: z.array(z.string()).default([]),
   }),

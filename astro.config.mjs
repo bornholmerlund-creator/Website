@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
 
 // Public site URL — override per environment. Used for canonical URLs & sitemap.
-const SITE = process.env.PUBLIC_SITE_URL || 'https://www.keelstone.io';
+const SITE = process.env.PUBLIC_SITE_URL || 'https://www.northbounddata.com';
 
 export default defineConfig({
   site: SITE,

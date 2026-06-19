@@ -1,4 +1,4 @@
-# Keelstone — ERP & Data Consultancy Website
+# Northbound Data — ERP & Data Consultancy Website
 
 A premium, production-ready B2B marketing site for a vendor-neutral ERP and data
 consultancy serving mid-sized businesses. Built with **Astro 5 + Tailwind CSS v4**.
@@ -78,7 +78,7 @@ sitemap-index.xml · robots.txt
 
 ## Brand positioning (summary)
 
-- **Name:** Keelstone — structural stability ("keel" + "keystone"); premium, ownable, vendor-neutral.
+- **Name:** Northbound Data — structural stability ("keel" + "keystone"); premium, ownable, vendor-neutral.
 - **Tagline:** *ERP and data that hold under pressure.*
 - **UVP:** We fix the data before we touch the system — so your ERP launches on time,
   reconciles on day one, and earns trust from the floor to the boardroom.

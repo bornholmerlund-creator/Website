@@ -3,24 +3,24 @@
  * Rename the brand, swap contact details, or re-point analytics here.
  */
 export const site = {
-  name: "Keelstone",
-  legalName: "Keelstone Advisory Ltd.",
+  name: "Northbound Data",
+  legalName: "Northbound Data Ltd.",
   tagline: "ERP and data that hold under pressure.",
   description:
-    "Keelstone is a vendor-neutral ERP and data consultancy for mid-sized businesses. We fix the data before we touch the system — so your implementation launches on time, reconciles on day one, and earns trust across the business.",
-  url: "https://www.keelstone.io",
-  email: "hello@keelstone.io",
+    "Northbound Data is a vendor-neutral ERP and data consultancy for mid-sized businesses. We fix the data before we touch the system — so your implementation launches on time, reconciles on day one, and earns trust across the business.",
+  url: "https://www.northbounddata.com",
+  email: "hello@northbounddata.com",
   phone: "+44 20 4538 1190",
   phoneHref: "+442045381190",
   location: "London · Copenhagen · Remote",
   founded: 2016,
   // Privacy-first analytics (Plausible). Leave empty to disable the snippet.
-  analyticsDomain: "keelstone.io",
+  analyticsDomain: "northbounddata.com",
   // Contact form endpoint (Formspree-compatible — works on static hosting).
   // Replace with your real endpoint id before launch.
   formEndpoint: "https://formspree.io/f/your-form-id",
   social: {
-    linkedin: "https://www.linkedin.com/company/keelstone",
+    linkedin: "https://www.linkedin.com/company/northbound-data",
   },
 } as const;
 
