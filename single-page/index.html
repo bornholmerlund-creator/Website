@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Northbound Data</title>
+<meta name="description" content="Northbound Data helps small and medium-sized businesses structure their data, automate routine work and get more out of their ERP system.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1f33'/%3E%3Cpath d='M16 6L25 12V20C25 24 21 26 16 26C11 26 7 24 7 20V12L16 6Z' stroke='%230fb5a6' stroke-width='2' fill='none' stroke-linejoin='round'/%3E%3Cpath d='M16 11L20 14V18L16 21L12 18V14L16 11Z' fill='%230fb5a6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..650;1,9..144,400..650&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400..700&display=swap">
+
+<!-- Tailwind CSS v4 (browser build, pinned) -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3/dist/index.global.js"></script>
+<style type="text/tailwindcss">
+  /* Map Tailwind colour utilities to the theme tokens below, so light and dark swap together. */
+  @theme inline {
+    --color-ground: var(--c-ground);
+    --color-frost: var(--c-frost);
+    --color-surface: var(--c-surface);
+    --color-line: var(--c-line);
+    --color-ink: var(--c-ink);
+    --color-muted: var(--c-muted);
+    --color-deep: var(--c-deep);
+    --color-deep-2: var(--c-deep-2);
+    --color-on-deep: var(--c-on-deep);
+    --color-on-deep-muted: var(--c-on-deep-muted);
+    --color-accent: var(--c-accent);
+    --color-accent-hi: var(--c-accent-hi);
+    --color-accent-ink: var(--c-accent-ink);
+    --color-accent-soft: var(--c-accent-soft);
+    --color-on-accent: var(--c-on-accent);
+    --color-danger: var(--c-danger);
+    --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+    --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @utility eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+</style>
+
+<style>
+  /* ---------- Theme tokens (Northbound Data brand) ---------- */
+  :root {
+    --c-ground: #ffffff;
+    --c-frost: #f2f5f8;
+    --c-surface: #ffffff;
+    --c-line: #dce5ee;
+    --c-ink: #0b1f33;
+    --c-muted: #48627f;
+    --c-deep: #0b1f33;
+    --c-deep-2: #122b47;
+    --c-on-deep: #ffffff;
+    --c-on-deep-muted: #b6c7d9;
+    --c-accent: #0fb5a6;
+    --c-accent-hi: #2fcbbd;
+    --c-accent-ink: #0b7169;
+    --c-accent-soft: #e3f6f3;
+    --c-on-accent: #04121d;
+    --c-danger: #b42318;
+    --c-shadow: 0 1px 2px rgb(11 31 51 / 0.05), 0 12px 32px -16px rgb(11 31 51 / 0.22);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --c-ground: #071320;
+      --c-frost: #0a1a2b;
+      --c-surface: #0e2135;
+      --c-line: #1e3650;
+      --c-ink: #e7eef5;
+      --c-muted: #9db3c9;
+      --c-deep: #0c2238;
+      --c-deep-2: #133152;
+      --c-on-deep: #ffffff;
+      --c-on-deep-muted: #b6c7d9;
+      --c-accent: #2cc1b4;
+      --c-accent-hi: #5cd9cb;
+      --c-accent-ink: #5fd6c9;
+      --c-accent-soft: #0f3437;
+      --c-on-accent: #04121d;
+      --c-danger: #ff9b8f;
+      --c-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 36px -18px rgb(0 0 0 / 0.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --c-ground: #071320;
+    --c-frost: #0a1a2b;
+    --c-surface: #0e2135;
+    --c-line: #1e3650;
+    --c-ink: #e7eef5;
+    --c-muted: #9db3c9;
+    --c-deep: #0c2238;
+    --c-deep-2: #133152;
+    --c-on-deep: #ffffff;
+    --c-on-deep-muted: #b6c7d9;
+    --c-accent: #2cc1b4;
+    --c-accent-hi: #5cd9cb;
+    --c-accent-ink: #5fd6c9;
+    --c-accent-soft: #0f3437;
+    --c-on-accent: #04121d;
+    --c-danger: #ff9b8f;
+    --c-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 36px -18px rgb(0 0 0 / 0.6);
+  }
+
+  /* ---------- Base ---------- */
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--c-ground);
+    color: var(--c-ink);
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: color-mix(in srgb, var(--c-accent) 35%, transparent); }
+  :where(a, button):focus-visible { outline: 2px solid var(--c-accent); outline-offset: 3px; }
+
+  /* Header gains a hairline once the page scrolls */
+  #site-header.is-scrolled { border-bottom-color: var(--c-line); }
+
+  /* Topographic contour lines — a quiet Nordic map texture on deep sections */
+  .nb-contours {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      repeating-radial-gradient(ellipse 130% 95% at 95% -5%, transparent 0 30px, rgb(255 255 255 / 0.05) 30px 31.5px),
+      repeating-radial-gradient(ellipse 90% 70% at 75% 115%, transparent 0 42px, rgb(255 255 255 / 0.035) 42px 43.5px);
+    -webkit-mask-image: linear-gradient(to left, #000 25%, transparent 85%);
+    mask-image: linear-gradient(to left, #000 25%, transparent 85%);
+  }
+
+  .nb-card { box-shadow: var(--c-shadow); }
+
+  /* Hamburger icon that turns into a close icon */
+  .burger { position: relative; display: block; width: 18px; height: 12px; }
+  .burger span {
+    position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
+    background: currentColor; transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+  }
+  .burger span:nth-child(1) { top: 0; }
+  .burger span:nth-child(2) { top: 5px; }
+  .burger span:nth-child(3) { top: 10px; }
+  [aria-expanded="true"] .burger span:nth-child(1) { top: 5px; transform: rotate(45deg); }
+  [aria-expanded="true"] .burger span:nth-child(2) { opacity: 0; }
+  [aria-expanded="true"] .burger span:nth-child(3) { top: 5px; transform: rotate(-45deg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" data-skip class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-on-accent">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="sticky z-40 border-b border-transparent bg-ground/90 backdrop-blur-md transition-colors" style="top: env(safe-area-inset-top, 0px);">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+    <a href="#home" class="flex items-center gap-2.5 rounded-md" aria-label="Northbound Data, back to top">
+      <svg class="size-7 text-accent-ink" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 3L27 11V21C27 26 22 29 16 29C10 29 5 26 5 21V11L16 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M16 9L21 13V19L16 23L11 19V13L16 9Z" fill="currentColor"/>
+      </svg>
+      <span class="font-display text-xl font-semibold tracking-tight text-ink">Northbound Data</span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+      <a href="#home" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink">Home</a>
+      <a href="#services" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink">Services</a>
+      <a href="#about" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink">About</a>
+      <a href="#contact" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink">Contact</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="#contact" data-cta class="hidden items-center rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hi sm:inline-flex">Book a meeting</a>
+      <button id="menu-button" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg border border-line text-ink md:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+        <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="absolute inset-x-0 top-full border-y border-line bg-ground shadow-xl md:hidden" hidden>
+    <nav class="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6" aria-label="Mobile">
+      <a href="#home" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost">Home</a>
+      <a href="#services" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost">Services</a>
+      <a href="#about" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost">About</a>
+      <a href="#contact" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost">Contact</a>
+      <a href="#contact" data-cta class="mt-2 mb-1 flex justify-center rounded-lg bg-accent px-4 py-3 text-base font-semibold text-on-accent">Book a no-obligation meeting</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" class="outline-none">
+
+  <!-- ============ HOME / HERO ============ -->
+  <section id="home" class="relative isolate scroll-mt-16 overflow-hidden bg-deep text-on-deep">
+    <div class="nb-contours" aria-hidden="true"></div>
+    <div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:px-8 lg:py-24">
+      <div class="min-w-0">
+        <p class="eyebrow text-accent-hi">Data setup · Automation · ERP</p>
+        <h1 class="mt-5 font-display text-[2.5rem] leading-[1.05] font-medium tracking-tight text-balance sm:text-5xl lg:text-[3.6rem]">
+          Get your data in order — and your <em class="text-accent-hi">hours back</em>.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-on-deep-muted">
+          Northbound Data helps small and medium-sized businesses build a clean data foundation, automate repetitive work and get more out of their ERP system. Practical, vendor-neutral and sized for teams of 5 to 250.
+        </p>
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a href="#contact" data-cta class="group inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-on-accent shadow-lg shadow-black/20 transition-colors hover:bg-accent-hi">
+            Book a no-obligation meeting
+            <svg class="size-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#services" class="inline-flex items-center rounded-lg border border-on-deep/25 px-6 py-3.5 text-base font-semibold text-on-deep transition-colors hover:bg-on-deep/10">See our services</a>
+        </div>
+        <p class="mt-6 text-sm text-on-deep-muted">30 minutes · Online or in person · No sales pitch</p>
+      </div>
+
+      <!-- Illustrative before/after panel -->
+      <figure class="min-w-0 rounded-2xl border border-on-deep/15 bg-deep-2/80 p-5 shadow-2xl shadow-black/25 backdrop-blur sm:p-7" aria-labelledby="panel-title">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p id="panel-title" class="eyebrow text-on-deep-muted">Manual hours per week</p>
+            <p class="mt-2 font-display text-xl leading-snug text-on-deep">A 25-person wholesaler, before and after</p>
+          </div>
+          <span class="shrink-0 rounded-full border border-on-deep/20 px-2.5 py-1 font-mono text-[0.65rem] uppercase tracking-wider text-on-deep-muted">Example</span>
+        </div>
+
+        <ul class="mt-7 flex flex-col gap-5">
+          <li>
+            <div class="flex items-baseline justify-between gap-4 text-sm">
+              <span class="text-on-deep">Matching supplier invoices</span>
+              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true">6.5 h → <span class="text-accent-hi">0.5 h</span></span>
+              <span class="sr-only">6.5 hours before, 0.5 hours after</span>
+            </div>
+            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
+              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:100%"></span>
+              <span class="absolute inset-y-0 left-0 min-w-1.5 rounded-full bg-accent-hi" style="width:7.7%"></span>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-baseline justify-between gap-4 text-sm">
+              <span class="text-on-deep">Re-keying webshop orders</span>
+              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true">4 h → <span class="text-accent-hi">automated</span></span>
+              <span class="sr-only">4 hours before, fully automated after</span>
+            </div>
+            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
+              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:61.5%"></span>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-baseline justify-between gap-4 text-sm">
+              <span class="text-on-deep">Month-end stock report</span>
+              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true">3 h → <span class="text-accent-hi">0.25 h</span></span>
+              <span class="sr-only">3 hours before, 15 minutes after</span>
+            </div>
+            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
+              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:46.2%"></span>
+              <span class="absolute inset-y-0 left-0 min-w-1.5 rounded-full bg-accent-hi" style="width:3.8%"></span>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-baseline justify-between gap-4 text-sm">
+              <span class="text-on-deep">Fixing duplicate customers</span>
+              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true">2 h → <span class="text-accent-hi">0.25 h</span></span>
+              <span class="sr-only">2 hours before, 15 minutes after</span>
+            </div>
+            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
+              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:30.8%"></span>
+              <span class="absolute inset-y-0 left-0 min-w-1.5 rounded-full bg-accent-hi" style="width:3.8%"></span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-7 flex flex-wrap items-end justify-between gap-4 border-t border-on-deep/15 pt-5">
+          <div>
+            <p class="eyebrow text-on-deep-muted">Total per week</p>
+            <p class="mt-1 font-display text-3xl tabular-nums">
+              <span class="text-on-deep-muted line-through decoration-1">15.5 h</span>
+              <span class="text-on-deep-muted" aria-hidden="true">→</span>
+              <span class="sr-only">down to</span>
+              <span class="text-accent-hi">1 h</span>
+            </p>
+          </div>
+          <p class="max-w-[15rem] text-sm leading-snug text-on-deep-muted">Roughly 750 hours a year back for work that needs a person.</p>
+        </div>
+
+        <figcaption class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-deep-muted">
+          <span class="inline-flex items-center gap-2"><span class="h-2 w-4 rounded-full bg-on-deep/30" aria-hidden="true"></span>Before</span>
+          <span class="inline-flex items-center gap-2"><span class="h-2 w-4 rounded-full bg-accent-hi" aria-hidden="true"></span>After</span>
+          <span>Illustrative figures for a typical project scope.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="scroll-mt-16 bg-ground py-20 sm:py-24" aria-labelledby="services-title">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
+        <div>
+          <p class="eyebrow text-accent-ink">What we do</p>
+          <h2 id="services-title" class="mt-4 font-display text-3xl leading-[1.1] font-medium tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]">Three ways we give your team time back</h2>
+        </div>
+        <p class="max-w-xl text-lg leading-relaxed text-muted">Start with one, or combine them. Every project begins with a short review of how your data and routines work today, so we fix what actually slows you down.</p>
+      </div>
+
+      <div class="mt-14 grid gap-6 lg:grid-cols-3">
+        <!-- Data Setup -->
+        <article class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-7 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <div class="flex size-12 items-center justify-center rounded-xl bg-accent-soft text-accent-ink">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/>
+              <path d="M4.5 5.5v6c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-6"/>
+              <path d="M4.5 11.5v6c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-6"/>
+            </svg>
+          </div>
+          <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">Data Setup</h3>
+          <p class="mt-3 leading-relaxed text-muted">A clean, well-structured foundation that every report, system and decision can rely on.</p>
+          <ul class="mt-6 flex flex-col gap-3 text-[0.95rem]">
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Clean-up of customers, items, suppliers and prices</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>One shared structure across ERP, CRM and spreadsheets</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Clear ownership and rules that keep data clean</span></li>
+          </ul>
+          <div class="mt-auto pt-7">
+            <div class="border-t border-line pt-5">
+              <p class="eyebrow text-muted">Typical result</p>
+              <p class="mt-1.5 font-medium">One trusted number, wherever you look.</p>
+            </div>
+            <a href="#contact" data-topic="data setup" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-ink underline-offset-4 hover:underline">Discuss data setup
+              <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Automation -->
+        <article class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-7 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <div class="flex size-12 items-center justify-center rounded-xl bg-accent-soft text-accent-ink">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+              <path d="M6.5 10v3.5a2 2 0 0 0 2 2H13"/>
+              <path d="m10.5 13 2.5 2.5-2.5 2.5"/>
+              <path d="M14 6.5h3.5a2 2 0 0 1 2 2V11"/>
+            </svg>
+          </div>
+          <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">Automation</h3>
+          <p class="mt-3 leading-relaxed text-muted">We take the repetitive, error-prone work out of your week without adding complexity.</p>
+          <ul class="mt-6 flex flex-col gap-3 text-[0.95rem]">
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Invoice, order and payment flows between systems</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Reports that build and send themselves on schedule</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alerts when something needs a human decision</span></li>
+          </ul>
+          <div class="mt-auto pt-7">
+            <div class="border-t border-line pt-5">
+              <p class="eyebrow text-muted">Typical result</p>
+              <p class="mt-1.5 font-medium">Hours back every week, and fewer typing errors.</p>
+            </div>
+            <a href="#contact" data-topic="automation" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-ink underline-offset-4 hover:underline">Discuss automation
+              <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- ERP Assistance -->
+        <article class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-7 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <div class="flex size-12 items-center justify-center rounded-xl bg-accent-soft text-accent-ink">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/>
+              <circle cx="15" cy="6" r="2"/>
+              <circle cx="9" cy="12" r="2"/>
+              <circle cx="17" cy="18" r="2"/>
+            </svg>
+          </div>
+          <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">ERP Assistance</h3>
+          <p class="mt-3 leading-relaxed text-muted">Get more out of the ERP you already pay for, or choose the right one for your next stage.</p>
+          <ul class="mt-6 flex flex-col gap-3 text-[0.95rem]">
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Health check of setup, processes and daily use</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Configuration fixes, integrations and user training</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Vendor-neutral help choosing or upgrading a system</span></li>
+          </ul>
+          <div class="mt-auto pt-7">
+            <div class="border-t border-line pt-5">
+              <p class="eyebrow text-muted">Typical result</p>
+              <p class="mt-1.5 font-medium">An ERP your team actually likes to use.</p>
+            </div>
+            <a href="#contact" data-topic="our ERP system" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-ink underline-offset-4 hover:underline">Discuss your ERP
+              <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CALL TO ACTION ============ -->
+  <section class="bg-ground pb-20 sm:pb-24" aria-labelledby="cta-title">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="relative isolate overflow-hidden rounded-3xl bg-deep px-6 py-12 text-on-deep sm:px-12 sm:py-14 lg:flex lg:items-center lg:justify-between lg:gap-12">
+        <div class="nb-contours" aria-hidden="true"></div>
+        <div class="max-w-2xl">
+          <p class="eyebrow text-accent-hi">Not sure where to start?</p>
+          <h2 id="cta-title" class="mt-3 font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl">Let’s find your three biggest time-savers.</h2>
+          <p class="mt-4 text-lg leading-relaxed text-on-deep-muted">In 30 minutes we look at how your data and routines work today and point out the changes that would save you the most time. The notes are yours to keep, whether or not we work together.</p>
+        </div>
+        <div class="mt-8 flex shrink-0 flex-col items-start gap-3 lg:mt-0 lg:items-end">
+          <a href="#contact" data-cta class="group inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-on-accent transition-colors hover:bg-accent-hi">
+            Book a no-obligation meeting
+            <svg class="size-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="text-sm text-on-deep-muted">Or call <span class="whitespace-nowrap text-on-deep">+44 20 4538 1190</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="scroll-mt-16 bg-frost py-20 sm:py-24" aria-labelledby="about-title">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
+        <div class="min-w-0 lg:col-span-7">
+          <p class="eyebrow text-accent-ink">About us</p>
+          <h2 id="about-title" class="mt-4 font-display text-4xl leading-[1.05] font-medium tracking-tight text-balance sm:text-5xl">Complex data, <em class="text-accent-ink">made simple.</em></h2>
+          <p class="mt-7 max-w-[38rem] text-xl leading-relaxed">Our vision is to make complex data simple, so small and medium-sized businesses can run on the same structure and automation as large enterprises, without the enterprise overhead.</p>
+          <div class="mt-6 flex max-w-[38rem] flex-col gap-4 leading-relaxed text-muted">
+            <p>We kept meeting capable teams who spent their days copying numbers between systems, fixing the same errors every month and waiting for reports nobody fully trusted. The problem was rarely the people, and rarely the software. It was the structure underneath.</p>
+            <p>So that is where we start. We put structure into your data, automate the routine work around it and make sure your ERP supports the way you actually operate. When the foundation is right, efficiency follows.</p>
+          </div>
+          <dl class="mt-10 flex flex-wrap gap-x-12 gap-y-5">
+            <div>
+              <dt class="eyebrow text-muted">Founded</dt>
+              <dd class="mt-1 font-display text-2xl">2016</dd>
+            </div>
+            <div>
+              <dt class="eyebrow text-muted">Based in</dt>
+              <dd class="mt-1 font-display text-2xl">Copenhagen &amp; London</dd>
+            </div>
+            <div>
+              <dt class="eyebrow text-muted">Approach</dt>
+              <dd class="mt-1 font-display text-2xl">Vendor-neutral</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="min-w-0 lg:col-span-5">
+          <h3 class="eyebrow text-muted">What we believe</h3>
+          <ul class="mt-4 divide-y divide-line border-y border-line">
+            <li class="py-6">
+              <h4 class="font-display text-xl font-medium tracking-tight">Structure before software</h4>
+              <p class="mt-2 leading-relaxed text-muted">Most problems are solved by getting the data model right, not by buying another tool.</p>
+            </li>
+            <li class="py-6">
+              <h4 class="font-display text-xl font-medium tracking-tight">Automate the routine, keep the judgement</h4>
+              <p class="mt-2 leading-relaxed text-muted">Systems handle the copy-and-paste. Your people keep the decisions that need a human.</p>
+            </li>
+            <li class="py-6">
+              <h4 class="font-display text-xl font-medium tracking-tight">Plain language, no lock-in</h4>
+              <p class="mt-2 leading-relaxed text-muted">We document everything we build and train your team, so you are never dependent on us.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- How a project runs -->
+      <div class="mt-20">
+        <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+          <h3 class="font-display text-2xl font-medium tracking-tight sm:text-3xl">How a project runs</h3>
+          <p class="text-sm text-muted">Most projects take 4–10 weeks from first meeting to hand-over.</p>
+        </div>
+        <ol class="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
+          <li class="relative border-t border-line pt-7">
+            <span class="absolute -top-[5px] left-0 size-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="eyebrow text-accent-ink">Step 1</span>
+              <span class="font-mono text-xs text-muted">1–2 weeks</span>
+            </div>
+            <h4 class="mt-3 font-display text-2xl font-medium tracking-tight">Map</h4>
+            <p class="mt-2 leading-relaxed text-muted">We review your systems, data and manual routines, and hand you a prioritised list of where time is lost.</p>
+          </li>
+          <li class="relative border-t border-line pt-7">
+            <span class="absolute -top-[5px] left-0 size-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="eyebrow text-accent-ink">Step 2</span>
+              <span class="font-mono text-xs text-muted">2–8 weeks</span>
+            </div>
+            <h4 class="mt-3 font-display text-2xl font-medium tracking-tight">Build</h4>
+            <p class="mt-2 leading-relaxed text-muted">We fix the structure and set up automations in small steps, testing each one with the people who use it.</p>
+          </li>
+          <li class="relative border-t border-line pt-7">
+            <span class="absolute -top-[5px] left-0 size-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="eyebrow text-accent-ink">Step 3</span>
+              <span class="font-mono text-xs text-muted">+ 30-day check-in</span>
+            </div>
+            <h4 class="mt-3 font-display text-2xl font-medium tracking-tight">Hand over</h4>
+            <p class="mt-2 leading-relaxed text-muted">Documentation and training for your team, plus a check-in after 30 days to make sure everything holds.</p>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Systems -->
+      <div class="mt-16 flex flex-col gap-4 border-t border-line pt-8 md:flex-row md:items-center md:gap-8">
+        <p class="eyebrow shrink-0 text-muted">Systems we often work with</p>
+        <ul class="flex flex-wrap gap-2" aria-label="Systems we often work with">
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Business Central</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">e-conomic</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Visma</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Uniconta</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Tripletex</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">NetSuite</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Power BI</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Power Automate</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Make</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="scroll-mt-16 bg-ground py-20 sm:py-24" aria-labelledby="contact-title">
+    <div class="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
+      <div class="min-w-0 lg:col-span-5">
+        <p class="eyebrow text-accent-ink">Contact</p>
+        <h2 id="contact-title" class="mt-4 font-display text-4xl leading-[1.05] font-medium tracking-tight text-balance sm:text-5xl">Let’s talk about your data.</h2>
+        <p class="mt-6 text-lg leading-relaxed text-muted">Tell us a little about your business and what takes up too much of your team’s time. We reply within one business day.</p>
+
+        <ul class="mt-10 flex flex-col gap-6">
+          <li class="flex gap-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-frost text-accent-ink" aria-hidden="true">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="min-w-0">
+              <p class="eyebrow text-muted">Email</p>
+              <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                <a id="contact-email" href="mailto:hello@northbounddata.com" class="font-medium break-all text-ink hover:text-accent-ink">hello@northbounddata.com</a>
+                <button type="button" data-copy="hello@northbounddata.com" data-copy-target="contact-email" aria-live="polite" class="cursor-pointer rounded-md border border-line px-2 py-0.5 text-xs font-medium text-muted transition-colors hover:border-accent hover:text-ink">Copy</button>
+              </div>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-frost text-accent-ink" aria-hidden="true">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+            </span>
+            <div class="min-w-0">
+              <p class="eyebrow text-muted">Phone</p>
+              <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                <a id="contact-phone" href="tel:+442045381190" class="font-medium text-ink tabular-nums hover:text-accent-ink">+44 20 4538 1190</a>
+                <button type="button" data-copy="+44 20 4538 1190" data-copy-target="contact-phone" aria-live="polite" class="cursor-pointer rounded-md border border-line px-2 py-0.5 text-xs font-medium text-muted transition-colors hover:border-accent hover:text-ink">Copy</button>
+              </div>
+              <p class="mt-1 text-sm text-muted">Mon–Fri, 08:30–17:00 CET</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-frost text-accent-ink" aria-hidden="true">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            </span>
+            <div class="min-w-0">
+              <p class="eyebrow text-muted">Location</p>
+              <p class="mt-1 font-medium">Copenhagen &amp; London</p>
+              <p class="mt-1 text-sm text-muted">Working on-site and remotely across the Nordics and the UK</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-10 border-t border-line pt-6">
+          <p class="eyebrow text-muted">Follow us</p>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <a href="https://www.linkedin.com/company/northbound-data" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent-ink">
+              <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3v-11zM9.5 9.75h3.8v1.5h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v5.46h-4v-4.84c0-1.16-.02-2.64-1.61-2.64-1.61 0-1.86 1.26-1.86 2.56v4.92h-4V9.75z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="min-w-0 lg:col-span-7">
+        <div class="nb-card rounded-2xl border border-line bg-surface p-6 sm:p-9">
+          <form id="contact-form" novalidate>
+            <h3 class="font-display text-2xl font-medium tracking-tight">Send us a message</h3>
+            <div class="mt-6 grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="name" class="text-sm font-medium">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error" placeholder="Your full name"
+                  class="mt-2 block w-full rounded-lg border border-line bg-ground px-4 py-3 text-base text-ink outline-none transition placeholder:text-muted/70 focus:border-accent focus:ring-4 focus:ring-accent/20 aria-[invalid=true]:border-danger">
+                <p id="name-error" class="mt-1.5 text-sm text-danger" hidden></p>
+              </div>
+              <div>
+                <label for="email" class="text-sm font-medium">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error" placeholder="you@company.com"
+                  class="mt-2 block w-full rounded-lg border border-line bg-ground px-4 py-3 text-base text-ink outline-none transition placeholder:text-muted/70 focus:border-accent focus:ring-4 focus:ring-accent/20 aria-[invalid=true]:border-danger">
+                <p id="email-error" class="mt-1.5 text-sm text-danger" hidden></p>
+              </div>
+              <div class="sm:col-span-2">
+                <label for="message" class="text-sm font-medium">Message</label>
+                <textarea id="message" name="message" rows="6" required aria-describedby="message-error" placeholder="For example: we spend about a day a week moving webshop orders into e-conomic by hand."
+                  class="mt-2 block w-full resize-y rounded-lg border border-line bg-ground px-4 py-3 text-base text-ink outline-none transition placeholder:text-muted/70 focus:border-accent focus:ring-4 focus:ring-accent/20 aria-[invalid=true]:border-danger"></textarea>
+                <p id="message-error" class="mt-1.5 text-sm text-danger" hidden></p>
+              </div>
+            </div>
+            <!-- Spam trap: real visitors never see or fill this -->
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+
+            <div class="mt-7 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <p class="text-sm text-muted">We only use your details to reply to you.</p>
+              <button id="submit-button" type="submit" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-on-accent transition-colors hover:bg-accent-hi disabled:cursor-wait disabled:opacity-60">
+                <span id="submit-label">Send message</span>
+                <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <p id="form-error" class="mt-4 text-sm text-danger" role="alert" hidden></p>
+          </form>
+
+          <div id="form-success" class="py-8 text-center outline-none" role="status" tabindex="-1" hidden>
+            <span class="mx-auto flex size-14 items-center justify-center rounded-full bg-accent-soft text-accent-ink" aria-hidden="true">
+              <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.7L16.5 9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 id="success-title" class="mt-5 font-display text-2xl font-medium tracking-tight"></h3>
+            <p id="success-body" class="mx-auto mt-3 max-w-md leading-relaxed text-muted"></p>
+            <button id="form-reset" type="button" class="mt-7 cursor-pointer rounded-lg border border-line px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent hover:text-accent-ink">Write another message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-deep text-on-deep">
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-sm">
+        <a href="#home" class="inline-flex items-center gap-2.5 rounded-md" aria-label="Northbound Data, back to top">
+          <svg class="size-7 text-accent-hi" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 3L27 11V21C27 26 22 29 16 29C10 29 5 26 5 21V11L16 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M16 9L21 13V19L16 23L11 19V13L16 9Z" fill="currentColor"/>
+          </svg>
+          <span class="font-display text-xl font-semibold tracking-tight">Northbound Data</span>
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-on-deep-muted">Data setup, automation and ERP assistance for small and medium-sized businesses.</p>
+      </div>
+      <nav class="flex flex-wrap gap-x-8 gap-y-3 text-sm" aria-label="Footer">
+        <a href="#home" class="text-on-deep-muted transition-colors hover:text-on-deep">Home</a>
+        <a href="#services" class="text-on-deep-muted transition-colors hover:text-on-deep">Services</a>
+        <a href="#about" class="text-on-deep-muted transition-colors hover:text-on-deep">About</a>
+        <a href="#contact" class="text-on-deep-muted transition-colors hover:text-on-deep">Contact</a>
+        <a href="https://www.linkedin.com/company/northbound-data" target="_blank" rel="noopener noreferrer" class="text-on-deep-muted transition-colors hover:text-on-deep">LinkedIn</a>
+      </nav>
+    </div>
+    <div class="mt-10 flex flex-col gap-2 border-t border-on-deep/15 pt-6 text-xs text-on-deep-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>© <span id="year">2026</span> Northbound Data Ltd. All rights reserved.</p>
+      <p class="font-mono tracking-wide">55.68° N · 12.57° E — Copenhagen</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  // Paste a Formspree (or similar) endpoint here to deliver messages, e.g. "https://formspree.io/f/abcd1234".
+  // Left empty, the form validates and shows a preview confirmation without sending anything.
+  const FORM_ENDPOINT = "";
+  const CONTACT_EMAIL = "hello@northbounddata.com";
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = window.matchMedia("(pointer: fine)").matches;
+  const $ = (id) => document.getElementById(id);
+
+  // Footer year
+  $("year").textContent = new Date().getFullYear();
+
+  // ---------- Mobile menu ----------
+  const menuButton = $("menu-button");
+  const menu = $("mobile-menu");
+  function setMenu(open) {
+    menu.hidden = !open;
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+  menuButton.addEventListener("click", () => setMenu(menu.hidden));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !menu.hidden) { setMenu(false); menuButton.focus(); }
+  });
+  document.addEventListener("click", (e) => {
+    if (!menu.hidden && !menu.contains(e.target) && !menuButton.contains(e.target)) setMenu(false);
+  });
+  window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
+
+  // ---------- Header hairline on scroll ----------
+  const header = $("site-header");
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // ---------- In-page navigation ----------
+  const form = $("contact-form");
+  const fields = { name: $("name"), email: $("email"), message: $("message") };
+
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const id = link.getAttribute("href").slice(1);
+    const target = id && $(id);
+    if (!target) return;
+    e.preventDefault();
+    setMenu(false);
+
+    // Service links start the message for the visitor
+    const topic = link.dataset.topic;
+    if (topic && !fields.message.value.trim()) {
+      fields.message.value = `Hi, we'd like to talk about ${topic}. `;
+    }
+
+    target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    try { history.replaceState(null, "", "#" + id); } catch (_) { /* sandboxed frames may refuse */ }
+
+    if (link.hasAttribute("data-skip")) {
+      target.focus({ preventScroll: true });
+    } else if ((link.hasAttribute("data-cta") || topic) && finePointer && !form.hidden) {
+      setTimeout(() => fields.name.focus({ preventScroll: true }), reduceMotion ? 0 : 650);
+    }
+  });
+
+  // ---------- Active section in the nav ----------
+  const navLinks = [...document.querySelectorAll("[data-nav]")];
+  const setActive = (id) => navLinks.forEach((a) =>
+    a.setAttribute("aria-current", a.getAttribute("href") === "#" + id ? "true" : "false"));
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) setActive(entry.target.id); });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ["home", "services", "about", "contact"].forEach((id) => observer.observe($(id)));
+  }
+
+  // ---------- Copy buttons ----------
+  document.querySelectorAll("[data-copy]").forEach((button) => {
+    let timer;
+    const flash = (label) => {
+      button.textContent = label;
+      clearTimeout(timer);
+      timer = setTimeout(() => { button.textContent = "Copy"; }, 2000);
+    };
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.copy);
+        flash("Copied");
+      } catch (_) {
+        // Clipboard refused: select the text so the visitor can copy it themselves
+        const range = document.createRange();
+        range.selectNodeContents($(button.dataset.copyTarget));
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        flash("Selected");
+      }
+    });
+  });
+
+  // ---------- Contact form ----------
+  const rules = {
+    name: (v) => v.trim().length >= 2 || "Enter your name so we know who to reply to.",
+    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || "Enter a valid email address, like name@company.com.",
+    message: (v) => v.trim().length >= 10 || "Tell us a little more: a sentence or two is plenty.",
+  };
+  function validate(key) {
+    const result = rules[key](fields[key].value);
+    const ok = result === true;
+    const error = $(key + "-error");
+    fields[key].setAttribute("aria-invalid", ok ? "false" : "true");
+    error.textContent = ok ? "" : result;
+    error.hidden = ok;
+    return ok;
+  }
+  Object.keys(fields).forEach((key) => {
+    fields[key].addEventListener("blur", () => { if (fields[key].value) validate(key); });
+    fields[key].addEventListener("input", () => {
+      if (fields[key].getAttribute("aria-invalid") === "true") validate(key);
+    });
+  });
+
+  const submitButton = $("submit-button");
+  const submitLabel = $("submit-label");
+  const formError = $("form-error");
+  const success = $("form-success");
+
+  function showSuccess(data, sent) {
+    const firstName = data.name.split(/\s+/)[0];
+    $("success-title").textContent = sent ? `Thanks, ${firstName}. Message received.` : `Thanks, ${firstName}.`;
+    $("success-body").textContent = sent
+      ? `We'll reply to ${data.email} within one business day.`
+      : `This preview isn't connected to an inbox yet, so your message wasn't sent. Reach us directly at ${CONTACT_EMAIL}.`;
+    form.hidden = true;
+    success.hidden = false;
+    success.focus();
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    formError.hidden = true;
+    const keys = Object.keys(fields);
+    const results = keys.map(validate);
+    const firstInvalid = results.indexOf(false);
+    if (firstInvalid !== -1) { fields[keys[firstInvalid]].focus(); return; }
+    if (form.elements._gotcha.value) return;
+
+    const data = {
+      name: fields.name.value.trim(),
+      email: fields.email.value.trim(),
+      message: fields.message.value.trim(),
+    };
+    if (!FORM_ENDPOINT) { showSuccess(data, false); return; }
+
+    submitButton.disabled = true;
+    submitLabel.textContent = "Sending…";
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      showSuccess(data, true);
+    } catch (_) {
+      formError.textContent = `Your message wasn't sent. Check your connection and try again, or email us at ${CONTACT_EMAIL}.`;
+      formError.hidden = false;
+    } finally {
+      submitButton.disabled = false;
+      submitLabel.textContent = "Send message";
+    }
+  });
+
+  $("form-reset").addEventListener("click", () => {
+    form.reset();
+    Object.keys(fields).forEach((key) => {
+      fields[key].setAttribute("aria-invalid", "false");
+      $(key + "-error").hidden = true;
+    });
+    success.hidden = true;
+    form.hidden = false;
+    fields.name.focus();
+  });
+})();
+</script>
+</body>
+</html>

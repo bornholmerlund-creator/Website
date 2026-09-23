@@ -9,6 +9,16 @@ consultancy serving mid-sized businesses. Built with **Astro 5 + Tailwind CSS v4
 
 ---
 
+## Single-file version
+
+[`single-page/index.html`](single-page/index.html) is a standalone, one-page version of
+the site (Home, Services, About, Contact). It uses plain HTML5, Tailwind CSS v4 from a
+pinned CDN build and a little vanilla JavaScript. Open it in a browser and it works; no
+build step is needed. To deliver contact-form messages, set `FORM_ENDPOINT` near the
+bottom of the file to a Formspree (or similar) URL.
+
+---
+
 ## Quick start
 
 ```bash
