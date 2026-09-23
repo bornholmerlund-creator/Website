@@ -17,6 +17,12 @@ pinned CDN build and a little vanilla JavaScript. Open it in a browser and it wo
 build step is needed. To deliver contact-form messages, set `FORM_ENDPOINT` near the
 bottom of the file to a Formspree (or similar) URL.
 
+The page is bilingual (English/Danish) via the flag toggle in the header; the choice is
+remembered per browser. English copy is the element text and the Danish version sits
+next to it in a `data-da` attribute (`data-da-placeholder`, `data-da-aria-label` and
+`data-da-content` for attributes), so edit both languages in the same place. Messages
+written by the script (form errors, confirmations) live in `STRINGS` in the script.
+
 ---
 
 ## Quick start
