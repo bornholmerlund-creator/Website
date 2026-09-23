@@ -1,13 +1,4 @@
+# Static single-page site: index.html is served as-is from the repository root.
 [build]
-  command = "npm run build"
-  publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "22"
-
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap-index.xml"
-  status = 301
-
-# SPA-style 404 handling not needed (static MPA); Netlify serves 404.html automatically.
+  command = "echo 'No build step: static site'"
+  publish = "."

@@ -1,17 +1,5 @@
-# build output
-dist/
-.output/
-# dependencies
-node_modules/
-# astro
-.astro/
-# environment
-.env
-.env.production
-.env.local
-# logs & os
-*.log
-npm-debug.log*
+# os & editors
 .DS_Store
+# hosting
 .vercel
 .netlify
