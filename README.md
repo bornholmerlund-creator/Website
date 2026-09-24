@@ -28,8 +28,8 @@ Open `index.html` in a browser. That's it.
   Messages written by the script (form errors and confirmations) are in `STRINGS` near the
   bottom of the file.
 - **Colours:** theme tokens (`--c-*`) at the top of the file, with a light and a dark set.
-- **Contact details:** search for `hello@northbounddata.com` and `+44 20 4538 1190`. They
-  are placeholders.
+- **Contact details:** to change them, search for `frederikskovgaardlund@gmail.com` and
+  `+45 42928009`.
 
 ## Contact form
 
