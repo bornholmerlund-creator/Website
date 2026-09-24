@@ -6,12 +6,11 @@
 <title>Northbound Data</title>
 <meta name="description" content="Northbound Data helps small and medium-sized businesses structure their data, automate routine work and get more out of their ERP system." data-da-content="Northbound Data hjælper små og mellemstore virksomheder med at strukturere deres data, automatisere rutinearbejde og få mere ud af deres ERP-system.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1f33'/%3E%3Cpath d='M16 6L25 12V20C25 24 21 26 16 26C11 26 7 24 7 20V12L16 6Z' stroke='%230fb5a6' stroke-width='2' fill='none' stroke-linejoin='round'/%3E%3Cpath d='M16 11L20 14V18L16 21L12 18V14L16 11Z' fill='%230fb5a6'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..650;1,9..144,400..650&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400..700&display=swap">
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<!-- Tailwind CSS v4 (browser build, pinned) -->
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3/dist/index.global.js"></script>
+<!-- Tailwind CSS v4 browser build, served from this site (MIT licence: assets/vendor/LICENSE-tailwindcss.txt) -->
+<script src="assets/vendor/tailwindcss-browser-4.3.3.js"></script>
 <style type="text/tailwindcss">
   /* Map Tailwind colour utilities to the theme tokens below, so light and dark swap together. */
   @theme inline {
@@ -44,121 +43,7 @@
   }
 </style>
 
-<style>
-  /* ---------- Theme tokens (Northbound Data brand) ---------- */
-  :root {
-    --c-ground: #ffffff;
-    --c-frost: #f2f5f8;
-    --c-surface: #ffffff;
-    --c-line: #dce5ee;
-    --c-ink: #0b1f33;
-    --c-muted: #48627f;
-    --c-deep: #0b1f33;
-    --c-deep-2: #122b47;
-    --c-on-deep: #ffffff;
-    --c-on-deep-muted: #b6c7d9;
-    --c-accent: #0fb5a6;
-    --c-accent-hi: #2fcbbd;
-    --c-accent-ink: #0b7169;
-    --c-accent-soft: #e3f6f3;
-    --c-on-accent: #04121d;
-    --c-danger: #b42318;
-    --c-shadow: 0 1px 2px rgb(11 31 51 / 0.05), 0 12px 32px -16px rgb(11 31 51 / 0.22);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-      --c-ground: #071320;
-      --c-frost: #0a1a2b;
-      --c-surface: #0e2135;
-      --c-line: #1e3650;
-      --c-ink: #e7eef5;
-      --c-muted: #9db3c9;
-      --c-deep: #0c2238;
-      --c-deep-2: #133152;
-      --c-on-deep: #ffffff;
-      --c-on-deep-muted: #b6c7d9;
-      --c-accent: #2cc1b4;
-      --c-accent-hi: #5cd9cb;
-      --c-accent-ink: #5fd6c9;
-      --c-accent-soft: #0f3437;
-      --c-on-accent: #04121d;
-      --c-danger: #ff9b8f;
-      --c-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 36px -18px rgb(0 0 0 / 0.6);
-    }
-  }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --c-ground: #071320;
-    --c-frost: #0a1a2b;
-    --c-surface: #0e2135;
-    --c-line: #1e3650;
-    --c-ink: #e7eef5;
-    --c-muted: #9db3c9;
-    --c-deep: #0c2238;
-    --c-deep-2: #133152;
-    --c-on-deep: #ffffff;
-    --c-on-deep-muted: #b6c7d9;
-    --c-accent: #2cc1b4;
-    --c-accent-hi: #5cd9cb;
-    --c-accent-ink: #5fd6c9;
-    --c-accent-soft: #0f3437;
-    --c-on-accent: #04121d;
-    --c-danger: #ff9b8f;
-    --c-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 36px -18px rgb(0 0 0 / 0.6);
-  }
-
-  /* ---------- Base ---------- */
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--c-ground);
-    color: var(--c-ink);
-    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-  ::selection { background: color-mix(in srgb, var(--c-accent) 35%, transparent); }
-  :where(a, button):focus-visible { outline: 2px solid var(--c-accent); outline-offset: 3px; }
-
-  /* Header gains a hairline once the page scrolls */
-  #site-header.is-scrolled { border-bottom-color: var(--c-line); }
-
-  /* Topographic contour lines — a quiet Nordic map texture on deep sections */
-  .nb-contours {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background-image:
-      repeating-radial-gradient(ellipse 130% 95% at 95% -5%, transparent 0 30px, rgb(255 255 255 / 0.05) 30px 31.5px),
-      repeating-radial-gradient(ellipse 90% 70% at 75% 115%, transparent 0 42px, rgb(255 255 255 / 0.035) 42px 43.5px);
-    -webkit-mask-image: linear-gradient(to left, #000 25%, transparent 85%);
-    mask-image: linear-gradient(to left, #000 25%, transparent 85%);
-  }
-
-  .nb-card { box-shadow: var(--c-shadow); }
-
-  /* Hamburger icon that turns into a close icon */
-  .burger { position: relative; display: block; width: 18px; height: 12px; }
-  .burger span {
-    position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
-    background: currentColor; transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
-  }
-  .burger span:nth-child(1) { top: 0; }
-  .burger span:nth-child(2) { top: 5px; }
-  .burger span:nth-child(3) { top: 10px; }
-  [aria-expanded="true"] .burger span:nth-child(1) { top: 5px; transform: rotate(45deg); }
-  [aria-expanded="true"] .burger span:nth-child(2) { opacity: 0; }
-  [aria-expanded="true"] .burger span:nth-child(3) { top: 5px; transform: rotate(-45deg); }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
-  }
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
@@ -638,7 +523,7 @@
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
 
             <div class="mt-7 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <p class="text-sm text-muted" data-da="Vi bruger kun dine oplysninger til at svare dig.">We only use your details to reply to you.</p>
+              <p class="text-sm text-muted"><span data-da="Vi bruger kun dine oplysninger til at svare dig.">We only use your details to reply to you.</span> <a href="privacy.html" class="font-medium text-accent-ink underline underline-offset-4 hover:no-underline" data-da="Læs privatlivspolitikken">Read the privacy policy</a></p>
               <button id="submit-button" type="submit" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-on-accent transition-colors hover:bg-accent-hi disabled:cursor-wait disabled:opacity-60">
                 <span id="submit-label" data-da="Send besked">Send message</span>
                 <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -689,11 +574,25 @@
       </nav>
     </div>
     <div class="mt-10 flex flex-col gap-2 border-t border-on-deep/15 pt-6 text-xs text-on-deep-muted sm:flex-row sm:items-center sm:justify-between">
-      <p>© <span id="year">2026</span> Northbound Data. <span data-da="Alle rettigheder forbeholdes.">All rights reserved.</span></p>
+      <p>© <span id="year">2026</span> Northbound Data. <span data-da="Alle rettigheder forbeholdes.">All rights reserved.</span> · <a href="privacy.html" class="underline underline-offset-4 hover:text-on-deep" data-da="Privatlivspolitik">Privacy policy</a></p>
       <p class="font-mono tracking-wide" data-da="55,68° N · 12,57° Ø — København">55.68° N · 12.57° E — Copenhagen</p>
     </div>
   </div>
 </footer>
+
+<!-- ============ COOKIE NOTICE ============ -->
+<!-- The site sets no cookies and loads nothing from third parties. The notice says what is kept in
+     the browser (language choice, and that this notice was closed) and stays away once closed. -->
+<div id="cookie-notice" class="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex px-4 pt-4 sm:px-6" style="padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));" role="region" aria-labelledby="cookie-title" hidden>
+  <div class="nb-card pointer-events-auto w-full rounded-2xl border border-line bg-surface p-5 sm:max-w-sm">
+    <p id="cookie-title" class="font-display text-lg font-medium tracking-tight" data-da="Cookies og privatliv">Cookies &amp; privacy</p>
+    <p class="mt-2 text-sm leading-relaxed text-muted" data-da="Vi bruger ingen cookies til sporing eller statistik. Det eneste, siden gemmer i din browser, er dit sprogvalg, og at du har lukket denne besked.">We don’t use cookies for tracking or statistics. The only things this site saves in your browser are your language choice and that you’ve closed this message.</p>
+    <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+      <button id="cookie-ok" type="button" class="cursor-pointer rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hi" data-da="OK, forstået">OK, got it</button>
+      <a href="privacy.html#cookies" class="text-sm font-semibold text-accent-ink underline-offset-4 hover:underline" data-da="Læs mere">Read more</a>
+    </div>
+  </div>
+</div>
 
 <script>
 (() => {
@@ -975,6 +874,16 @@
   let savedLang = null;
   try { savedLang = localStorage.getItem("nb-lang"); } catch (_) { /* storage unavailable */ }
   if (savedLang === "da") setLanguage("da");
+
+  // ---------- Cookie notice ----------
+  const cookieNotice = $("cookie-notice");
+  let noticeClosed = false;
+  try { noticeClosed = localStorage.getItem("nb-cookie-notice") === "closed"; } catch (_) { /* storage unavailable */ }
+  cookieNotice.hidden = noticeClosed;
+  $("cookie-ok").addEventListener("click", () => {
+    cookieNotice.hidden = true;
+    try { localStorage.setItem("nb-cookie-notice", "closed"); } catch (_) { /* storage unavailable */ }
+  });
 })();
 </script>
 </body>
