@@ -62,10 +62,18 @@ LinkedIn keeps its old copy for a while: paste the URL into LinkedIn's
 
 ## Contact form
 
-Until it is connected, the form validates input and tells the visitor that nothing was sent.
-To receive messages, create a form at [Formspree](https://formspree.io) (or a similar
-service) and paste its URL into `FORM_ENDPOINT` near the bottom of `index.html`. The privacy
-policy already mentions "the service that delivers messages from the contact form".
+Messages are delivered by [Formspree](https://formspree.io) to the email address on the
+Formspree account. The form's address is the `action` attribute on
+`<form id="contact-form" …>` in `index.html`; change it there if you ever switch form.
+
+- The page's own script sends the message in the background and shows the confirmation in
+  the visitor's language. Each email gets the subject "Ny besked fra [navn] via
+  northbound-data.dk" and a `language` line showing whether the visitor wrote in Danish or
+  English. Replying to the email answers the visitor directly.
+- Without JavaScript the form still works: it posts straight to Formspree, which shows its
+  own thank-you page.
+- The privacy policy names Formspree. Delete old submissions in the Formspree dashboard in
+  line with the policy (enquiries are deleted within 12 months).
 
 ## Deploying
 
