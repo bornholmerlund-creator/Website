@@ -13,6 +13,9 @@ build step and nothing to install.
 | `assets/site.css` | Shared styles: fonts, colour tokens and the policy text styles |
 | `assets/fonts/` | Self-hosted fonts (Fraunces, Inter, IBM Plex Mono) with their licences |
 | `assets/vendor/` | Tailwind CSS browser build with its licence |
+| `assets/og-image.png` | The 1200 × 630 image shown when the site is shared (LinkedIn, Facebook, Slack, messaging apps) |
+| `favicon.svg`, `favicon-48.png`, `apple-touch-icon.png` | Browser tab, search result and iPhone home-screen icons |
+| `brand/` | Logo files for LinkedIn and other profiles (square and horizontal, PNG and SVG) |
 
 Everything is served from the site itself: no fonts, scripts or other content are loaded from
 other companies, so visitor data isn't shared with anyone when the page loads.
@@ -26,8 +29,8 @@ the folder over HTTP instead, e.g. `python3 -m http.server` and open http://loca
 
 - Fully responsive, with a hamburger menu on phones
 - Light and dark mode, following the visitor's system setting
-- English and Danish, switched with the flag toggle in the header; the choice is remembered
-  per browser and carries over to the privacy policy
+- Danish by default, with English one click away on the flag toggle in the header; the choice
+  is remembered per browser and carries over to the privacy policy
 - Contact form with inline validation
 - Cookie notice: the site sets no cookies and does no tracking. The notice tells visitors what
   is saved in their browser (their language choice, and that they closed the notice) and links
@@ -36,9 +39,10 @@ the folder over HTTP instead, e.g. `python3 -m http.server` and open http://loca
 
 ## Editing
 
-- **Text:** the English copy is the text inside each element. The Danish version sits next
-  to it in a `data-da` attribute (`data-da-placeholder`, `data-da-aria-label` and
-  `data-da-content` for attributes), so both languages are edited in the same place.
+- **Text:** the Danish copy (the default) is the text inside each element. The English
+  version sits next to it in a `data-en` attribute (`data-en-placeholder`,
+  `data-en-aria-label` and `data-en-content` for attributes), so both languages are edited
+  in the same place.
   Messages written by the script (form errors and confirmations) are in `STRINGS` near the
   bottom of `index.html`.
 - **Privacy policy:** `privacy.html` has one `<article>` per language. Update both, and the
@@ -47,6 +51,14 @@ the folder over HTTP instead, e.g. `python3 -m http.server` and open http://loca
 - **Colours:** theme tokens (`--c-*`) in `assets/site.css`, with a light and a dark set.
 - **Contact and company details:** search for `frederikskovgaardlund@gmail.com`,
   `+45 42928009` and `46630726` in both HTML files.
+
+## Link previews and search
+
+Each page has Open Graph tags (title, description, `assets/og-image.png`), a canonical URL on
+`https://northbound-data.dk/`, and the front page has structured business data (name, address,
+CVR, phone, email, LinkedIn) for search engines. If you change the preview text or image,
+LinkedIn keeps its old copy for a while: paste the URL into LinkedIn's
+[Post Inspector](https://www.linkedin.com/post-inspector/) to refresh it.
 
 ## Contact form
 
