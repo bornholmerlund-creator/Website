@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Northbound Data – Dataopsætning, automatisering og ERP til SMV’er</title>
+<meta name="description" content="Northbound Data hjælper små og mellemstore virksomheder med at strukturere deres data, automatisere rutinearbejde og få mere ud af deres ERP-system." data-en-content="Northbound Data helps small and medium-sized businesses structure their data, automate routine work and get more out of their ERP system.">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!-- Link previews (LinkedIn, Facebook, Slack, messaging apps) and search -->
+<link rel="canonical" href="https://northbound-data.dk/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Northbound Data">
+<meta property="og:url" content="https://northbound-data.dk/">
+<meta property="og:title" content="Northbound Data – Få styr på jeres data og timerne tilbage">
+<meta property="og:description" content="Dataopsætning, automatisering og ERP-assistance til små og mellemstore virksomheder. Praktisk og leverandøruafhængigt, med base i København.">
+<meta property="og:image" content="https://northbound-data.dk/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Northbound Data – Få styr på jeres data – og timerne tilbage.">
+<meta property="og:locale" content="da_DK">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Northbound Data",
+  "url": "https://northbound-data.dk/",
+  "logo": "https://northbound-data.dk/brand/northbound-data-logo-square-1200.png",
+  "image": "https://northbound-data.dk/assets/og-image.png",
+  "description": "Dataopsætning, automatisering og ERP-assistance til små og mellemstore virksomheder.",
+  "email": "frlu@northbound-data.dk",
+  "telephone": "+4542928009",
+  "foundingDate": "2026",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Grundtvigs Sidevej 5, 2. mf",
+    "postalCode": "1865",
+    "addressLocality": "Frederiksberg",
+    "addressCountry": "DK"
+  },
+  "identifier": { "@type": "PropertyValue", "propertyID": "CVR", "value": "46630726" },
+  "founder": {
+    "@type": "Person",
+    "name": "Frederik Skovgaard Lund",
+    "image": "https://northbound-data.dk/assets/portrait.jpg",
+    "jobTitle": "Grundlægger og datakonsulent"
+  },
+  "sameAs": ["https://www.linkedin.com/company/northbound-data"]
+}
+</script>
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Tailwind CSS v4 browser build, served from this site (MIT licence: assets/vendor/LICENSE-tailwindcss.txt) -->
+<script src="assets/vendor/tailwindcss-browser-4.3.3.js"></script>
+<style type="text/tailwindcss">
+  /* Map Tailwind colour utilities to the theme tokens below, so light and dark swap together. */
+  @theme inline {
+    --color-ground: var(--c-ground);
+    --color-frost: var(--c-frost);
+    --color-surface: var(--c-surface);
+    --color-line: var(--c-line);
+    --color-ink: var(--c-ink);
+    --color-muted: var(--c-muted);
+    --color-deep: var(--c-deep);
+    --color-deep-2: var(--c-deep-2);
+    --color-on-deep: var(--c-on-deep);
+    --color-on-deep-muted: var(--c-on-deep-muted);
+    --color-accent: var(--c-accent);
+    --color-accent-hi: var(--c-accent-hi);
+    --color-accent-ink: var(--c-accent-ink);
+    --color-accent-soft: var(--c-accent-soft);
+    --color-on-accent: var(--c-on-accent);
+    --color-danger: var(--c-danger);
+    --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+    --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @utility eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+</style>
+
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<a href="#main" data-skip class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-on-accent" data-en="Skip to content">Spring til indhold</a>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="sticky z-40 border-b border-transparent bg-ground/90 backdrop-blur-md transition-colors" style="top: env(safe-area-inset-top, 0px);">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-4 min-[360px]:gap-3 sm:gap-6 sm:px-6 lg:px-8">
+    <a href="#home" class="flex min-w-0 items-center gap-2 rounded-md min-[360px]:gap-2.5" aria-label="Northbound Data, til toppen" data-en-aria-label="Northbound Data, back to top">
+      <svg class="size-7 shrink-0 text-accent-ink" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 3L27 11V21C27 26 22 29 16 29C10 29 5 26 5 21V11L16 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M16 9L21 13V19L16 23L11 19V13L16 9Z" fill="currentColor"/>
+      </svg>
+      <span class="truncate font-display text-base font-semibold tracking-tight text-ink min-[360px]:text-lg sm:text-xl">Northbound Data</span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Hovedmenu" data-en-aria-label="Primary">
+      <a href="#home" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink" data-en="Home">Forside</a>
+      <a href="#services" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink" data-en="Services">Ydelser</a>
+      <a href="#about" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink" data-en="About">Om mig</a>
+      <a href="#contact" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink" data-en="Contact">Kontakt</a>
+    </nav>
+
+    <div class="flex items-center gap-1.5 min-[360px]:gap-2">
+      <a href="#contact" data-cta class="hidden items-center rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hi sm:inline-flex" data-en="Book a meeting">Book et møde</a>
+      <button id="lang-toggle" type="button" data-lang="da" class="group inline-flex h-10 shrink-0 cursor-pointer items-center gap-0.5 rounded-full border border-line bg-ground p-1 transition-colors hover:border-accent/60" aria-label="Sprog: dansk. Skift til engelsk" title="Sprog: dansk. Skift til engelsk">
+        <span class="inline-flex h-full items-center gap-1.5 rounded-full px-1 text-xs font-semibold tracking-wide text-muted transition min-[360px]:px-1.5 sm:px-2 group-data-[lang=da]:bg-frost group-data-[lang=da]:text-ink group-data-[lang=da]:ring-1 group-data-[lang=da]:ring-line group-data-[lang=en]:opacity-50" aria-hidden="true">
+          <span class="block h-3.5 w-5 overflow-hidden rounded-[3px] ring-1 ring-ink/15">
+            <svg class="block h-full w-full" viewBox="0 0 37 28" preserveAspectRatio="xMidYMid slice">
+              <rect width="37" height="28" fill="#C8102E"/>
+              <path d="M12 0h4v28h-4zM0 12h37v4H0z" fill="#fff"/>
+            </svg>
+          </span>
+          <span class="hidden sm:inline">DA</span>
+        </span>
+              <span class="inline-flex h-full items-center gap-1.5 rounded-full px-1 text-xs font-semibold tracking-wide text-muted transition min-[360px]:px-1.5 sm:px-2 group-data-[lang=en]:bg-frost group-data-[lang=en]:text-ink group-data-[lang=en]:ring-1 group-data-[lang=en]:ring-line group-data-[lang=da]:opacity-50" aria-hidden="true">
+          <span class="block h-3.5 w-5 overflow-hidden rounded-[3px] ring-1 ring-ink/15">
+            <svg class="block h-full w-full" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice">
+              <clipPath id="nb-uk-a"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+              <clipPath id="nb-uk-b"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+              <g clip-path="url(#nb-uk-a)">
+                <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#nb-uk-b)" stroke="#C8102E" stroke-width="4"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+              </g>
+            </svg>
+          </span>
+          <span class="hidden sm:inline">EN</span>
+        </span>
+</button>
+      <button id="menu-button" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg border border-line text-ink md:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Åbn menu">
+        <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="absolute inset-x-0 top-full border-y border-line bg-ground shadow-xl md:hidden" hidden>
+    <nav class="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6" aria-label="Mobilmenu" data-en-aria-label="Mobile">
+      <a href="#home" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost" data-en="Home">Forside</a>
+      <a href="#services" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost" data-en="Services">Ydelser</a>
+      <a href="#about" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost" data-en="About">Om mig</a>
+      <a href="#contact" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost" data-en="Contact">Kontakt</a>
+      <a href="#contact" data-cta class="mt-2 mb-1 flex justify-center rounded-lg bg-accent px-4 py-3 text-base font-semibold text-on-accent" data-en="Book a no-obligation meeting">Book et uforpligtende møde</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" class="outline-none">
+
+  <!-- ============ HOME / HERO ============ -->
+  <section id="home" class="relative isolate scroll-mt-16 overflow-hidden bg-deep text-on-deep">
+    <div class="nb-contours" aria-hidden="true"></div>
+    <div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:px-8 lg:py-24">
+      <div class="min-w-0">
+        <p class="eyebrow text-accent-hi" data-en="Data setup · Automation · ERP">Dataopsætning · Automatisering · ERP</p>
+        <h1 class="mt-5 font-display text-[2.5rem] leading-[1.05] font-medium tracking-tight text-balance sm:text-5xl lg:text-[3.6rem]">
+          <span data-en="Get your data in order — and your">Få styr på jeres data — og</span> <em class="text-accent-hi" data-en="hours back">timerne tilbage</em>.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-on-deep-muted" data-en="Northbound Data helps small and medium-sized businesses build a clean data foundation, automate repetitive work and get more out of their ERP system. Practical, vendor-neutral and sized for teams of 5 to 250.">Northbound Data hjælper små og mellemstore virksomheder med at bygge et solidt datafundament, automatisere gentagne opgaver og få mere ud af deres ERP-system. Praktisk, leverandøruafhængigt og tilpasset teams på 5 til 250 medarbejdere.</p>
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a href="#contact" data-cta class="group inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-on-accent shadow-lg shadow-black/20 transition-colors hover:bg-accent-hi">
+            <span data-en="Book a no-obligation meeting">Book et uforpligtende møde</span>
+            <svg class="size-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#services" class="inline-flex items-center rounded-lg border border-on-deep/25 px-6 py-3.5 text-base font-semibold text-on-deep transition-colors hover:bg-on-deep/10" data-en="See my services">Se mine ydelser</a>
+        </div>
+        <p class="mt-6 text-sm text-on-deep-muted" data-en="30 minutes · Online or in person · No sales pitch">30 minutter · Online eller hos jer · Ingen salgstale</p>
+      </div>
+
+      <!-- Illustrative before/after panel -->
+      <figure class="min-w-0 rounded-2xl border border-on-deep/15 bg-deep-2/80 p-5 shadow-2xl shadow-black/25 backdrop-blur sm:p-7" aria-labelledby="panel-title">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p id="panel-title" class="eyebrow text-on-deep-muted" data-en="Manual hours per week">Manuelle timer pr. uge</p>
+            <p class="mt-2 font-display text-xl leading-snug text-on-deep" data-en="A 25-person wholesaler, before and after">En grossist med 25 ansatte, før og efter</p>
+          </div>
+          <span class="shrink-0 rounded-full border border-on-deep/20 px-2.5 py-1 font-mono text-[0.72rem] uppercase tracking-wider text-on-deep-muted" data-en="Example">Eksempel</span>
+        </div>
+
+        <ul class="mt-7 flex flex-col gap-5">
+          <li>
+            <div class="flex items-baseline justify-between gap-4 text-sm">
+              <span class="text-on-deep" data-en="Matching supplier invoices">Afstemning af leverandørfakturaer</span>
+              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true"><span data-en="6.5 h →">6,5 t →</span> <span class="text-accent-hi" data-en="0.5 h">0,5 t</span></span>
+              <span class="sr-only" data-en="6.5 hours before, 0.5 hours after">6,5 timer før, 0,5 timer efter</span>
+            </div>
+            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
+              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:100%"></span>
+              <span class="absolute inset-y-0 left-0 min-w-1.5 rounded-full bg-accent-hi" style="width:7.7%"></span>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-baseline justify-between gap-4 text-sm">
+              <span class="text-on-deep" data-en="Re-keying webshop orders">Indtastning af webshopordrer</span>
+              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true"><span data-en="4 h →">4 t →</span> <span class="text-accent-hi" data-en="automated">automatiseret</span></span>
+              <span class="sr-only" data-en="4 hours before, fully automated after">4 timer før, fuldt automatiseret efter</span>
+            </div>
+            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
+              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:61.5%"></span>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-baseline justify-between gap-4 text-sm">
+              <span class="text-on-deep" data-en="Month-end stock report">Månedlig lagerrapport</span>
+              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true"><span data-en="3 h →">3 t →</span> <span class="text-accent-hi" data-en="0.25 h">0,25 t</span></span>
+              <span class="sr-only" data-en="3 hours before, 15 minutes after">3 timer før, 15 minutter efter</span>
+            </div>
+            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
+              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:46.2%"></span>
+              <span class="absolute inset-y-0 left-0 min-w-1.5 rounded-full bg-accent-hi" style="width:3.8%"></span>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-baseline justify-between gap-4 text-sm">
+              <span class="text-on-deep" data-en="Fixing duplicate customers">Oprydning i kundedubletter</span>
+              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true"><span data-en="2 h →">2 t →</span> <span class="text-accent-hi" data-en="0.25 h">0,25 t</span></span>
+              <span class="sr-only" data-en="2 hours before, 15 minutes after">2 timer før, 15 minutter efter</span>
+            </div>
+            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
+              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:30.8%"></span>
+              <span class="absolute inset-y-0 left-0 min-w-1.5 rounded-full bg-accent-hi" style="width:3.8%"></span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-7 flex flex-wrap items-end justify-between gap-4 border-t border-on-deep/15 pt-5">
+          <div>
+            <p class="eyebrow text-on-deep-muted" data-en="Total per week">I alt pr. uge</p>
+            <p class="mt-1 font-display text-3xl tabular-nums">
+              <span class="text-on-deep-muted line-through decoration-1" data-en="15.5 h">15,5 t</span>
+              <span class="text-on-deep-muted" aria-hidden="true">→</span>
+              <span class="sr-only" data-en="down to">ned til</span>
+              <span class="text-accent-hi" data-en="1 h">1 t</span>
+            </p>
+          </div>
+          <p class="max-w-[15rem] text-sm leading-snug text-on-deep-muted" data-en="Roughly 750 hours a year back for work that needs a person.">Cirka 750 timer om året frigjort til arbejde, der kræver et menneske.</p>
+        </div>
+
+        <figcaption class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-deep-muted">
+          <span class="inline-flex items-center gap-2"><span class="h-2 w-4 rounded-full bg-on-deep/30" aria-hidden="true"></span><span data-en="Before">Før</span></span>
+          <span class="inline-flex items-center gap-2"><span class="h-2 w-4 rounded-full bg-accent-hi" aria-hidden="true"></span><span data-en="After">Efter</span></span>
+          <span data-en="Illustrative figures for a typical project scope.">Illustrative tal for et typisk projektomfang.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="scroll-mt-16 bg-ground py-20 sm:py-24" aria-labelledby="services-title">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
+        <div>
+          <p class="eyebrow text-accent-ink" data-en="What I do">Det gør jeg</p>
+          <h2 id="services-title" class="mt-4 font-display text-3xl leading-[1.1] font-medium tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]" data-en="Three ways I give your team time back">Tre måder, jeg giver jeres team tid tilbage på</h2>
+        </div>
+        <p class="max-w-xl text-lg leading-relaxed text-muted" data-en="Start with one, or combine them. Every project begins with a short review of how your data and routines work today, so I fix what actually slows you down.">Start med én, eller kombinér dem. Alle projekter begynder med en kort gennemgang af, hvordan jeres data og rutiner fungerer i dag, så jeg løser det, der faktisk bremser jer.</p>
+      </div>
+
+      <div class="mt-14 grid gap-6 lg:grid-cols-3">
+        <!-- Data Setup -->
+        <article class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-7 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <div class="flex size-12 items-center justify-center rounded-xl bg-accent-soft text-accent-ink">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/>
+              <path d="M4.5 5.5v6c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-6"/>
+              <path d="M4.5 11.5v6c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-6"/>
+            </svg>
+          </div>
+          <h3 class="mt-6 font-display text-2xl font-medium tracking-tight" data-en="Data Setup">Dataopsætning</h3>
+          <p class="mt-3 leading-relaxed text-muted" data-en="A clean, well-structured foundation that every report, system and decision can rely on.">Et rent og velstruktureret fundament, som alle rapporter, systemer og beslutninger kan stole på.</p>
+          <ul class="mt-6 flex flex-col gap-3 text-[0.95rem]">
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Clean-up of customers, items, suppliers and prices">Oprydning i kunder, varer, leverandører og priser</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="One shared structure across ERP, CRM and spreadsheets">Én fælles struktur på tværs af ERP, CRM og regneark</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Clear ownership and rules that keep data clean">Klart ejerskab og regler, der holder data rene</span></li>
+          </ul>
+          <div class="mt-auto pt-7">
+            <div class="border-t border-line pt-5">
+              <p class="eyebrow text-muted" data-en="Typical result">Typisk resultat</p>
+              <p class="mt-1.5 font-medium" data-en="One trusted number, wherever you look.">Ét tal, I kan stole på, uanset hvor I kigger.</p>
+            </div>
+            <a href="#contact" data-topic="data" class="mt-3 -mb-2 inline-flex items-center gap-1.5 py-2 text-sm font-semibold text-accent-ink underline-offset-4 hover:underline"><span data-en="Discuss data setup">Tal med mig om dataopsætning</span>
+              <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Automation -->
+        <article class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-7 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <div class="flex size-12 items-center justify-center rounded-xl bg-accent-soft text-accent-ink">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+              <path d="M6.5 10v3.5a2 2 0 0 0 2 2H13"/>
+              <path d="m10.5 13 2.5 2.5-2.5 2.5"/>
+              <path d="M14 6.5h3.5a2 2 0 0 1 2 2V11"/>
+            </svg>
+          </div>
+          <h3 class="mt-6 font-display text-2xl font-medium tracking-tight" data-en="Automation">Automatisering</h3>
+          <p class="mt-3 leading-relaxed text-muted" data-en="I take the repetitive, error-prone work out of your week without adding complexity.">Jeg fjerner det gentagne og fejlbehæftede arbejde fra jeres uge uden at gøre tingene mere komplicerede.</p>
+          <ul class="mt-6 flex flex-col gap-3 text-[0.95rem]">
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Invoice, order and payment flows between systems">Faktura-, ordre- og betalingsflows mellem systemer</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Reports that build and send themselves on schedule">Rapporter, der bygger og sender sig selv til tiden</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Alerts when something needs a human decision">Advarsler, når noget kræver en menneskelig beslutning</span></li>
+          </ul>
+          <div class="mt-auto pt-7">
+            <div class="border-t border-line pt-5">
+              <p class="eyebrow text-muted" data-en="Typical result">Typisk resultat</p>
+              <p class="mt-1.5 font-medium" data-en="Hours back every week, and fewer typing errors.">Timer sparet hver uge og færre tastefejl.</p>
+            </div>
+            <a href="#contact" data-topic="automation" class="mt-3 -mb-2 inline-flex items-center gap-1.5 py-2 text-sm font-semibold text-accent-ink underline-offset-4 hover:underline"><span data-en="Discuss automation">Tal med mig om automatisering</span>
+              <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- ERP Assistance -->
+        <article class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-7 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <div class="flex size-12 items-center justify-center rounded-xl bg-accent-soft text-accent-ink">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/>
+              <circle cx="15" cy="6" r="2"/>
+              <circle cx="9" cy="12" r="2"/>
+              <circle cx="17" cy="18" r="2"/>
+            </svg>
+          </div>
+          <h3 class="mt-6 font-display text-2xl font-medium tracking-tight" data-en="ERP Assistance">ERP-assistance</h3>
+          <p class="mt-3 leading-relaxed text-muted" data-en="Get more out of the ERP you already pay for, or choose the right one for your next stage.">Få mere ud af det ERP-system, I allerede betaler for, eller vælg det rigtige til jeres næste skridt.</p>
+          <ul class="mt-6 flex flex-col gap-3 text-[0.95rem]">
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Health check of setup, processes and daily use">Sundhedstjek af opsætning, processer og daglig brug</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Configuration fixes, integrations and user training">Rettelser i konfigurationen, integrationer og brugertræning</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Vendor-neutral help choosing or upgrading a system">Leverandøruafhængig hjælp til valg eller opgradering af system</span></li>
+          </ul>
+          <div class="mt-auto pt-7">
+            <div class="border-t border-line pt-5">
+              <p class="eyebrow text-muted" data-en="Typical result">Typisk resultat</p>
+              <p class="mt-1.5 font-medium" data-en="An ERP your team actually likes to use.">Et ERP-system, som jeres team faktisk kan lide at bruge.</p>
+            </div>
+            <a href="#contact" data-topic="erp" class="mt-3 -mb-2 inline-flex items-center gap-1.5 py-2 text-sm font-semibold text-accent-ink underline-offset-4 hover:underline"><span data-en="Discuss your ERP">Tal med mig om jeres ERP</span>
+              <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- How a project runs -->
+      <div class="mt-20">
+        <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+          <h3 class="font-display text-2xl font-medium tracking-tight sm:text-3xl" data-en="How a project runs">Sådan forløber et projekt</h3>
+          <p class="text-sm text-muted" data-en="Most projects take 4–10 weeks from first meeting to hand-over.">De fleste projekter tager 4–10 uger fra første møde til overlevering.</p>
+        </div>
+        <ol class="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
+          <li class="relative border-t border-line pt-7">
+            <span class="absolute -top-[5px] left-0 size-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="eyebrow text-accent-ink" data-en="Step 1">Trin 1</span>
+              <span class="font-mono text-xs text-muted" data-en="1–2 weeks">1–2 uger</span>
+            </div>
+            <h4 class="mt-3 font-display text-2xl font-medium tracking-tight" data-en="Map">Kortlæg</h4>
+            <p class="mt-2 leading-relaxed text-muted" data-en="I review your systems, data and manual routines, and hand you a prioritised list of where time is lost.">Jeg gennemgår jeres systemer, data og manuelle rutiner og giver jer en prioriteret liste over, hvor tiden går tabt.</p>
+          </li>
+          <li class="relative border-t border-line pt-7">
+            <span class="absolute -top-[5px] left-0 size-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="eyebrow text-accent-ink" data-en="Step 2">Trin 2</span>
+              <span class="font-mono text-xs text-muted" data-en="2–8 weeks">2–8 uger</span>
+            </div>
+            <h4 class="mt-3 font-display text-2xl font-medium tracking-tight" data-en="Build">Byg</h4>
+            <p class="mt-2 leading-relaxed text-muted" data-en="I fix the structure and set up automations in small steps, testing each one with the people who use it.">Jeg retter strukturen og sætter automatiseringer op i små skridt og tester hver enkelt med de medarbejdere, der bruger dem.</p>
+          </li>
+          <li class="relative border-t border-line pt-7">
+            <span class="absolute -top-[5px] left-0 size-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="eyebrow text-accent-ink" data-en="Step 3">Trin 3</span>
+              <span class="font-mono text-xs text-muted" data-en="+ 30-day check-in">+ opfølgning efter 30 dage</span>
+            </div>
+            <h4 class="mt-3 font-display text-2xl font-medium tracking-tight" data-en="Hand over">Overlevér</h4>
+            <p class="mt-2 leading-relaxed text-muted" data-en="Documentation and training for your team, plus a check-in after 30 days to make sure everything holds.">Dokumentation og træning til jeres team samt en opfølgning efter 30 dage for at sikre, at alt holder.</p>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Systems -->
+      <div class="mt-16 flex flex-col gap-4 border-t border-line pt-8 md:flex-row md:items-center md:gap-8">
+        <p class="eyebrow shrink-0 text-muted" data-en="Systems I often work with">Systemer, jeg ofte arbejder med</p>
+        <ul class="flex flex-wrap gap-2" aria-label="Systemer, jeg ofte arbejder med" data-en-aria-label="Systems I often work with">
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Business Central</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">e-conomic</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Visma</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Uniconta</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Tripletex</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">NetSuite</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Power BI</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Power Automate</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Make</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CALL TO ACTION ============ -->
+  <section class="bg-ground pb-20 sm:pb-24" aria-labelledby="cta-title">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="relative isolate overflow-hidden rounded-3xl bg-deep px-6 py-12 text-on-deep sm:px-12 sm:py-14 lg:flex lg:items-center lg:justify-between lg:gap-12">
+        <div class="nb-contours" aria-hidden="true"></div>
+        <div class="max-w-2xl">
+          <p class="eyebrow text-accent-hi" data-en="Not sure where to start?">Usikker på, hvor I skal starte?</p>
+          <h2 id="cta-title" class="mt-3 font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl" data-en="Let’s find your three biggest time-savers.">Lad os finde jeres tre største tidsbesparelser.</h2>
+          <p class="mt-4 text-lg leading-relaxed text-on-deep-muted" data-en="In 30 minutes I look at how your data and routines work today and point out the changes that would save you the most time. The notes are yours to keep, whether or not we work together.">På 30 minutter ser jeg på, hvordan jeres data og rutiner fungerer i dag, og peger på de ændringer, der vil spare jer mest tid. Noterne er jeres at beholde, uanset om vi arbejder sammen eller ej.</p>
+        </div>
+        <div class="mt-8 flex shrink-0 flex-col items-start gap-3 lg:mt-0 lg:items-end">
+          <a href="#contact" data-cta class="group inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-on-accent transition-colors hover:bg-accent-hi">
+            <span data-en="Book a no-obligation meeting">Book et uforpligtende møde</span>
+            <svg class="size-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="text-sm text-on-deep-muted"><span data-en="Or call">Eller ring på</span> <a href="tel:+4542928009" class="whitespace-nowrap font-medium text-on-deep underline underline-offset-4 hover:no-underline">+45 42928009</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="scroll-mt-16 bg-frost py-20 sm:py-24" aria-labelledby="about-title">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+        <figure class="min-w-0 lg:col-span-5">
+          <img src="assets/portrait.jpg" width="400" height="400" loading="lazy" decoding="async"
+            alt="Frederik Skovgaard Lund, grundlægger af Northbound Data" data-en-alt="Frederik Skovgaard Lund, founder of Northbound Data"
+            class="nb-card block aspect-square w-full max-w-sm rounded-2xl object-cover lg:max-w-[400px]">
+          <figcaption class="mt-5">
+            <p class="font-display text-2xl font-medium tracking-tight">Frederik Skovgaard Lund</p>
+            <p class="mt-1 text-muted" data-en="Founder of Northbound Data">Grundlægger af Northbound Data</p>
+          </figcaption>
+        </figure>
+
+        <div class="min-w-0 lg:col-span-7">
+          <p class="eyebrow text-accent-ink" data-en="About me">Om mig</p>
+          <h2 id="about-title" class="mt-4 font-display text-4xl leading-[1.05] font-medium tracking-tight text-balance sm:text-5xl"><span data-en="Complex data,">Komplekse data,</span> <em class="text-accent-ink" data-en="made simple.">gjort enkle.</em></h2>
+          <p class="mt-7 max-w-[38rem] text-xl leading-relaxed" data-en="My vision is to make complex data simple, so small and medium-sized businesses can run on the same structure and automation as large enterprises, without the enterprise overhead.">Min vision er at gøre komplekse data enkle, så små og mellemstore virksomheder kan arbejde med den samme struktur og automatisering som store koncerner – uden det tunge maskineri.</p>
+          <div class="mt-6 flex max-w-[38rem] flex-col gap-4 leading-relaxed text-muted">
+            <p data-en="I kept meeting capable teams who spent their days copying numbers between systems, fixing the same errors every month and waiting for reports nobody fully trusted. The problem was rarely the people, and rarely the software. It was the structure underneath.">Jeg mødte igen og igen dygtige teams, der brugte deres dage på at kopiere tal mellem systemer, rette de samme fejl hver måned og vente på rapporter, som ingen helt stolede på. Problemet var sjældent menneskerne og sjældent softwaren. Det var strukturen nedenunder.</p>
+            <p data-en="So that is where I start. I put structure into your data, automate the routine work around it and make sure your ERP supports the way you actually operate. When the foundation is right, efficiency follows.">Så det er der, jeg starter. Jeg skaber struktur i jeres data, automatiserer rutinearbejdet omkring dem og sørger for, at jeres ERP-system understøtter den måde, I faktisk arbejder på. Når fundamentet er på plads, følger effektiviteten med.</p>
+          </div>
+          <dl class="mt-10 flex flex-wrap gap-x-12 gap-y-5">
+            <div>
+              <dt class="eyebrow text-muted" data-en="Founded">Grundlagt</dt>
+              <dd class="mt-1 font-display text-2xl">2026</dd>
+            </div>
+            <div>
+              <dt class="eyebrow text-muted" data-en="Based in">Base</dt>
+              <dd class="mt-1 font-display text-2xl" data-en="Copenhagen">København</dd>
+            </div>
+            <div>
+              <dt class="eyebrow text-muted" data-en="Approach">Tilgang</dt>
+              <dd class="mt-1 font-display text-2xl" data-en="Vendor-neutral">Leverandøruafhængig</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="mt-20">
+        <h3 class="eyebrow text-muted" data-en="What I believe">Det tror jeg på</h3>
+        <ul class="mt-6 grid gap-8 md:grid-cols-3">
+          <li class="border-t border-line pt-6">
+            <h4 class="font-display text-xl font-medium tracking-tight" data-en="Structure before software">Struktur før software</h4>
+            <p class="mt-2 leading-relaxed text-muted" data-en="Most problems are solved by getting the data model right, not by buying another tool.">De fleste problemer løses ved at få datamodellen på plads – ikke ved at købe endnu et værktøj.</p>
+          </li>
+          <li class="border-t border-line pt-6">
+            <h4 class="font-display text-xl font-medium tracking-tight" data-en="Automate the routine, keep the judgement">Automatisér rutinen, behold dømmekraften</h4>
+            <p class="mt-2 leading-relaxed text-muted" data-en="Systems handle the copy-and-paste. Your people keep the decisions that need a human.">Systemerne klarer kopier-og-indsæt. Jeres medarbejdere beholder de beslutninger, der kræver et menneske.</p>
+          </li>
+          <li class="border-t border-line pt-6">
+            <h4 class="font-display text-xl font-medium tracking-tight" data-en="Plain language, no lock-in">Klart sprog, ingen binding</h4>
+            <p class="mt-2 leading-relaxed text-muted" data-en="I document everything I build and train your team, so you are never dependent on me.">Jeg dokumenterer alt, hvad jeg bygger, og træner jeres team, så I aldrig bliver afhængige af mig.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="scroll-mt-16 bg-ground py-20 sm:py-24" aria-labelledby="contact-title">
+    <div class="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
+      <div class="min-w-0 lg:col-span-5">
+        <p class="eyebrow text-accent-ink" data-en="Contact">Kontakt</p>
+        <h2 id="contact-title" class="mt-4 font-display text-4xl leading-[1.05] font-medium tracking-tight text-balance sm:text-5xl" data-en="Let’s talk about your data.">Lad os tale om jeres data.</h2>
+        <p class="mt-6 text-lg leading-relaxed text-muted" data-en="Tell me a little about your business and what takes up too much of your team’s time. I reply within one business day.">Fortæl mig lidt om jeres virksomhed, og hvad der tager for meget af jeres teams tid. Jeg svarer inden for én arbejdsdag.</p>
+
+        <div class="mt-8 flex items-center gap-4">
+          <img src="assets/portrait-160.jpg" width="160" height="160" alt="" loading="lazy" decoding="async" class="size-16 shrink-0 rounded-full object-cover ring-1 ring-line">
+          <div>
+            <p class="font-medium">Frederik Skovgaard Lund</p>
+            <p class="text-sm text-muted" data-en="You’ll be writing directly to me">Du skriver direkte til mig</p>
+          </div>
+        </div>
+
+        <ul class="mt-10 flex flex-col gap-6">
+          <li class="flex gap-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-frost text-accent-ink" aria-hidden="true">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="min-w-0">
+              <p class="eyebrow text-muted" data-en="Email">E-mail</p>
+              <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                <a id="contact-email" href="mailto:frlu@northbound-data.dk" class="font-medium break-words text-ink hover:text-accent-ink">frlu@northbound-data.dk</a>
+                <button type="button" data-copy="frlu@northbound-data.dk" data-copy-target="contact-email" aria-live="polite" class="cursor-pointer rounded-md border border-line px-2.5 py-1 text-xs font-medium text-muted transition-colors hover:border-accent hover:text-ink" data-en="Copy">Kopiér</button>
+              </div>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-frost text-accent-ink" aria-hidden="true">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+            </span>
+            <div class="min-w-0">
+              <p class="eyebrow text-muted" data-en="Phone">Telefon</p>
+              <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                <a id="contact-phone" href="tel:+4542928009" class="font-medium text-ink tabular-nums hover:text-accent-ink">+45 42928009</a>
+                <button type="button" data-copy="+45 42928009" data-copy-target="contact-phone" aria-live="polite" class="cursor-pointer rounded-md border border-line px-2.5 py-1 text-xs font-medium text-muted transition-colors hover:border-accent hover:text-ink" data-en="Copy">Kopiér</button>
+              </div>
+              <p class="mt-1 text-sm text-muted" data-en="Mon–Fri, 08:30–17:00 (Danish time)">Man.–fre. kl. 8.30–17.00</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-frost text-accent-ink" aria-hidden="true">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            </span>
+            <div class="min-w-0">
+              <p class="eyebrow text-muted" data-en="Office">Kontor</p>
+              <address class="mt-1 font-medium not-italic">Grundtvigs Sidevej 5, 2. mf<br>1865 Frederiksberg</address>
+              <p class="mt-1 text-sm text-muted" data-en="Meetings in person or online">Møder hos jer eller online</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-10 border-t border-line pt-6">
+          <p class="eyebrow text-muted" data-en="Follow along">Følg med</p>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <a href="https://www.linkedin.com/company/northbound-data" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-line px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent-ink">
+              <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3v-11zM9.5 9.75h3.8v1.5h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v5.46h-4v-4.84c0-1.16-.02-2.64-1.61-2.64-1.61 0-1.86 1.26-1.86 2.56v4.92h-4V9.75z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="min-w-0 lg:col-span-7">
+        <div class="nb-card rounded-2xl border border-line bg-surface p-6 sm:p-9">
+          <form id="contact-form" action="https://formspree.io/f/xwlpqekn" method="POST" novalidate>
+            <h3 class="font-display text-2xl font-medium tracking-tight" data-en="Send me a message">Send mig en besked</h3>
+            <div class="mt-6 grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="name" class="text-sm font-medium" data-en="Name">Navn</label>
+                <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error" placeholder="Dit fulde navn" data-en-placeholder="Your full name"
+                  class="mt-2 block w-full rounded-lg border border-line bg-ground px-4 py-3 text-base text-ink outline-none transition placeholder:text-muted/70 focus:border-accent focus:ring-4 focus:ring-accent/20 aria-[invalid=true]:border-danger">
+                <p id="name-error" class="mt-1.5 text-sm text-danger" hidden></p>
+              </div>
+              <div>
+                <label for="email" class="text-sm font-medium" data-en="Email">E-mail</label>
+                <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error" placeholder="dig@firma.dk" data-en-placeholder="you@company.com"
+                  class="mt-2 block w-full rounded-lg border border-line bg-ground px-4 py-3 text-base text-ink outline-none transition placeholder:text-muted/70 focus:border-accent focus:ring-4 focus:ring-accent/20 aria-[invalid=true]:border-danger">
+                <p id="email-error" class="mt-1.5 text-sm text-danger" hidden></p>
+              </div>
+              <div class="sm:col-span-2">
+                <label for="message" class="text-sm font-medium" data-en="Message">Besked</label>
+                <textarea id="message" name="message" rows="6" required aria-describedby="message-error" placeholder="For eksempel: Vi bruger omkring en dag om ugen på at overføre webshopordrer til e-conomic i hånden." data-en-placeholder="For example: we spend about a day a week moving webshop orders into e-conomic by hand."
+                  class="mt-2 block w-full resize-y rounded-lg border border-line bg-ground px-4 py-3 text-base text-ink outline-none transition placeholder:text-muted/70 focus:border-accent focus:ring-4 focus:ring-accent/20 aria-[invalid=true]:border-danger"></textarea>
+                <p id="message-error" class="mt-1.5 text-sm text-danger" hidden></p>
+              </div>
+            </div>
+            <!-- Spam trap: real visitors never see or fill this -->
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+            <!-- Email subject for submissions sent without JavaScript (the script sets its own) -->
+            <input type="hidden" name="_subject" value="Ny besked via northbound-data.dk">
+
+            <div class="mt-7 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <p class="text-sm text-muted"><span data-en="I only use your details to reply to you.">Jeg bruger kun dine oplysninger til at svare dig.</span> <a href="privacy.html" class="font-medium text-accent-ink underline underline-offset-4 hover:no-underline" data-en="Read the privacy policy">Læs privatlivspolitikken</a></p>
+              <button id="submit-button" type="submit" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-on-accent transition-colors hover:bg-accent-hi disabled:cursor-wait disabled:opacity-60">
+                <span id="submit-label" data-en="Send message">Send besked</span>
+                <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <p id="form-error" class="mt-4 text-sm text-danger" role="alert" hidden></p>
+          </form>
+
+          <div id="form-success" class="py-8 text-center outline-none" role="status" tabindex="-1" hidden>
+            <span class="mx-auto flex size-14 items-center justify-center rounded-full bg-accent-soft text-accent-ink" aria-hidden="true">
+              <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.7L16.5 9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 id="success-title" class="mt-5 font-display text-2xl font-medium tracking-tight"></h3>
+            <p id="success-body" class="mx-auto mt-3 max-w-md leading-relaxed text-muted"></p>
+            <button id="form-reset" type="button" class="mt-7 cursor-pointer rounded-lg border border-line px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent hover:text-accent-ink" data-en="Write another message">Skriv en ny besked</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-deep text-on-deep">
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-sm">
+        <a href="#home" class="inline-flex items-center gap-2.5 rounded-md" aria-label="Northbound Data, til toppen" data-en-aria-label="Northbound Data, back to top">
+          <svg class="size-7 text-accent-hi" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 3L27 11V21C27 26 22 29 16 29C10 29 5 26 5 21V11L16 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M16 9L21 13V19L16 23L11 19V13L16 9Z" fill="currentColor"/>
+          </svg>
+          <span class="font-display text-xl font-semibold tracking-tight">Northbound Data</span>
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-on-deep-muted" data-en="Data setup, automation and ERP assistance for small and medium-sized businesses.">Dataopsætning, automatisering og ERP-assistance til små og mellemstore virksomheder.</p>
+        <address class="mt-5 text-sm leading-relaxed text-on-deep-muted not-italic">
+          <span class="text-on-deep">Northbound Data</span> · <span data-en="Sole proprietorship">Enkeltmandsvirksomhed</span><br>
+          Grundtvigs Sidevej 5, 2. mf, 1865 Frederiksberg<br>
+          <span data-en="CVR no.">CVR-nr.</span> <span class="tabular-nums">46630726</span>
+        </address>
+      </div>
+      <nav class="flex flex-wrap gap-x-8 gap-y-3 text-sm" aria-label="Sidefod" data-en-aria-label="Footer">
+        <a href="#home" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="Home">Forside</a>
+        <a href="#services" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="Services">Ydelser</a>
+        <a href="#about" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="About">Om mig</a>
+        <a href="#contact" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="Contact">Kontakt</a>
+        <a href="https://www.linkedin.com/company/northbound-data" target="_blank" rel="noopener noreferrer" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep">LinkedIn</a>
+      </nav>
+    </div>
+    <div class="mt-10 flex flex-col gap-2 border-t border-on-deep/15 pt-6 text-xs text-on-deep-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>© <span id="year">2026</span> Northbound Data. <span data-en="All rights reserved.">Alle rettigheder forbeholdes.</span> · <a href="privacy.html" class="underline underline-offset-4 hover:text-on-deep" data-en="Privacy policy">Privatlivspolitik</a></p>
+      <p class="font-mono tracking-wide" data-en="55.68° N · 12.57° E — Copenhagen">55,68° N · 12,57° Ø — København</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ COOKIE NOTICE ============ -->
+<!-- The site sets no cookies and loads nothing from third parties. The notice says what is kept in
+     the browser (language choice, and that this notice was closed) and stays away once closed. -->
+<div id="cookie-notice" class="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex px-4 pt-4 sm:px-6" style="padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));" role="region" aria-labelledby="cookie-title" hidden>
+  <div class="nb-card pointer-events-auto w-full rounded-2xl border border-line bg-surface p-5 sm:max-w-sm">
+    <p id="cookie-title" class="font-display text-lg font-medium tracking-tight" data-en="Cookies &amp; privacy">Cookies og privatliv</p>
+    <p class="mt-2 text-sm leading-relaxed text-muted" data-en="I don’t use cookies for tracking or statistics. The only things this site saves in your browser are your language choice and that you’ve closed this message.">Jeg bruger ingen cookies til sporing eller statistik. Det eneste, siden gemmer i din browser, er dit sprogvalg, og at du har lukket denne besked.</p>
+    <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+      <button id="cookie-ok" type="button" class="cursor-pointer rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hi" data-en="OK, got it">OK, forstået</button>
+      <a href="privacy.html#cookies" class="-my-2 py-2 text-sm font-semibold text-accent-ink underline-offset-4 hover:underline" data-en="Read more">Læs mere</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  // Messages are delivered by Formspree. The address lives in the form's action attribute
+  // (<form id="contact-form" action="https://formspree.io/f/…">), so the form also works without
+  // JavaScript. Without an action, the form validates and shows a preview confirmation instead.
+  const FORM_ENDPOINT = document.getElementById("contact-form").getAttribute("action") || "";
+  const CONTACT_EMAIL = "frlu@northbound-data.dk";
+
+  // ---------- Language ----------
+  // Page copy is written in Danish, the default language. The English version of each text sits in
+  // its data-en attribute (and data-en-placeholder / data-en-aria-label / data-en-content for attributes).
+  // The strings below are the ones this script writes itself.
+  const STRINGS = {
+    en: {
+      pageTitle: "Northbound Data – Data setup, automation and ERP for SMEs",
+      langLabel: "Language: English. Switch to Danish",
+      menuOpen: "Open menu",
+      menuClose: "Close menu",
+      copy: "Copy",
+      copied: "Copied",
+      selected: "Selected",
+      send: "Send message",
+      sending: "Sending…",
+      errName: "Enter your name so I know who to reply to.",
+      errEmail: "Enter a valid email address, like name@company.com.",
+      errMessage: "Tell me a little more: a sentence or two is plenty.",
+      sentTitle: (name) => `Thanks, ${name}. Message received.`,
+      sentBody: (email) => `I'll reply to ${email} within one business day.`,
+      previewTitle: (name) => `Thanks, ${name}.`,
+      previewBody: `This preview isn't connected to an inbox yet, so your message wasn't sent. Reach me directly at ${CONTACT_EMAIL}.`,
+      sendError: `Your message wasn't sent. Check your connection and try again, or email me at ${CONTACT_EMAIL}.`,
+      topicMessage: (topic) => `Hi, we'd like to talk about ${topic}. `,
+      topics: { data: "data setup", automation: "automation", erp: "our ERP system" },
+    },
+    da: {
+      pageTitle: "Northbound Data – Dataopsætning, automatisering og ERP til SMV’er",
+      langLabel: "Sprog: dansk. Skift til engelsk",
+      menuOpen: "Åbn menu",
+      menuClose: "Luk menu",
+      copy: "Kopiér",
+      copied: "Kopieret",
+      selected: "Markeret",
+      send: "Send besked",
+      sending: "Sender…",
+      errName: "Skriv dit navn, så jeg ved, hvem jeg skal svare.",
+      errEmail: "Skriv en gyldig e-mailadresse, f.eks. navn@firma.dk.",
+      errMessage: "Fortæl mig lidt mere – en sætning eller to er rigeligt.",
+      sentTitle: (name) => `Tak, ${name}. Jeg har modtaget din besked.`,
+      sentBody: (email) => `Jeg svarer til ${email} inden for én arbejdsdag.`,
+      previewTitle: (name) => `Tak, ${name}.`,
+      previewBody: `Denne forhåndsvisning er endnu ikke forbundet til en indbakke, så din besked blev ikke sendt. Skriv direkte til mig på ${CONTACT_EMAIL}.`,
+      sendError: `Din besked blev ikke sendt. Tjek din forbindelse, og prøv igen, eller skriv til mig på ${CONTACT_EMAIL}.`,
+      topicMessage: (topic) => `Hej, vi vil gerne tale om ${topic}. `,
+      topics: { data: "dataopsætning", automation: "automatisering", erp: "vores ERP-system" },
+    },
+  };
+  let lang = "da";
+  const t = (key) => STRINGS[lang][key];
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = window.matchMedia("(pointer: fine)").matches;
+  const $ = (id) => document.getElementById(id);
+
+  // Footer year
+  $("year").textContent = new Date().getFullYear();
+
+  // ---------- Mobile menu ----------
+  const menuButton = $("menu-button");
+  const menu = $("mobile-menu");
+  function setMenu(open) {
+    menu.hidden = !open;
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", t(open ? "menuClose" : "menuOpen"));
+  }
+  menuButton.addEventListener("click", () => setMenu(menu.hidden));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !menu.hidden) { setMenu(false); menuButton.focus(); }
+  });
+  document.addEventListener("click", (e) => {
+    if (!menu.hidden && !menu.contains(e.target) && !menuButton.contains(e.target)) setMenu(false);
+  });
+  window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
+
+  // ---------- Header hairline on scroll ----------
+  const header = $("site-header");
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // ---------- In-page navigation ----------
+  const form = $("contact-form");
+  const fields = { name: $("name"), email: $("email"), message: $("message") };
+
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const id = link.getAttribute("href").slice(1);
+    const target = id && $(id);
+    if (!target) return;
+    e.preventDefault();
+    setMenu(false);
+
+    // Service links start the message for the visitor
+    const topic = link.dataset.topic;
+    if (topic && !fields.message.value.trim()) {
+      fields.message.value = t("topicMessage")(t("topics")[topic]);
+    }
+
+    target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    try { history.replaceState(null, "", "#" + id); } catch (_) { /* sandboxed frames may refuse */ }
+
+    if (link.hasAttribute("data-skip")) {
+      target.focus({ preventScroll: true });
+    } else if ((link.hasAttribute("data-cta") || topic) && finePointer && !form.hidden) {
+      setTimeout(() => fields.name.focus({ preventScroll: true }), reduceMotion ? 0 : 650);
+    }
+  });
+
+  // ---------- Active section in the nav ----------
+  const navLinks = [...document.querySelectorAll("[data-nav]")];
+  const setActive = (id) => navLinks.forEach((a) =>
+    a.setAttribute("aria-current", a.getAttribute("href") === "#" + id ? "true" : "false"));
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) setActive(entry.target.id); });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ["home", "services", "about", "contact"].forEach((id) => observer.observe($(id)));
+  }
+
+  // ---------- Copy buttons ----------
+  const copyButtons = [...document.querySelectorAll("[data-copy]")];
+  copyButtons.forEach((button) => {
+    const flash = (key) => {
+      button.textContent = t(key);
+      clearTimeout(button.resetTimer);
+      button.resetTimer = setTimeout(() => { button.textContent = t("copy"); }, 2000);
+    };
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.copy);
+        flash("copied");
+      } catch (_) {
+        // Clipboard refused: select the text so the visitor can copy it themselves
+        const range = document.createRange();
+        range.selectNodeContents($(button.dataset.copyTarget));
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        flash("selected");
+      }
+    });
+  });
+
+  // ---------- Contact form ----------
+  const rules = {
+    name: (v) => v.trim().length >= 2 || t("errName"),
+    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || t("errEmail"),
+    message: (v) => v.trim().length >= 10 || t("errMessage"),
+  };
+  function validate(key) {
+    const result = rules[key](fields[key].value);
+    const ok = result === true;
+    const error = $(key + "-error");
+    fields[key].setAttribute("aria-invalid", ok ? "false" : "true");
+    error.textContent = ok ? "" : result;
+    error.hidden = ok;
+    return ok;
+  }
+  // Used when Formspree rejects a field that passed the checks above
+  const FIELD_ERRORS = { name: "errName", email: "errEmail", message: "errMessage" };
+  function showFieldError(key) {
+    const error = $(key + "-error");
+    fields[key].setAttribute("aria-invalid", "true");
+    error.textContent = t(FIELD_ERRORS[key]);
+    error.hidden = false;
+  }
+  Object.keys(fields).forEach((key) => {
+    fields[key].addEventListener("blur", () => { if (fields[key].value) validate(key); });
+    fields[key].addEventListener("input", () => {
+      if (fields[key].getAttribute("aria-invalid") === "true") validate(key);
+    });
+  });
+
+  const submitButton = $("submit-button");
+  const submitLabel = $("submit-label");
+  const formError = $("form-error");
+  const success = $("form-success");
+  let lastSubmission = null; // { data, sent } while the confirmation is showing
+
+  function renderSuccess() {
+    const { data, sent } = lastSubmission;
+    const firstName = data.name.split(/\s+/)[0];
+    $("success-title").textContent = sent ? t("sentTitle")(firstName) : t("previewTitle")(firstName);
+    $("success-body").textContent = sent ? t("sentBody")(data.email) : t("previewBody");
+  }
+  function showSuccess(data, sent) {
+    lastSubmission = { data, sent };
+    renderSuccess();
+    form.hidden = true;
+    success.hidden = false;
+    success.focus();
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    formError.hidden = true;
+    const keys = Object.keys(fields);
+    const results = keys.map(validate);
+    const firstInvalid = results.indexOf(false);
+    if (firstInvalid !== -1) { fields[keys[firstInvalid]].focus(); return; }
+    if (form.elements._gotcha.value) return;
+
+    const data = {
+      name: fields.name.value.trim(),
+      email: fields.email.value.trim(),
+      message: fields.message.value.trim(),
+    };
+    if (!FORM_ENDPOINT) { showSuccess(data, false); return; }
+
+    submitButton.disabled = true;
+    submitLabel.textContent = t("sending");
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          ...data,
+          language: lang === "da" ? "Dansk" : "English",
+          _subject: `Ny besked fra ${data.name} via northbound-data.dk`,
+        }),
+      });
+      if (!response.ok) {
+        // Formspree lists rejected fields as { errors: [{ field, code, message }] }
+        const body = await response.json().catch(() => ({}));
+        const rejected = (body.errors || []).map((err) => err.field).filter((key) => Object.keys(fields).includes(key));
+        if (rejected.length) {
+          rejected.forEach(showFieldError);
+          fields[rejected[0]].focus();
+          return;
+        }
+        throw new Error("HTTP " + response.status);
+      }
+      showSuccess(data, true);
+    } catch (_) {
+      formError.textContent = t("sendError");
+      formError.hidden = false;
+    } finally {
+      submitButton.disabled = false;
+      submitLabel.textContent = t("send");
+    }
+  });
+
+  $("form-reset").addEventListener("click", () => {
+    form.reset();
+    Object.keys(fields).forEach((key) => {
+      fields[key].setAttribute("aria-invalid", "false");
+      $(key + "-error").hidden = true;
+    });
+    lastSubmission = null;
+    success.hidden = true;
+    form.hidden = false;
+    fields.name.focus();
+  });
+
+  // ---------- Language toggle ----------
+  const langToggle = $("lang-toggle");
+  const TRANSLATED_ATTRS = ["placeholder", "aria-label", "content", "alt"];
+  const textEls = [...document.querySelectorAll("[data-en]")];
+  const danishText = new Map(textEls.map((el) => [el, el.textContent]));
+  const attrEls = [...document.querySelectorAll(TRANSLATED_ATTRS.map((a) => `[data-en-${a}]`).join(","))];
+  const danishAttrs = new Map(attrEls.map((el) => [el,
+    TRANSLATED_ATTRS.filter((a) => el.hasAttribute("data-en-" + a)).map((a) => [a, el.getAttribute(a)])]));
+
+  function setLanguage(next) {
+    lang = next;
+    document.documentElement.lang = next;
+    document.title = t("pageTitle");
+    textEls.forEach((el) => { el.textContent = next === "en" ? el.dataset.en : danishText.get(el); });
+    attrEls.forEach((el) => danishAttrs.get(el).forEach(([attr, danish]) => {
+      el.setAttribute(attr, next === "en" ? el.getAttribute("data-en-" + attr) : danish);
+    }));
+
+    langToggle.dataset.lang = next;
+    langToggle.setAttribute("aria-label", t("langLabel"));
+    langToggle.title = t("langLabel");
+    menuButton.setAttribute("aria-label", t(menu.hidden ? "menuOpen" : "menuClose"));
+    copyButtons.forEach((button) => { clearTimeout(button.resetTimer); button.textContent = t("copy"); });
+    submitLabel.textContent = t(submitButton.disabled ? "sending" : "send");
+
+    // Re-word anything the script is currently showing
+    Object.keys(fields).forEach((key) => {
+      if (fields[key].getAttribute("aria-invalid") === "true") validate(key);
+    });
+    if (!formError.hidden) formError.textContent = t("sendError");
+    if (lastSubmission) renderSuccess();
+  }
+
+  langToggle.addEventListener("click", () => {
+    const next = lang === "da" ? "en" : "da";
+    setLanguage(next);
+    try { localStorage.setItem("nb-lang", next); } catch (_) { /* storage unavailable */ }
+  });
+
+  let savedLang = null;
+  try { savedLang = localStorage.getItem("nb-lang"); } catch (_) { /* storage unavailable */ }
+  if (savedLang === "en") setLanguage("en");
+
+  // ---------- Cookie notice ----------
+  const cookieNotice = $("cookie-notice");
+  let noticeClosed = false;
+  try { noticeClosed = localStorage.getItem("nb-cookie-notice") === "closed"; } catch (_) { /* storage unavailable */ }
+  cookieNotice.hidden = noticeClosed;
+  $("cookie-ok").addEventListener("click", () => {
+    cookieNotice.hidden = true;
+    try { localStorage.setItem("nb-cookie-notice", "closed"); } catch (_) { /* storage unavailable */ }
+  });
+})();
+</script>
+</body>
+</html>

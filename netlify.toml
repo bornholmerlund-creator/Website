@@ -1,0 +1,4 @@
+# Static single-page site: index.html is served as-is from the repository root.
+[build]
+  command = "echo 'No build step: static site'"
+  publish = "."
