@@ -8,11 +8,12 @@ build step and nothing to install.
 
 | File | What it is |
 |---|---|
-| [`index.html`](index.html) | The website: Home (hero, the three services and a call to action), Services, About and Contact |
+| [`index.html`](index.html) | The website: Home (hero), Services (the three services, how a project runs, systems), a call to action, About me (photo, vision, beliefs) and Contact |
 | [`privacy.html`](privacy.html) | Privacy policy, in English and Danish |
 | `assets/site.css` | Shared styles: fonts, colour tokens and the policy text styles |
 | `assets/fonts/` | Self-hosted fonts (Fraunces, Inter, IBM Plex Mono) with their licences |
 | `assets/vendor/` | Tailwind CSS browser build with its licence |
+| `assets/portrait.jpg`, `assets/portrait-160.jpg` | Portrait in the "Om mig" section and the small photo in the contact section. To swap the photo, replace both files (square, same names) |
 | `assets/og-image.png` | The 1200 × 630 image shown when the site is shared (LinkedIn, Facebook, Slack, messaging apps) |
 | `favicon.svg`, `favicon-48.png`, `apple-touch-icon.png` | Browser tab, search result and iPhone home-screen icons |
 | `brand/` | Logo files for LinkedIn and other profiles (square and horizontal, PNG and SVG) |
