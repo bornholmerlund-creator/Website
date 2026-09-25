@@ -16,6 +16,7 @@ build step and nothing to install.
 | `assets/portrait.jpg`, `assets/portrait-160.jpg` | Portrait in the "Om mig" section and the small photo in the contact section. To swap the photo, replace both files (square, same names) |
 | `assets/og-image.png` | The 1200 × 630 image shown when the site is shared (LinkedIn, Facebook, Slack, messaging apps) |
 | `favicon.svg`, `favicon-48.png`, `apple-touch-icon.png` | Browser tab, search result and iPhone home-screen icons |
+| `sitemap.xml`, `robots.txt` | Tell search engines which pages exist. Add new pages to `sitemap.xml` if the site grows |
 | `brand/` | Logo files for LinkedIn and other profiles (square and horizontal, PNG and SVG) |
 
 Everything is served from the site itself: no fonts, scripts or other content are loaded from
@@ -60,6 +61,9 @@ Each page has Open Graph tags (title, description, `assets/og-image.png`), a can
 CVR, phone, email, LinkedIn) for search engines. If you change the preview text or image,
 LinkedIn keeps its old copy for a while: paste the URL into LinkedIn's
 [Post Inspector](https://www.linkedin.com/post-inspector/) to refresh it.
+
+The domain is verified in Google Search Console (DNS record). The sitemap is at
+`https://northbound-data.dk/sitemap.xml`; submit it under **Sitemaps** in Search Console.
 
 ## Contact form
 
