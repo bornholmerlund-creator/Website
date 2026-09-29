@@ -17,7 +17,7 @@ build step and nothing to install.
 | `assets/og-image.png` | The 1200 × 630 image shown when the site is shared (LinkedIn, Facebook, Slack, messaging apps) |
 | `favicon.svg`, `favicon-48.png`, `apple-touch-icon.png` | Browser tab, search result and iPhone home-screen icons |
 | `sitemap.xml`, `robots.txt` | Tell search engines which pages exist. Add new pages to `sitemap.xml` if the site grows |
-| `brand/` | Logo files for LinkedIn and other profiles (square and horizontal, PNG and SVG), plus LinkedIn banners: `linkedin-banner-personal.png` (profile, 4:1) and `linkedin-banner-company.png` (company page, 1128 × 191 ratio), both at double resolution |
+| `brand/` | Logo files for LinkedIn and other profiles (square and horizontal, PNG and SVG), plus LinkedIn banners: `linkedin-banner-personal.png` (profile, 4:1) and `linkedin-banner-company.png` (company page, 1128 × 191 ratio), both at double resolution, and `linkedin-post-announcement.png` (1200 × 1200 image for the launch post) |
 
 Everything is served from the site itself: no fonts, scripts or other content are loaded from
 other companies, so visitor data isn't shared with anyone when the page loads.
