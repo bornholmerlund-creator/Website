@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <title>Northbound Data</title>
+  <rect width="1200" height="1200" fill="#0b1f33"/>
+  <!-- Keystone mark, drawn on a 32-unit grid and scaled to 648px (54% of the square) -->
+  <g transform="translate(276 276) scale(20.25)" fill="none">
+    <path d="M16 3L27 11V21C27 26 22 29 16 29C10 29 5 26 5 21V11L16 3Z" stroke="#2fcbbd" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M16 9L21 13V19L16 23L11 19V13L16 9Z" fill="#2fcbbd"/>
+  </g>
+</svg>
