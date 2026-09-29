@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-mailsignatur – dansk</title>
+<style>
+  body { margin: 0; padding: 40px 20px; background: #f2f5f8; color: #0b1f33; font: 15px/1.6 Arial, Helvetica, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; }
+  h1 { font: 600 26px/1.2 Georgia, serif; margin: 0 0 6px; }
+  h2 { font: 600 17px/1.3 Georgia, serif; margin: 32px 0 10px; }
+  .lead { color: #48627f; margin: 0 0 24px; }
+  .card { background: #fff; border: 1px solid #dce5ee; border-radius: 12px; padding: 28px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+  button { font: 600 14px Arial, sans-serif; padding: 10px 16px; border-radius: 8px; border: 1px solid #0fb5a6; cursor: pointer; background: #0fb5a6; color: #04121d; }
+  button.secondary { background: #fff; border-color: #dce5ee; color: #0b1f33; }
+  .status { color: #0b7169; font-size: 14px; }
+  textarea { width: 100%; box-sizing: border-box; min-height: 150px; font: 12px/1.45 Consolas, Menlo, monospace; padding: 12px; border: 1px solid #dce5ee; border-radius: 8px; background: #fff; color: #0b1f33; }
+  ol { padding-left: 20px; } li { margin: 4px 0; }
+  .note { font-size: 13px; color: #48627f; }
+</style>
+</head>
+<body>
+<main>
+  <h1>E-mailsignatur – dansk</h1>
+  <p class="lead">Klik på <b>Kopiér signatur</b>, og sæt den ind i Outlook eller Zoho Mail. Billedet hentes fra northbound-data.dk, så det vises hos alle modtagere.</p>
+
+  <div class="card"><div id="signature"><table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;">
+  <tr>
+    <td style="padding:0 16px 0 0;vertical-align:top;">
+      <img src="https://northbound-data.dk/assets/email/signature-portrait.png" width="76" height="76" alt="Frederik Skovgaard Lund" style="display:block;width:76px;height:76px;border:0;">
+    </td>
+    <td style="padding:0 0 0 16px;border-left:2px solid #0FB5A6;vertical-align:top;">
+      <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;">
+        <tr><td style="font-family:Georgia,'Times New Roman',serif;font-size:18px;line-height:22px;font-weight:bold;color:#0B1F33;">Frederik Skovgaard Lund</td></tr>
+        <tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:19px;color:#0B7169;padding-top:2px;">Grundlægger&nbsp;·&nbsp;Northbound Data</td></tr>
+        <tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;line-height:16px;letter-spacing:1.5px;color:#0B7169;padding-top:2px;">DATAOPSÆTNING&nbsp;·&nbsp;AUTOMATISERING&nbsp;·&nbsp;ERP</td></tr>
+        <tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#48627F;padding-top:8px;">
+          <a href="tel:+4542928009" style="color:#48627F;text-decoration:none;">+45 42928009</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="mailto:frlu@northbound-data.dk" style="color:#48627F;text-decoration:none;">frlu@northbound-data.dk</a>
+        </td></tr>
+        <tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#48627F;">
+          <a href="https://northbound-data.dk" style="color:#0B7169;text-decoration:none;font-weight:bold;">northbound-data.dk</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://www.linkedin.com/in/frederikskovgaardlund" style="color:#48627F;text-decoration:none;">LinkedIn</a>
+        </td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="padding-top:12px;">
+      <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;">
+        <tr><td style="border-top:1px solid #DCE5EE;padding-top:8px;font-family:Arial,Helvetica,sans-serif;font-size:10px;line-height:14px;color:#48627F;">Northbound Data&nbsp;·&nbsp;CVR-nr. 46630726&nbsp;·&nbsp;Grundtvigs Sidevej 5, 2. mf, 1865 Frederiksberg</td></tr>
+      </table>
+    </td>
+  </tr>
+</table></div></div>
+  <div class="actions">
+    <button id="copy-rich" type="button">Kopiér signatur</button>
+    <button id="copy-html" type="button" class="secondary">Kopiér HTML-kode</button>
+    <span class="status" id="status" aria-live="polite"></span>
+  </div>
+
+  <h2>Outlook</h2>
+  <ol><li>Klik på <b>Kopiér signatur</b> ovenfor.</li><li><b>Ny Outlook / Outlook på nettet:</b> Indstillinger → Konti → Signaturer. <b>Klassisk Outlook:</b> Filer → Indstillinger → E-mail → Signaturer.</li><li>Opret en ny signatur, sæt den ind (Ctrl+V / ⌘V), og gem.</li><li>Vælg den som standard for kontoen <b>frlu@northbound-data.dk</b> – både til nye beskeder og svar.</li></ol>
+
+  <h2>Zoho Mail</h2>
+  <ol><li>Gå til Indstillinger → Signatur, og tilføj en ny signatur.</li><li>Klik på <b>Kopiér HTML-kode</b> ovenfor, vælg <b>Indsæt HTML</b> (&lt;/&gt;) i editoren, og sæt koden ind. Du kan også blot indsætte den kopierede signatur.</li><li>Knyt signaturen til frlu@northbound-data.dk, og gem.</li></ol>
+
+  <h2>HTML-kode</h2>
+  <textarea id="code" readonly>&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; role=&quot;presentation&quot; style=&quot;border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td style=&quot;padding:0 16px 0 0;vertical-align:top;&quot;&gt;
+      &lt;img src=&quot;https://northbound-data.dk/assets/email/signature-portrait.png&quot; width=&quot;76&quot; height=&quot;76&quot; alt=&quot;Frederik Skovgaard Lund&quot; style=&quot;display:block;width:76px;height:76px;border:0;&quot;&gt;
+    &lt;/td&gt;
+    &lt;td style=&quot;padding:0 0 0 16px;border-left:2px solid #0FB5A6;vertical-align:top;&quot;&gt;
+      &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; role=&quot;presentation&quot; style=&quot;border-collapse:collapse;&quot;&gt;
+        &lt;tr&gt;&lt;td style=&quot;font-family:Georgia,&#x27;Times New Roman&#x27;,serif;font-size:18px;line-height:22px;font-weight:bold;color:#0B1F33;&quot;&gt;Frederik Skovgaard Lund&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td style=&quot;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:19px;color:#0B7169;padding-top:2px;&quot;&gt;Grundlægger&amp;nbsp;·&amp;nbsp;Northbound Data&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td style=&quot;font-family:Arial,Helvetica,sans-serif;font-size:10px;line-height:16px;letter-spacing:1.5px;color:#0B7169;padding-top:2px;&quot;&gt;DATAOPSÆTNING&amp;nbsp;·&amp;nbsp;AUTOMATISERING&amp;nbsp;·&amp;nbsp;ERP&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td style=&quot;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#48627F;padding-top:8px;&quot;&gt;
+          &lt;a href=&quot;tel:+4542928009&quot; style=&quot;color:#48627F;text-decoration:none;&quot;&gt;+45 42928009&lt;/a&gt;&amp;nbsp;&amp;nbsp;·&amp;nbsp;&amp;nbsp;&lt;a href=&quot;mailto:frlu@northbound-data.dk&quot; style=&quot;color:#48627F;text-decoration:none;&quot;&gt;frlu@northbound-data.dk&lt;/a&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td style=&quot;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#48627F;&quot;&gt;
+          &lt;a href=&quot;https://northbound-data.dk&quot; style=&quot;color:#0B7169;text-decoration:none;font-weight:bold;&quot;&gt;northbound-data.dk&lt;/a&gt;&amp;nbsp;&amp;nbsp;·&amp;nbsp;&amp;nbsp;&lt;a href=&quot;https://www.linkedin.com/in/frederikskovgaardlund&quot; style=&quot;color:#48627F;text-decoration:none;&quot;&gt;LinkedIn&lt;/a&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot; style=&quot;padding-top:12px;&quot;&gt;
+      &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; role=&quot;presentation&quot; style=&quot;border-collapse:collapse;&quot;&gt;
+        &lt;tr&gt;&lt;td style=&quot;border-top:1px solid #DCE5EE;padding-top:8px;font-family:Arial,Helvetica,sans-serif;font-size:10px;line-height:14px;color:#48627F;&quot;&gt;Northbound Data&amp;nbsp;·&amp;nbsp;CVR-nr. 46630726&amp;nbsp;·&amp;nbsp;Grundtvigs Sidevej 5, 2. mf, 1865 Frederiksberg&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</textarea>
+
+  <h2>Ren tekst (til e-mails uden formatering)</h2>
+  <textarea id="plain" readonly style="min-height:120px">Frederik Skovgaard Lund
+Grundlægger · Northbound Data
++45 42928009 · frlu@northbound-data.dk
+northbound-data.dk · linkedin.com/in/frederikskovgaardlund
+
+Northbound Data · CVR-nr. 46630726 · Grundtvigs Sidevej 5, 2. mf, 1865 Frederiksberg</textarea>
+  <p class="note">Tip: Send en testmail til din Gmail og din telefon for at se, at billede og links vises korrekt.</p>
+</main>
+<script>
+  const status = document.getElementById("status");
+  const say = (msg) => { status.textContent = msg; setTimeout(() => (status.textContent = ""), 4000); };
+  // Copy the rendered signature (keeps formatting when pasted into Outlook or Zoho)
+  document.getElementById("copy-rich").addEventListener("click", async () => {
+    const node = document.getElementById("signature");
+    try {
+      await navigator.clipboard.write([new ClipboardItem({
+        "text/html": new Blob([node.innerHTML], { type: "text/html" }),
+        "text/plain": new Blob([document.getElementById("plain").value], { type: "text/plain" }),
+      })]);
+      say('Kopieret – sæt den ind i din signatur.');
+    } catch (_) {
+      const range = document.createRange(); range.selectNodeContents(node);
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      say(document.execCommand("copy") ? 'Kopieret – sæt den ind i din signatur.' : 'Signaturen er markeret – tryk Ctrl+C / ⌘C.');
+    }
+  });
+  document.getElementById("copy-html").addEventListener("click", async () => {
+    const code = document.getElementById("code");
+    try { await navigator.clipboard.writeText(code.value); } catch (_) { code.select(); document.execCommand("copy"); }
+    say('HTML-koden er kopieret.');
+  });
+</script>
+</body>
+</html>

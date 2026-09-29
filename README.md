@@ -16,6 +16,8 @@ build step and nothing to install.
 | `assets/portrait.jpg`, `assets/portrait-160.jpg` | Portrait in the "Om mig" section and the small photo in the contact section. To swap the photo, replace both files (square, same names) |
 | `assets/og-image.png` | The 1200 × 630 image shown when the site is shared (LinkedIn, Facebook, Slack, messaging apps) |
 | `favicon.svg`, `favicon-48.png`, `apple-touch-icon.png` | Browser tab, search result and iPhone home-screen icons |
+| `assets/email/signature-portrait.png` | Photo used in the email signature (loaded from the live site by recipients' mail programs — keep the file name) |
+| `brand/email-signature-da.html`, `brand/email-signature-en.html` | Email signatures: open in a browser, click "Copy signature" and paste into Outlook or Zoho Mail |
 | `sitemap.xml`, `robots.txt` | Tell search engines which pages exist. Add new pages to `sitemap.xml` if the site grows |
 | `brand/` | Logo files for LinkedIn and other profiles (square and horizontal, PNG and SVG), plus LinkedIn banners: `linkedin-banner-personal.png` (profile, 4:1) and `linkedin-banner-company.png` (company page, 1128 × 191 ratio), both at double resolution, and `linkedin-post-announcement.png` (1200 × 1200 image for the launch post) |
 
