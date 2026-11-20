@@ -54,7 +54,7 @@ the folder over HTTP instead, e.g. `python3 -m http.server` and open http://loca
   changes (for example a new email provider, a form service or analytics).
 - **Colours:** theme tokens (`--c-*`) in `assets/site.css`, with a light and a dark set.
 - **Contact and company details:** search for `frlu@northbound-data.dk`,
-  `+45 42928009` and `46630726` in both HTML files.
+  `+45 40997724` and `46630726` in both HTML files.
 
 ## Link previews and search
 
