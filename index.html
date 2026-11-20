@@ -164,7 +164,7 @@
   <!-- ============ HOME / HERO ============ -->
   <section id="home" class="relative isolate scroll-mt-16 overflow-hidden bg-deep text-on-deep">
     <div class="nb-contours" aria-hidden="true"></div>
-    <div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:px-8 lg:py-24">
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-12 lg:px-8 lg:py-24">
       <div class="min-w-0">
         <p class="eyebrow text-accent-hi" data-en="Data setup · Automation · ERP">Dataopsætning · Automatisering · ERP</p>
         <h1 class="mt-5 font-display text-[2.5rem] leading-[1.05] font-medium tracking-tight text-balance sm:text-5xl lg:text-[3.6rem]">
@@ -181,80 +181,22 @@
         <p class="mt-6 text-sm text-on-deep-muted" data-en="15 minutes · Online or in person · No sales pitch">15 minutter · Online eller hos jer · Ingen salgstale</p>
       </div>
 
-      <!-- Illustrative before/after panel -->
-      <figure class="min-w-0 rounded-2xl border border-on-deep/15 bg-deep-2/80 p-5 shadow-2xl shadow-black/25 backdrop-blur sm:p-7" aria-labelledby="panel-title">
-        <div class="flex items-start justify-between gap-4">
-          <div>
-            <p id="panel-title" class="eyebrow text-on-deep-muted" data-en="Manual hours per week">Manuelle timer pr. uge</p>
-            <p class="mt-2 font-display text-xl leading-snug text-on-deep" data-en="A 25-person wholesaler, before and after">En grossist med 25 ansatte, før og efter</p>
-          </div>
-          <span class="shrink-0 rounded-full border border-on-deep/20 px-2.5 py-1 font-mono text-[0.72rem] uppercase tracking-wider text-on-deep-muted" data-en="Example">Eksempel</span>
+      <!-- 30-second presentation video (source project: video/ on branch claude/project-thread-9lf14u) -->
+      <figure class="min-w-0">
+        <div class="relative overflow-hidden rounded-2xl border border-on-deep/15 bg-deep-2 shadow-2xl shadow-black/30">
+          <video id="intro-video" class="block aspect-video w-full" muted loop playsinline preload="metadata"
+            poster="assets/video/northbound-data-poster.jpg"
+            aria-label="Præsentationsvideo, 30 sekunder: Northbound Data samler data fra mange systemer til ét overblik, gennem dataopsætning, automatisering og ERP-assistance. I eksemplet går en grossist fra 15,5 til 1 manuel time om ugen."
+            data-en-aria-label="Presentation video, 30 seconds, in Danish: Northbound Data brings data from many systems into one overview through data setup, automation and ERP assistance. In the example a wholesaler goes from 15.5 to 1 manual hour a week.">
+            <source src="assets/video/northbound-data-1080.mp4" type="video/mp4" media="(min-width: 1024px) and (min-resolution: 1.5dppx), (min-width: 1600px)">
+            <source src="assets/video/northbound-data-720.mp4" type="video/mp4">
+          </video>
+          <button id="intro-video-sound" type="button" class="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-deep/85 px-4 py-2 text-sm font-semibold text-on-deep shadow-lg shadow-black/30 backdrop-blur transition-colors hover:bg-deep sm:bottom-4 sm:left-4">
+            <svg class="size-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 4.5v11l9-5.5-9-5.5z"/></svg>
+            <span data-en="Watch with sound">Se med lyd</span>
+          </button>
         </div>
-
-        <ul class="mt-7 flex flex-col gap-5">
-          <li>
-            <div class="flex items-baseline justify-between gap-4 text-sm">
-              <span class="text-on-deep" data-en="Matching supplier invoices">Afstemning af leverandørfakturaer</span>
-              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true"><span data-en="6.5 h →">6,5 t →</span> <span class="text-accent-hi" data-en="0.5 h">0,5 t</span></span>
-              <span class="sr-only" data-en="6.5 hours before, 0.5 hours after">6,5 timer før, 0,5 timer efter</span>
-            </div>
-            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
-              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:100%"></span>
-              <span class="absolute inset-y-0 left-0 min-w-1.5 rounded-full bg-accent-hi" style="width:7.7%"></span>
-            </div>
-          </li>
-          <li>
-            <div class="flex items-baseline justify-between gap-4 text-sm">
-              <span class="text-on-deep" data-en="Re-keying webshop orders">Indtastning af webshopordrer</span>
-              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true"><span data-en="4 h →">4 t →</span> <span class="text-accent-hi" data-en="automated">automatiseret</span></span>
-              <span class="sr-only" data-en="4 hours before, fully automated after">4 timer før, fuldt automatiseret efter</span>
-            </div>
-            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
-              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:61.5%"></span>
-            </div>
-          </li>
-          <li>
-            <div class="flex items-baseline justify-between gap-4 text-sm">
-              <span class="text-on-deep" data-en="Month-end stock report">Månedlig lagerrapport</span>
-              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true"><span data-en="3 h →">3 t →</span> <span class="text-accent-hi" data-en="0.25 h">0,25 t</span></span>
-              <span class="sr-only" data-en="3 hours before, 15 minutes after">3 timer før, 15 minutter efter</span>
-            </div>
-            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
-              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:46.2%"></span>
-              <span class="absolute inset-y-0 left-0 min-w-1.5 rounded-full bg-accent-hi" style="width:3.8%"></span>
-            </div>
-          </li>
-          <li>
-            <div class="flex items-baseline justify-between gap-4 text-sm">
-              <span class="text-on-deep" data-en="Fixing duplicate customers">Oprydning i kundedubletter</span>
-              <span class="shrink-0 font-mono text-xs tabular-nums text-on-deep-muted" aria-hidden="true"><span data-en="2 h →">2 t →</span> <span class="text-accent-hi" data-en="0.25 h">0,25 t</span></span>
-              <span class="sr-only" data-en="2 hours before, 15 minutes after">2 timer før, 15 minutter efter</span>
-            </div>
-            <div class="relative mt-2 h-2 rounded-full bg-on-deep/10" aria-hidden="true">
-              <span class="absolute inset-y-0 left-0 rounded-full bg-on-deep/30" style="width:30.8%"></span>
-              <span class="absolute inset-y-0 left-0 min-w-1.5 rounded-full bg-accent-hi" style="width:3.8%"></span>
-            </div>
-          </li>
-        </ul>
-
-        <div class="mt-7 flex flex-wrap items-end justify-between gap-4 border-t border-on-deep/15 pt-5">
-          <div>
-            <p class="eyebrow text-on-deep-muted" data-en="Total per week">I alt pr. uge</p>
-            <p class="mt-1 font-display text-3xl tabular-nums">
-              <span class="text-on-deep-muted line-through decoration-1" data-en="15.5 h">15,5 t</span>
-              <span class="text-on-deep-muted" aria-hidden="true">→</span>
-              <span class="sr-only" data-en="down to">ned til</span>
-              <span class="text-accent-hi" data-en="1 h">1 t</span>
-            </p>
-          </div>
-          <p class="max-w-[15rem] text-sm leading-snug text-on-deep-muted" data-en="Roughly 750 hours a year back for work that needs a person.">Cirka 750 timer om året frigjort til arbejde, der kræver et menneske.</p>
-        </div>
-
-        <figcaption class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-deep-muted">
-          <span class="inline-flex items-center gap-2"><span class="h-2 w-4 rounded-full bg-on-deep/30" aria-hidden="true"></span><span data-en="Before">Før</span></span>
-          <span class="inline-flex items-center gap-2"><span class="h-2 w-4 rounded-full bg-accent-hi" aria-hidden="true"></span><span data-en="After">Efter</span></span>
-          <span data-en="Illustrative figures for a typical project scope.">Illustrative tal for et typisk projektomfang.</span>
-        </figcaption>
+        <figcaption class="mt-3 font-mono text-xs uppercase tracking-wider text-on-deep-muted" data-en="Northbound Data in 30 seconds · in Danish">Northbound Data på 30 sekunder</figcaption>
       </figure>
     </div>
   </section>
@@ -719,6 +661,32 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
   const $ = (id) => document.getElementById(id);
+
+  // ---------- Presentation video in the hero ----------
+  // Muted, looping preview that only plays while on screen (and never for reduced motion);
+  // "Watch with sound" restarts it from the beginning with sound and native controls.
+  (() => {
+    const video = $("intro-video");
+    const sound = $("intro-video-sound");
+    if (!video || !sound) return;
+    let withSound = false;
+    const tryPlay = () => { const p = video.play(); if (p) p.catch(() => {}); };
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => {
+        if (withSound) return;
+        entries[0].isIntersecting ? tryPlay() : video.pause();
+      }, {threshold: 0.35}).observe(video);
+    }
+    sound.addEventListener("click", () => {
+      withSound = true;
+      video.loop = false;
+      video.muted = false;
+      video.controls = true;
+      video.currentTime = 0;
+      tryPlay();
+      sound.hidden = true;
+    });
+  })();
 
   // Footer year
   $("year").textContent = new Date().getFullYear();
