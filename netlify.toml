@@ -2,3 +2,11 @@
 [build]
   command = "echo 'No build step: static site'"
   publish = "."
+
+# The video/ folder holds the source project for the presentation video
+# (Remotion); it is not part of the website, so never serve it.
+[[redirects]]
+  from = "/video/*"
+  to = "/404"
+  status = 404
+  force = true
