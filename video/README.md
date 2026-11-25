@@ -40,3 +40,33 @@ Al tekst og timing ligger i `src/scenes/*.tsx`; tidslinjen i `src/Video.tsx`; br
 - Musik: "Happy Beats / Business Moves" Vol. 1 af Sascha Ende (ende.app), CC BY 4.0. Kreditering ved opslag: "Music: Sascha Ende, ende.app (CC BY 4.0)".
 - Lydeffekter: Kenney (CC0).
 - Remotion er gratis for virksomheder med op til 3 personer (remotion.dev/license).
+
+---
+
+# Power BI-video (40 sekunder)
+
+Video nummer to: "fra datakaos til klarhed" om Power BI. 1920×1080, 30 fps, præcis 40 s. Koden ligger i `src/pbi/`, og den deler brandfarver, fonte og animationshjælpere med 30-sekunders videoen (`src/kit.tsx`).
+
+| Tid | Scene | Indhold |
+|---|---|---|
+| 0:00–0:06 | Problemet | Hurtige nærbilleder: budgetark med `#REF!`, CSV-eksport med dubletter, mailtråd med tre versioner af samme fil, databaseforespørgsel med manglende værdier. Kameraet trækker sig tilbage. Tekst: "Har I data overalt – men mangler ét samlet overblik?" |
+| 0:06–0:14.8 | Transformation | Vinduerne bliver til datakilder (Excel, ERP, SQL-database, CRM, webshop), der flyder ind i én datamodel, som folder sig ud til et Power BI-agtigt dashboard. Tekst: "Fra data til indsigt." |
+| 0:14.8–0:23.4 | Det leverer jeg | Implementering, Integrationer, Dashboards, Vedligeholdelse & optimering. Stjerneskema med kilder, en rodet gammel rapport der bliver til et rent dashboard (med krydsfiltrering), og en ydeevneanalyse |
+| 0:23.4–0:33 | Drift og troværdighed | Hurtigere rapporter, pålidelig dataopdatering, Udvikling → Test → Produktion, sikker adgang. Derefter "700+" og "Erfaring fra Power BI-løsninger med 700+ brugere" |
+| 0:33–0:40 | Brand og CTA | Logo, "Komplekse data, gjort enkle.", Power BI · Dataopsætning · Automatisering, "Book et uforpligtende møde", northbound-data.dk |
+
+Dashboardet er tegnet i jeres egne farver i et velkendt Power BI-layout. Der er ingen Microsoft- eller Power BI-logoer, og alle tal er eksempeldata ("Eksempeldata" står i rapportens bundlinje).
+
+## Speak, undertekster og musik
+
+- Speaken og underteksterne har ét fælles manuskript med tider: `src/pbi/script.ts`.
+- `npm run subs:pbi` skriver underteksterne som WebVTT og SRT til `out/` (til `<track>` på hjemmesiden eller til LinkedIn/YouTube).
+- Speak: læg seks lydfiler i `public/vo/` med navnene `vo1.wav` … `vo6.wav` (én pr. replik i `VO`), og kør `npm run render:pbi-vo`. Musikken dukkes automatisk under speaken. Passer en replik ikke i tid, så ret `at` i `VO`.
+- Musikken er komponeret i kode (`tools/make_music.py`, kræver numpy og scipy) og kræver ingen kreditering. Lydeffekter: Kenney (CC0).
+
+## Render
+
+```bash
+npm run render:pbi          # med indbrændte undertekster
+npm run render:pbi-clean    # uden undertekster (brug sammen med .vtt-filen)
+```
