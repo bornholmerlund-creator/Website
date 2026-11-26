@@ -70,3 +70,9 @@ Dashboardet er tegnet i jeres egne farver i et velkendt Power BI-layout. Der er 
 npm run render:pbi          # med indbrændte undertekster
 npm run render:pbi-clean    # uden undertekster (brug sammen med .vtt-filen)
 ```
+
+De leverede filer er lydnormaliseret og derefter skruet 70 % ned (Frederiks ønske, 2026-11-26):
+
+```bash
+ffmpeg -i ind.mp4 -c:v copy -af "loudnorm=I=-16:TP=-1.5:LRA=11,volume=0.3" -c:a aac -b:a 192k -movflags +faststart ud.mp4
+```
