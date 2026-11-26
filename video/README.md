@@ -53,7 +53,7 @@ Video nummer to: "fra datakaos til klarhed" om Power BI. 1920×1080, 30 fps, pr�
 | 0:06–0:14.8 | Transformation | Vinduerne bliver til datakilder (Excel, ERP, SQL-database, CRM, webshop), der flyder ind i én datamodel, som folder sig ud til et Power BI-agtigt dashboard. Tekst: "Fra data til indsigt." |
 | 0:14.8–0:23.4 | Det leverer jeg | Implementering, Integrationer, Dashboards, Vedligeholdelse & optimering. Stjerneskema med kilder, en rodet gammel rapport der bliver til et rent dashboard (med krydsfiltrering), og en ydeevneanalyse |
 | 0:23.4–0:33 | Drift og troværdighed | Hurtigere rapporter, pålidelig dataopdatering, Udvikling → Test → Produktion, sikker adgang. Derefter "700+" og "Erfaring fra Power BI-løsninger med 700+ brugere" |
-| 0:33–0:40 | Brand og CTA | Logo, "Komplekse data, gjort enkle.", Power BI · Dataopsætning · Automatisering, "Book et uforpligtende møde", northbound-data.dk |
+| 0:33–0:40 | Brand og CTA | Frederiks portræt med navn og titel, logo, "Komplekse data, gjort enkle.", Power BI · Dataopsætning · Automatisering, "Book et uforpligtende møde", northbound-data.dk |
 
 Dashboardet er tegnet i jeres egne farver i et velkendt Power BI-layout. Der er ingen Microsoft- eller Power BI-logoer, og alle tal er eksempeldata ("Eksempeldata" står i rapportens bundlinje).
 

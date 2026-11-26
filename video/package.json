@@ -8,9 +8,9 @@
     "render:30": "remotion render src/index.ts NorthboundData30 out/northbound-data-30s-30fps.mp4 --crf=16",
     "still": "remotion still src/index.ts NorthboundData",
     "music:pbi": "python3 tools/make_music.py public/music/pbi-bed.wav && ffmpeg -y -i public/music/pbi-bed.wav -b:a 192k public/music/pbi-bed.mp3",
-    "render:pbi": "remotion render src/index.ts PowerBI out/northbound-data-powerbi-40s.mp4 --crf=18",
-    "render:pbi-clean": "remotion render src/index.ts PowerBIClean out/northbound-data-powerbi-40s-uden-tekster.mp4 --crf=18",
-    "render:pbi-vo": "remotion render src/index.ts PowerBI out/northbound-data-powerbi-40s-speak.mp4 --crf=18 --props='{\"subtitles\":true,\"voiceover\":true}'",
+    "render:pbi": "remotion render src/index.ts PowerBI out/northbound-data-powerbi-40s.mp4 --crf=18 --concurrency=1",
+    "render:pbi-clean": "remotion render src/index.ts PowerBIClean out/northbound-data-powerbi-40s-uden-tekster.mp4 --crf=18 --concurrency=1",
+    "render:pbi-vo": "remotion render src/index.ts PowerBI out/northbound-data-powerbi-40s-speak.mp4 --crf=18 --concurrency=1 --props='{\"subtitles\":true,\"voiceover\":true}'",
     "subs:pbi": "node tools/make_subs.mjs out"
   },
   "dependencies": {
