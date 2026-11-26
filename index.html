@@ -105,9 +105,10 @@
       <span class="truncate font-display text-base font-semibold tracking-tight text-ink min-[360px]:text-lg sm:text-xl">Northbound Data</span>
     </a>
 
-    <nav class="hidden items-center gap-1 md:flex" aria-label="Hovedmenu" data-en-aria-label="Primary">
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Hovedmenu" data-en-aria-label="Primary">
       <a href="#home" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink" data-en="Home">Forside</a>
       <a href="#services" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink" data-en="Services">Ydelser</a>
+      <a href="powerbi.html" class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink">Power BI</a>
       <a href="#about" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink" data-en="About">Om mig</a>
       <a href="#contact" data-nav class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink aria-[current=true]:bg-frost aria-[current=true]:text-ink" data-en="Contact">Kontakt</a>
     </nav>
@@ -141,17 +142,18 @@
           <span class="hidden sm:inline">EN</span>
         </span>
 </button>
-      <button id="menu-button" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg border border-line text-ink md:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Åbn menu">
+      <button id="menu-button" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg border border-line text-ink lg:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Åbn menu">
         <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
     </div>
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="absolute inset-x-0 top-full border-y border-line bg-ground shadow-xl md:hidden" hidden>
+  <div id="mobile-menu" class="absolute inset-x-0 top-full border-y border-line bg-ground shadow-xl lg:hidden" hidden>
     <nav class="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6" aria-label="Mobilmenu" data-en-aria-label="Mobile">
       <a href="#home" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost" data-en="Home">Forside</a>
       <a href="#services" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost" data-en="Services">Ydelser</a>
+      <a href="powerbi.html" class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost">Power BI</a>
       <a href="#about" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost" data-en="About">Om mig</a>
       <a href="#contact" data-nav class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost aria-[current=true]:bg-frost" data-en="Contact">Kontakt</a>
       <a href="#contact" data-cta class="mt-2 mb-1 flex justify-center rounded-lg bg-accent px-4 py-3 text-base font-semibold text-on-accent" data-en="Book a no-obligation meeting">Book et uforpligtende møde</a>
@@ -355,6 +357,24 @@
           </div>
         </article>
       </div>
+
+      <!-- Power BI teaser (links to powerbi.html) -->
+      <a href="powerbi.html" class="group relative isolate mt-6 flex flex-col gap-5 overflow-hidden rounded-2xl bg-deep p-7 text-on-deep transition duration-200 hover:-translate-y-1 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+        <span class="nb-contours" aria-hidden="true"></span>
+        <span class="flex min-w-0 items-start gap-5">
+          <span class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-on-deep/10 text-accent-hi" aria-hidden="true">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M6 20V13M12 20V8M18 20V4"/></svg>
+          </span>
+          <span class="min-w-0">
+            <span class="eyebrow block text-accent-hi" data-en="Power BI">Power BI</span>
+            <span class="mt-2 block font-display text-2xl font-medium tracking-tight" data-en="Power BI from scratch, or one that needs to work better">Power BI fra bunden – eller en løsning, der skal fungere bedre</span>
+            <span class="mt-2 block max-w-2xl leading-relaxed text-on-deep-muted" data-en="Data sources, data models, dashboards, maintenance, performance and knowledge transfer, done hands-on.">Datakilder, datamodeller, dashboards, vedligeholdelse, performance og vidensoverdragelse – hands-on hele vejen.</span>
+          </span>
+        </span>
+        <span class="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-accent-hi"><span data-en="Read about Power BI">Læs om Power BI</span>
+          <svg class="size-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
 
       <!-- How a project runs -->
       <div class="mt-20">
@@ -631,6 +651,7 @@
       <nav class="flex flex-wrap gap-x-8 gap-y-3 text-sm" aria-label="Sidefod" data-en-aria-label="Footer">
         <a href="#home" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="Home">Forside</a>
         <a href="#services" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="Services">Ydelser</a>
+        <a href="powerbi.html" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep">Power BI</a>
         <a href="#about" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="About">Om mig</a>
         <a href="#contact" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="Contact">Kontakt</a>
         <a href="https://www.linkedin.com/company/northbound-data" target="_blank" rel="noopener noreferrer" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep">LinkedIn</a>
@@ -689,7 +710,7 @@
       previewBody: `This preview isn't connected to an inbox yet, so your message wasn't sent. Reach me directly at ${CONTACT_EMAIL}.`,
       sendError: `Your message wasn't sent. Check your connection and try again, or email me at ${CONTACT_EMAIL}.`,
       topicMessage: (topic) => `Hi, we'd like to talk about ${topic}. `,
-      topics: { data: "data setup", automation: "automation", erp: "our ERP system" },
+      topics: { data: "data setup", automation: "automation", erp: "our ERP system", powerbi: "Power BI" },
     },
     da: {
       pageTitle: "Northbound Data – Dataopsætning, automatisering og ERP til SMV’er",
@@ -710,7 +731,7 @@
       previewBody: `Denne forhåndsvisning er endnu ikke forbundet til en indbakke, så din besked blev ikke sendt. Skriv direkte til mig på ${CONTACT_EMAIL}.`,
       sendError: `Din besked blev ikke sendt. Tjek din forbindelse, og prøv igen, eller skriv til mig på ${CONTACT_EMAIL}.`,
       topicMessage: (topic) => `Hej, vi vil gerne tale om ${topic}. `,
-      topics: { data: "dataopsætning", automation: "automatisering", erp: "vores ERP-system" },
+      topics: { data: "dataopsætning", automation: "automatisering", erp: "vores ERP-system", powerbi: "Power BI" },
     },
   };
   let lang = "da";
@@ -738,7 +759,7 @@
   document.addEventListener("click", (e) => {
     if (!menu.hidden && !menu.contains(e.target) && !menuButton.contains(e.target)) setMenu(false);
   });
-  window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
+  window.matchMedia("(min-width: 1024px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
 
   // ---------- Header hairline on scroll ----------
   const header = $("site-header");
@@ -963,6 +984,14 @@
   let savedLang = null;
   try { savedLang = localStorage.getItem("nb-lang"); } catch (_) { /* storage unavailable */ }
   if (savedLang === "en") setLanguage("en");
+
+  // ---------- Topic from another page ----------
+  // powerbi.html links to index.html?emne=powerbi#contact, which starts the message for the visitor
+  let topicParam = null;
+  try { topicParam = new URLSearchParams(location.search).get("emne"); } catch (_) { /* no URL API */ }
+  if (topicParam && t("topics")[topicParam] && !fields.message.value.trim()) {
+    fields.message.value = t("topicMessage")(t("topics")[topicParam]);
+  }
 
   // ---------- Cookie notice ----------
   const cookieNotice = $("cookie-notice");

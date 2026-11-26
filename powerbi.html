@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Power BI-konsulent – Northbound Data</title>
+<meta name="description" content="Hands-on Power BI-konsulent til små og mellemstore virksomheder: implementering, datakilder, datamodeller, dashboards, vedligeholdelse, performance og vidensoverdragelse." data-en-content="Hands-on Power BI consultant for small and medium-sized businesses: implementation, data sources, data models, dashboards, maintenance, performance and knowledge transfer.">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!-- Link previews (LinkedIn, Facebook, Slack, messaging apps) and search -->
+<link rel="canonical" href="https://northbound-data.dk/powerbi.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Northbound Data">
+<meta property="og:url" content="https://northbound-data.dk/powerbi.html">
+<meta property="og:title" content="Power BI, der skaber reel værdi – Northbound Data">
+<meta property="og:description" content="Fra datakilder og datamodeller til dashboards, drift og videreudvikling. Hands-on Power BI-hjælp til små og mellemstore virksomheder.">
+<meta property="og:image" content="https://northbound-data.dk/assets/video/northbound-data-powerbi-poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Northbound Data – Power BI fra datakaos til klarhed">
+<meta property="og:video" content="https://northbound-data.dk/assets/video/northbound-data-powerbi.mp4">
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:locale" content="da_DK">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Power BI-konsulent",
+      "serviceType": "Power BI-implementering, datamodellering, dashboards og drift",
+      "url": "https://northbound-data.dk/powerbi.html",
+      "description": "Hands-on hjælp til Power BI: implementering fra bunden, tilslutning af datakilder, datamodeller, dashboards, vedligeholdelse og fejlretning, performanceoptimering, løbende videreudvikling samt dokumentation og vidensoverdragelse.",
+      "areaServed": { "@type": "Country", "name": "Danmark" },
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Northbound Data",
+        "url": "https://northbound-data.dk/",
+        "email": "frlu@northbound-data.dk",
+        "telephone": "+4540997724"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Power BI – fra datakaos til klarhed",
+      "description": "40 sekunder om, hvordan Northbound Data hjælper med at få Power BI til at skabe reel værdi.",
+      "thumbnailUrl": "https://northbound-data.dk/assets/video/northbound-data-powerbi-poster.jpg",
+      "contentUrl": "https://northbound-data.dk/assets/video/northbound-data-powerbi.mp4",
+      "uploadDate": "2026-11-26",
+      "duration": "PT40S",
+      "inLanguage": "da"
+    }
+  ]
+}
+</script>
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Tailwind CSS v4 browser build, served from this site (MIT licence: assets/vendor/LICENSE-tailwindcss.txt) -->
+<script src="assets/vendor/tailwindcss-browser-4.3.3.js"></script>
+<style type="text/tailwindcss">
+  /* Map Tailwind colour utilities to the theme tokens below, so light and dark swap together. */
+  @theme inline {
+    --color-ground: var(--c-ground);
+    --color-frost: var(--c-frost);
+    --color-surface: var(--c-surface);
+    --color-line: var(--c-line);
+    --color-ink: var(--c-ink);
+    --color-muted: var(--c-muted);
+    --color-deep: var(--c-deep);
+    --color-deep-2: var(--c-deep-2);
+    --color-on-deep: var(--c-on-deep);
+    --color-on-deep-muted: var(--c-on-deep-muted);
+    --color-accent: var(--c-accent);
+    --color-accent-hi: var(--c-accent-hi);
+    --color-accent-ink: var(--c-accent-ink);
+    --color-accent-soft: var(--c-accent-soft);
+    --color-on-accent: var(--c-on-accent);
+    --color-danger: var(--c-danger);
+    --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+    --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @utility eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+</style>
+
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-on-accent" data-en="Skip to content">Spring til indhold</a>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="sticky z-40 border-b border-transparent bg-ground/90 backdrop-blur-md transition-colors" style="top: env(safe-area-inset-top, 0px);">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-4 min-[360px]:gap-3 sm:gap-6 sm:px-6 lg:px-8">
+    <a href="index.html" class="flex min-w-0 items-center gap-2 rounded-md min-[360px]:gap-2.5" aria-label="Northbound Data, forsiden" data-en-aria-label="Northbound Data, front page">
+      <svg class="size-7 shrink-0 text-accent-ink" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 3L27 11V21C27 26 22 29 16 29C10 29 5 26 5 21V11L16 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M16 9L21 13V19L16 23L11 19V13L16 9Z" fill="currentColor"/>
+      </svg>
+      <span class="truncate font-display text-base font-semibold tracking-tight text-ink min-[360px]:text-lg sm:text-xl">Northbound Data</span>
+    </a>
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Hovedmenu" data-en-aria-label="Primary">
+      <a href="index.html" class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink" data-en="Home">Forside</a>
+      <a href="index.html#services" class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink" data-en="Services">Ydelser</a>
+      <a href="powerbi.html" aria-current="page" class="rounded-md bg-frost px-3 py-2 text-sm font-medium text-ink">Power BI</a>
+      <a href="index.html#about" class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink" data-en="About">Om mig</a>
+      <a href="index.html#contact" class="rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-ink" data-en="Contact">Kontakt</a>
+    </nav>
+
+    <div class="flex items-center gap-1.5 min-[360px]:gap-2">
+      <a href="index.html?emne=powerbi#contact" class="hidden items-center rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hi sm:inline-flex" data-en="Book a meeting">Book et møde</a>
+      <button id="lang-toggle" type="button" data-lang="da" class="group inline-flex h-10 shrink-0 cursor-pointer items-center gap-0.5 rounded-full border border-line bg-ground p-1 transition-colors hover:border-accent/60" aria-label="Sprog: dansk. Skift til engelsk" title="Sprog: dansk. Skift til engelsk">
+        <span class="inline-flex h-full items-center gap-1.5 rounded-full px-1 text-xs font-semibold tracking-wide text-muted transition min-[360px]:px-1.5 sm:px-2 group-data-[lang=da]:bg-frost group-data-[lang=da]:text-ink group-data-[lang=da]:ring-1 group-data-[lang=da]:ring-line group-data-[lang=en]:opacity-50" aria-hidden="true">
+          <span class="block h-3.5 w-5 overflow-hidden rounded-[3px] ring-1 ring-ink/15">
+            <svg class="block h-full w-full" viewBox="0 0 37 28" preserveAspectRatio="xMidYMid slice">
+              <rect width="37" height="28" fill="#C8102E"/>
+              <path d="M12 0h4v28h-4zM0 12h37v4H0z" fill="#fff"/>
+            </svg>
+          </span>
+          <span class="hidden sm:inline">DA</span>
+        </span>
+        <span class="inline-flex h-full items-center gap-1.5 rounded-full px-1 text-xs font-semibold tracking-wide text-muted transition min-[360px]:px-1.5 sm:px-2 group-data-[lang=en]:bg-frost group-data-[lang=en]:text-ink group-data-[lang=en]:ring-1 group-data-[lang=en]:ring-line group-data-[lang=da]:opacity-50" aria-hidden="true">
+          <span class="block h-3.5 w-5 overflow-hidden rounded-[3px] ring-1 ring-ink/15">
+            <svg class="block h-full w-full" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice">
+              <clipPath id="nb-uk-a"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+              <clipPath id="nb-uk-b"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+              <g clip-path="url(#nb-uk-a)">
+                <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#nb-uk-b)" stroke="#C8102E" stroke-width="4"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+              </g>
+            </svg>
+          </span>
+          <span class="hidden sm:inline">EN</span>
+        </span>
+      </button>
+      <button id="menu-button" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg border border-line text-ink lg:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Åbn menu">
+        <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="absolute inset-x-0 top-full border-y border-line bg-ground shadow-xl lg:hidden" hidden>
+    <nav class="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6" aria-label="Mobilmenu" data-en-aria-label="Mobile">
+      <a href="index.html" class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost" data-en="Home">Forside</a>
+      <a href="index.html#services" class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost" data-en="Services">Ydelser</a>
+      <a href="powerbi.html" aria-current="page" class="rounded-lg bg-frost px-3 py-3 text-base font-medium text-ink">Power BI</a>
+      <a href="index.html#about" class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost" data-en="About">Om mig</a>
+      <a href="index.html#contact" class="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-frost" data-en="Contact">Kontakt</a>
+      <a href="index.html?emne=powerbi#contact" class="mt-2 mb-1 flex justify-center rounded-lg bg-accent px-4 py-3 text-base font-semibold text-on-accent" data-en="Book a no-obligation meeting">Book et uforpligtende møde</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" class="outline-none">
+
+  <!-- ============ HERO ============ -->
+  <section class="relative isolate overflow-hidden bg-deep text-on-deep">
+    <div class="nb-contours" aria-hidden="true"></div>
+    <div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-14 lg:px-8 lg:py-24">
+      <div class="min-w-0">
+        <p class="eyebrow text-accent-hi" data-en="Power BI · Data models · Dashboards">Power BI · Datamodeller · Dashboards</p>
+        <h1 class="mt-5 font-display text-[2.5rem] leading-[1.05] font-medium tracking-tight text-balance sm:text-5xl lg:text-[3.4rem]">
+          <span data-en="Power BI that gives you">Power BI, der giver jer</span> <em class="text-accent-hi" data-en="one clear overview">ét samlet overblik</em>.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-on-deep-muted" data-en="Data spread across several systems, but no overview you can trust? I help you build, take over and develop Power BI solutions that create real value day to day. As a hands-on consultant I do the work myself, from data sources and data model to the dashboards your team uses every day.">Har I data i flere systemer, men mangler et overblik, I kan stole på? Jeg hjælper jer med at bygge, overtage og videreudvikle Power BI-løsninger, der skaber reel værdi i hverdagen. Som hands-on konsulent laver jeg selv arbejdet – fra datakilder og datamodel til de dashboards, jeres team bruger hver dag.</p>
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a href="index.html?emne=powerbi#contact" class="group inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-on-accent shadow-lg shadow-black/20 transition-colors hover:bg-accent-hi">
+            <span data-en="Talk to me about Power BI">Tal med mig om Power BI</span>
+            <svg class="size-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#ydelser" class="inline-flex items-center rounded-lg border border-on-deep/25 px-6 py-3.5 text-base font-semibold text-on-deep transition-colors hover:bg-on-deep/10" data-en="See what I can help with">Se, hvad jeg kan hjælpe med</a>
+        </div>
+        <p class="mt-6 text-sm text-on-deep-muted" data-en="Experience from Power BI solutions with 700+ users">Erfaring fra Power BI-løsninger med 700+ brugere</p>
+      </div>
+
+      <figure class="min-w-0">
+        <div class="overflow-hidden rounded-2xl border border-on-deep/15 bg-deep-2 shadow-2xl shadow-black/30">
+          <video class="block aspect-video w-full bg-deep-2" controls playsinline preload="none"
+            poster="assets/video/northbound-data-powerbi-poster.jpg"
+            aria-label="Video: Power BI – fra datakaos til klarhed (40 sekunder, dansk med tekster)" data-en-aria-label="Video: Power BI – from data chaos to clarity (40 seconds, Danish with subtitles)">
+            <source src="assets/video/northbound-data-powerbi.mp4" type="video/mp4">
+            <a href="assets/video/northbound-data-powerbi.mp4" data-en="Download the video (MP4)">Hent videoen (MP4)</a>
+          </video>
+        </div>
+        <figcaption class="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-sm text-on-deep-muted">
+          <span data-en="From data chaos to clarity">Fra datakaos til klarhed</span>
+          <span class="font-mono text-xs tracking-wide" data-en="40 sec · Danish with subtitles">40 sek. · Med tekster</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="ydelser" class="scroll-mt-16 bg-ground py-20 sm:py-24" aria-labelledby="ydelser-title">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
+        <div>
+          <p class="eyebrow text-accent-ink" data-en="What I help with">Det hjælper jeg med</p>
+          <h2 id="ydelser-title" class="mt-4 font-display text-3xl leading-[1.1] font-medium tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]" data-en="All the way from the first data source to daily operation">Hele vejen fra første datakilde til daglig drift</h2>
+        </div>
+        <p class="max-w-xl text-lg leading-relaxed text-muted" data-en="Use me for the whole solution or for a single piece of it. Either way you get one person who knows both the data and the business behind it.">Brug mig til hele løsningen eller til en enkelt del af den. Uanset hvad får I én person, der kender både data og forretningen bag.</p>
+      </div>
+
+      <ul class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <li class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <span class="flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-ink" aria-hidden="true">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-xl font-medium tracking-tight" data-en="Implementation from scratch">Implementering fra bunden</h3>
+          <p class="mt-2 leading-relaxed text-muted" data-en="I set Power BI up from the start: workspaces, access, licences and a structure that can grow with you.">Jeg sætter Power BI op fra start: arbejdsområder, adgange, licenser og en struktur, der kan vokse med jer.</p>
+        </li>
+        <li class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <span class="flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-ink" aria-hidden="true">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="6" height="5" rx="1.2"/><rect x="3" y="15" width="6" height="5" rx="1.2"/><rect x="15" y="9.5" width="6" height="5" rx="1.2"/><path d="M9 6.5h2.5a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H9M13 12h2"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-xl font-medium tracking-tight" data-en="Connecting data sources">Tilslutning af datakilder</h3>
+          <p class="mt-2 leading-relaxed text-muted" data-en="ERP, CRM, spreadsheets, databases and cloud services brought together in one place, with automatic refresh.">ERP, CRM, regneark, databaser og cloudtjenester samlet ét sted – med automatisk opdatering.</p>
+        </li>
+        <li class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <span class="flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-ink" aria-hidden="true">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="5" rx="1.2"/><rect x="3" y="16" width="6" height="5" rx="1.2"/><rect x="15" y="16" width="6" height="5" rx="1.2"/><path d="M12 8v4M6 16v-2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-xl font-medium tracking-tight" data-en="Data models">Datamodeller</h3>
+          <p class="mt-2 leading-relaxed text-muted" data-en="A well-structured model with clear relationships and measures, so the numbers match in every report.">En velstruktureret datamodel med klare relationer og beregninger, så tallene er ens i alle rapporter.</p>
+        </li>
+        <li class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <span class="flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-ink" aria-hidden="true">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 16v-3M11 16V9M15 16v-5M3 7h18" /></svg>
+          </span>
+          <h3 class="mt-5 font-display text-xl font-medium tracking-tight" data-en="Dashboards and reports">Dashboards og rapporter</h3>
+          <p class="mt-2 leading-relaxed text-muted" data-en="Clear dashboards built around the decisions you need to make, not around showing everything.">Overskuelige dashboards bygget til de beslutninger, I skal træffe – ikke til at vise alt.</p>
+        </li>
+        <li class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <span class="flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-ink" aria-hidden="true">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5a4 4 0 0 0-5.3 5.3L4 16l4 4 5.2-5.2a4 4 0 0 0 5.3-5.3l-2.6 2.6-2.6-.8-.8-2.6z"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-xl font-medium tracking-tight" data-en="Maintenance and troubleshooting">Vedligeholdelse og fejlretning</h3>
+          <p class="mt-2 leading-relaxed text-muted" data-en="I take over existing solutions, find the cause when something breaks and keep the refreshes running.">Jeg overtager eksisterende løsninger, finder årsagen, når noget fejler, og holder opdateringerne kørende.</p>
+        </li>
+        <li class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <span class="flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-ink" aria-hidden="true">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="m12 17 4-5"/><circle cx="12" cy="17" r="1"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-xl font-medium tracking-tight" data-en="Performance optimisation">Optimering af performance</h3>
+          <p class="mt-2 leading-relaxed text-muted" data-en="Slow reports and heavy refreshes made fast again through a better model, DAX and queries.">Langsomme rapporter og tunge opdateringer bliver hurtige igen med en bedre model, DAX og forespørgsler.</p>
+        </li>
+        <li class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <span class="flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-ink" aria-hidden="true">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 10 13l3.5 3.5L20 10"/><path d="M15 10h5v5"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-xl font-medium tracking-tight" data-en="Ongoing development">Løbende videreudvikling</h3>
+          <p class="mt-2 leading-relaxed text-muted" data-en="New needs, KPIs and data sources added as your business develops.">Nye behov, nøgletal og datakilder bliver tilføjet i takt med, at virksomheden udvikler sig.</p>
+        </li>
+        <li class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60">
+          <span class="flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-ink" aria-hidden="true">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-xl font-medium tracking-tight" data-en="Documentation and knowledge transfer">Dokumentation og vidensoverdragelse</h3>
+          <p class="mt-2 leading-relaxed text-muted" data-en="Everything is documented and your team is trained, so you can keep working with the solution yourselves.">Alt bliver dokumenteret, og jeres team bliver trænet, så I selv kan arbejde videre med løsningen.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ TWO STARTING POINTS ============ -->
+  <section class="bg-frost py-20 sm:py-24" aria-labelledby="start-title">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <p class="eyebrow text-accent-ink" data-en="Wherever you are today">Uanset hvor I står i dag</p>
+      <h2 id="start-title" class="mt-4 max-w-3xl font-display text-3xl leading-[1.1] font-medium tracking-tight text-balance sm:text-4xl" data-en="A new solution, or one that needs to work better">En ny løsning – eller en, der skal fungere bedre</h2>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+        <article class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-7 sm:p-8">
+          <p class="eyebrow text-muted" data-en="Getting started">I er ved at komme i gang</p>
+          <h3 class="mt-3 font-display text-2xl font-medium tracking-tight" data-en="Power BI from scratch">Power BI fra bunden</h3>
+          <p class="mt-3 leading-relaxed text-muted" data-en="We start with the decisions you need to make and work backwards to the data. That way the first dashboards are useful straight away, and the foundation holds when you build on it.">Vi starter med de beslutninger, I skal træffe, og arbejder baglæns til data. Så er de første dashboards nyttige fra dag ét, og fundamentet holder, når I bygger videre.</p>
+          <ul class="mt-6 flex flex-col gap-3 text-[0.95rem]">
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Mapping of needs, KPIs and data sources">Kortlægning af behov, nøgletal og datakilder</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Set-up of workspaces, access and automatic refresh">Opsætning af arbejdsområder, adgange og automatisk opdatering</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Data model and the first dashboards in daily use">Datamodel og de første dashboards i daglig brug</span></li>
+          </ul>
+        </article>
+        <article class="nb-card flex flex-col rounded-2xl border border-line bg-surface p-7 sm:p-8">
+          <p class="eyebrow text-muted" data-en="Already using Power BI">I har allerede Power BI</p>
+          <h3 class="mt-3 font-display text-2xl font-medium tracking-tight" data-en="Take over, maintain and improve">Overtag, vedligehold og forbedr</h3>
+          <p class="mt-3 leading-relaxed text-muted" data-en="Reports that are slow, show different numbers or that nobody dares to touch? I get to know your solution, fix what is wrong and keep it reliable in everyday use.">Rapporter, der er langsomme, viser forskellige tal eller ingen tør røre ved? Jeg sætter mig ind i jeres løsning, retter det, der er galt, og holder den pålidelig i hverdagen.</p>
+          <ul class="mt-6 flex flex-col gap-3 text-[0.95rem]">
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Review of data model, reports and refreshes">Gennemgang af datamodel, rapporter og opdateringer</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Troubleshooting and faster reports">Fejlretning og hurtigere rapporter</span></li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-accent-ink" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-en="Ongoing support and development when you need it">Løbende support og videreudvikling, når I har brug for det</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY / APPROACH ============ -->
+  <section class="bg-ground py-20 sm:py-24" aria-labelledby="why-title">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-5">
+          <p class="eyebrow text-accent-ink" data-en="Why work with me">Hvorfor arbejde med mig</p>
+          <h2 id="why-title" class="mt-4 font-display text-3xl leading-[1.1] font-medium tracking-tight text-balance sm:text-4xl"><span data-en="A hands-on partner,">En hands-on partner,</span> <em class="text-accent-ink" data-en="all the way.">hele vejen.</em></h2>
+          <p class="mt-6 text-lg leading-relaxed text-muted" data-en="Large-scale experience, sized for a small or medium-sized business. You get the structure that works in big organisations, without the heavy machinery.">Erfaring fra store løsninger, tilpasset en mindre virksomheds virkelighed. I får den struktur, der virker i store organisationer – uden det tunge maskineri.</p>
+          <a href="index.html#about" class="mt-6 inline-flex items-center gap-1.5 py-2 text-sm font-semibold text-accent-ink underline-offset-4 hover:underline"><span data-en="More about me">Mere om mig</span>
+            <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <ul class="grid gap-8 lg:col-span-7">
+          <li class="border-t border-line pt-6">
+            <h3 class="font-display text-xl font-medium tracking-tight" data-en="I do the work myself">Jeg laver selv arbejdet</h3>
+            <p class="mt-2 leading-relaxed text-muted" data-en="I don’t just advise. I build the data model, the queries and the dashboards, so you talk directly to the person who does the work.">Jeg rådgiver ikke kun – jeg bygger selv datamodellen, forespørgslerne og dashboardsene. I taler direkte med den, der laver arbejdet.</p>
+          </li>
+          <li class="border-t border-line pt-6">
+            <h3 class="font-display text-xl font-medium tracking-tight" data-en="Experience at scale">Erfaring i stor skala</h3>
+            <p class="mt-2 leading-relaxed text-muted" data-en="I have built and run Power BI solutions with 700+ users, and I know what it takes to keep reports reliable when many people depend on them.">Jeg har været med til at opbygge og drive Power BI-løsninger med 700+ brugere og ved, hvad der skal til, for at rapporterne holder, når mange er afhængige af dem.</p>
+          </li>
+          <li class="border-t border-line pt-6">
+            <h3 class="font-display text-xl font-medium tracking-tight" data-en="No lock-in">Ingen binding</h3>
+            <p class="mt-2 leading-relaxed text-muted" data-en="Documentation and knowledge transfer are part of every job, so you are never dependent on me.">Dokumentation og vidensoverdragelse er en fast del af alle opgaver, så I aldrig bliver afhængige af mig.</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- How a project runs -->
+      <div class="mt-20">
+        <h3 class="font-display text-2xl font-medium tracking-tight sm:text-3xl" data-en="How we work together">Sådan arbejder vi sammen</h3>
+        <ol class="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
+          <li class="relative border-t border-line pt-7">
+            <span class="absolute -top-[5px] left-0 size-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <span class="eyebrow text-accent-ink" data-en="Step 1">Trin 1</span>
+            <h4 class="mt-3 font-display text-2xl font-medium tracking-tight" data-en="Map">Kortlæg</h4>
+            <p class="mt-2 leading-relaxed text-muted" data-en="We go through your data sources, existing reports and the decisions the numbers need to support.">Vi gennemgår jeres datakilder, eksisterende rapporter og de beslutninger, tallene skal understøtte.</p>
+          </li>
+          <li class="relative border-t border-line pt-7">
+            <span class="absolute -top-[5px] left-0 size-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <span class="eyebrow text-accent-ink" data-en="Step 2">Trin 2</span>
+            <h4 class="mt-3 font-display text-2xl font-medium tracking-tight" data-en="Build">Byg</h4>
+            <p class="mt-2 leading-relaxed text-muted" data-en="I build in small steps and test along the way with the people who will use the reports.">Jeg bygger i små skridt og tester undervejs med dem, der skal bruge rapporterne.</p>
+          </li>
+          <li class="relative border-t border-line pt-7">
+            <span class="absolute -top-[5px] left-0 size-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <span class="eyebrow text-accent-ink" data-en="Step 3">Trin 3</span>
+            <h4 class="mt-3 font-display text-2xl font-medium tracking-tight" data-en="Hand over and run">Overlevér og drift</h4>
+            <p class="mt-2 leading-relaxed text-muted" data-en="Documentation and training for your team, and help with operation and further development whenever you need it.">Dokumentation og træning til jeres team – og hjælp til drift og videreudvikling, når I har brug for det.</p>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Data sources -->
+      <div class="mt-16 flex flex-col gap-4 border-t border-line pt-8 md:flex-row md:items-center md:gap-8">
+        <p class="eyebrow shrink-0 text-muted" data-en="Data sources I often connect">Datakilder, jeg ofte kobler på</p>
+        <ul class="flex flex-wrap gap-2" aria-label="Datakilder, jeg ofte kobler på" data-en-aria-label="Data sources I often connect">
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Business Central</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">e-conomic</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Visma</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Uniconta</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Excel</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">SharePoint</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">SQL Server</li>
+          <li class="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm">Dataverse</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="bg-frost py-20 sm:py-24" aria-labelledby="faq-title">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <p class="eyebrow text-accent-ink" data-en="Questions">Spørgsmål</p>
+      <h2 id="faq-title" class="mt-4 font-display text-3xl leading-[1.1] font-medium tracking-tight text-balance sm:text-4xl" data-en="Good to know">Godt at vide</h2>
+      <div class="mt-10 flex flex-col gap-3">
+        <details class="group rounded-xl border border-line bg-surface px-5 py-1 open:pb-4">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-medium [&::-webkit-details-marker]:hidden">
+            <span data-en="Can you work with the reports we already have?">Kan du arbejde videre med de rapporter, vi allerede har?</span>
+            <svg class="size-5 shrink-0 text-accent-ink transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+          </summary>
+          <p class="leading-relaxed text-muted" data-en="Yes. Many jobs start with an existing solution. I review it, fix what slows you down and build on what already works, rather than starting over.">Ja. Mange opgaver starter med en eksisterende løsning. Jeg gennemgår den, retter det, der bremser jer, og bygger videre på det, der allerede virker, i stedet for at starte forfra.</p>
+        </details>
+        <details class="group rounded-xl border border-line bg-surface px-5 py-1 open:pb-4">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-medium [&::-webkit-details-marker]:hidden">
+            <span data-en="Which data sources can be connected?">Hvilke datakilder kan kobles på?</span>
+            <svg class="size-5 shrink-0 text-accent-ink transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+          </summary>
+          <p class="leading-relaxed text-muted" data-en="Most of them: ERP and finance systems, CRM, Excel and SharePoint, databases and many cloud services. If the data can be got out of a system, it can usually be connected to Power BI.">De fleste: ERP- og økonomisystemer, CRM, Excel og SharePoint, databaser og mange cloudtjenester. Kan data trækkes ud af et system, kan det som regel kobles på Power BI.</p>
+        </details>
+        <details class="group rounded-xl border border-line bg-surface px-5 py-1 open:pb-4">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-medium [&::-webkit-details-marker]:hidden">
+            <span data-en="Which licences do we need?">Hvilke licenser skal vi have?</span>
+            <svg class="size-5 shrink-0 text-accent-ink transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+          </summary>
+          <p class="leading-relaxed text-muted" data-en="It depends on how many people need the reports and how you share them. I go through your needs and recommend the simplest set-up that covers them.">Det afhænger af, hvor mange der skal bruge rapporterne, og hvordan de skal deles. Jeg gennemgår jeres behov og anbefaler den enkleste opsætning, der dækker dem.</p>
+        </details>
+        <details class="group rounded-xl border border-line bg-surface px-5 py-1 open:pb-4">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-medium [&::-webkit-details-marker]:hidden">
+            <span data-en="Can we get help now and then, rather than a whole project?">Kan vi få hjælp en gang imellem i stedet for et helt projekt?</span>
+            <svg class="size-5 shrink-0 text-accent-ink transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+          </summary>
+          <p class="leading-relaxed text-muted" data-en="Yes. I help both with clearly scoped projects and with ongoing maintenance and development as needs arise.">Ja. Jeg hjælper både med afgrænsede projekter og med løbende vedligeholdelse og videreudvikling efter behov.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CALL TO ACTION ============ -->
+  <section class="bg-ground py-20 sm:py-24" aria-labelledby="cta-title">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="relative isolate overflow-hidden rounded-3xl bg-deep px-6 py-12 text-on-deep sm:px-12 sm:py-14 lg:flex lg:items-center lg:justify-between lg:gap-12">
+        <div class="nb-contours" aria-hidden="true"></div>
+        <div class="max-w-2xl">
+          <p class="eyebrow text-accent-hi" data-en="Let’s take a look">Lad os kigge på det</p>
+          <h2 id="cta-title" class="mt-3 font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl" data-en="From data chaos to clarity.">Fra datakaos til klarhed.</h2>
+          <p class="mt-4 text-lg leading-relaxed text-on-deep-muted" data-en="In 15 minutes we look at your data and reports as they are today, and I point out where Power BI can make the biggest difference. No sales pitch.">På 15 minutter ser vi på jeres data og rapporter, som de er i dag, og jeg peger på, hvor Power BI kan gøre den største forskel. Ingen salgstale.</p>
+        </div>
+        <div class="mt-8 flex shrink-0 flex-col items-start gap-3 lg:mt-0 lg:items-end">
+          <a href="index.html?emne=powerbi#contact" class="group inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-on-accent transition-colors hover:bg-accent-hi">
+            <span data-en="Book a no-obligation meeting">Book et uforpligtende møde</span>
+            <svg class="size-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="text-sm text-on-deep-muted"><span data-en="Or call">Eller ring på</span> <a href="tel:+4540997724" class="whitespace-nowrap font-medium text-on-deep underline underline-offset-4 hover:no-underline">+45 40997724</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-deep text-on-deep">
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-sm">
+        <a href="index.html" class="inline-flex items-center gap-2.5 rounded-md" aria-label="Northbound Data, forsiden" data-en-aria-label="Northbound Data, front page">
+          <svg class="size-7 text-accent-hi" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 3L27 11V21C27 26 22 29 16 29C10 29 5 26 5 21V11L16 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M16 9L21 13V19L16 23L11 19V13L16 9Z" fill="currentColor"/>
+          </svg>
+          <span class="font-display text-xl font-semibold tracking-tight">Northbound Data</span>
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-on-deep-muted" data-en="Data setup, automation, ERP assistance and Power BI for small and medium-sized businesses.">Dataopsætning, automatisering, ERP-assistance og Power BI til små og mellemstore virksomheder.</p>
+        <address class="mt-5 text-sm leading-relaxed text-on-deep-muted not-italic">
+          <span class="text-on-deep">Northbound Data</span> · <span data-en="Sole proprietorship">Enkeltmandsvirksomhed</span><br>
+          Grundtvigs Sidevej 5, 2. mf, 1865 Frederiksberg<br>
+          <span data-en="CVR no.">CVR-nr.</span> <span class="tabular-nums">46630726</span>
+        </address>
+      </div>
+      <nav class="flex flex-wrap gap-x-8 gap-y-3 text-sm" aria-label="Sidefod" data-en-aria-label="Footer">
+        <a href="index.html" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="Home">Forside</a>
+        <a href="index.html#services" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="Services">Ydelser</a>
+        <a href="powerbi.html" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep">Power BI</a>
+        <a href="index.html#about" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="About">Om mig</a>
+        <a href="index.html#contact" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep" data-en="Contact">Kontakt</a>
+        <a href="https://www.linkedin.com/company/northbound-data" target="_blank" rel="noopener noreferrer" class="-my-1.5 py-1.5 text-on-deep-muted transition-colors hover:text-on-deep">LinkedIn</a>
+      </nav>
+    </div>
+    <div class="mt-10 flex flex-col gap-2 border-t border-on-deep/15 pt-6 text-xs text-on-deep-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>© <span id="year">2026</span> Northbound Data. <span data-en="All rights reserved.">Alle rettigheder forbeholdes.</span> · <a href="privacy.html" class="underline underline-offset-4 hover:text-on-deep" data-en="Privacy policy">Privatlivspolitik</a></p>
+      <p class="font-mono tracking-wide" data-en="55.68° N · 12.57° E — Copenhagen">55,68° N · 12,57° Ø — København</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ COOKIE NOTICE (same as the front page) ============ -->
+<div id="cookie-notice" class="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex px-4 pt-4 sm:px-6" style="padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));" role="region" aria-labelledby="cookie-title" hidden>
+  <div class="nb-card pointer-events-auto w-full rounded-2xl border border-line bg-surface p-5 sm:max-w-sm">
+    <p id="cookie-title" class="font-display text-lg font-medium tracking-tight" data-en="Cookies &amp; privacy">Cookies og privatliv</p>
+    <p class="mt-2 text-sm leading-relaxed text-muted" data-en="I don’t use cookies for tracking or statistics. The only things this site saves in your browser are your language choice and that you’ve closed this message.">Jeg bruger ingen cookies til sporing eller statistik. Det eneste, siden gemmer i din browser, er dit sprogvalg, og at du har lukket denne besked.</p>
+    <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+      <button id="cookie-ok" type="button" class="cursor-pointer rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hi" data-en="OK, got it">OK, forstået</button>
+      <a href="privacy.html#cookies" class="-my-2 py-2 text-sm font-semibold text-accent-ink underline-offset-4 hover:underline" data-en="Read more">Læs mere</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  // Same language switch as the front page: Danish by default, English in data-en attributes,
+  // and the choice is shared between pages through localStorage ("nb-lang").
+  const TITLES = { en: "Power BI consultant – Northbound Data", da: "Power BI-konsulent – Northbound Data" };
+  const LABELS = { en: "Language: English. Switch to Danish", da: "Sprog: dansk. Skift til engelsk" };
+  const MENU = { en: ["Open menu", "Close menu"], da: ["Åbn menu", "Luk menu"] };
+  const $ = (id) => document.getElementById(id);
+  let lang = "da";
+
+  $("year").textContent = new Date().getFullYear();
+
+  // ---------- Mobile menu ----------
+  const menuButton = $("menu-button");
+  const menu = $("mobile-menu");
+  function setMenu(open) {
+    menu.hidden = !open;
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", MENU[lang][open ? 1 : 0]);
+  }
+  menuButton.addEventListener("click", () => setMenu(menu.hidden));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !menu.hidden) { setMenu(false); menuButton.focus(); }
+  });
+  document.addEventListener("click", (e) => {
+    if (!menu.hidden && !menu.contains(e.target) && !menuButton.contains(e.target)) setMenu(false);
+  });
+  window.matchMedia("(min-width: 1024px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
+
+  // ---------- Header hairline on scroll ----------
+  const header = $("site-header");
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // ---------- Language ----------
+  const toggle = $("lang-toggle");
+  const ATTRS = ["aria-label", "content"];
+  const textEls = [...document.querySelectorAll("[data-en]")];
+  const danishText = new Map(textEls.map((el) => [el, el.textContent]));
+  const attrEls = [...document.querySelectorAll(ATTRS.map((a) => `[data-en-${a}]`).join(","))];
+  const danishAttrs = new Map(attrEls.map((el) => [el,
+    ATTRS.filter((a) => el.hasAttribute("data-en-" + a)).map((a) => [a, el.getAttribute(a)])]));
+
+  function setLanguage(next) {
+    lang = next;
+    document.documentElement.lang = next;
+    document.title = TITLES[next];
+    textEls.forEach((el) => { el.textContent = next === "en" ? el.dataset.en : danishText.get(el); });
+    attrEls.forEach((el) => danishAttrs.get(el).forEach(([attr, danish]) => {
+      el.setAttribute(attr, next === "en" ? el.getAttribute("data-en-" + attr) : danish);
+    }));
+    toggle.dataset.lang = next;
+    toggle.setAttribute("aria-label", LABELS[next]);
+    toggle.title = LABELS[next];
+    menuButton.setAttribute("aria-label", MENU[next][menu.hidden ? 0 : 1]);
+  }
+  toggle.addEventListener("click", () => {
+    const next = lang === "da" ? "en" : "da";
+    setLanguage(next);
+    try { localStorage.setItem("nb-lang", next); } catch (_) { /* storage unavailable */ }
+  });
+  let savedLang = null;
+  try { savedLang = localStorage.getItem("nb-lang"); } catch (_) { /* storage unavailable */ }
+  if (savedLang === "en") setLanguage("en");
+
+  // ---------- Cookie notice ----------
+  const cookieNotice = $("cookie-notice");
+  let noticeClosed = false;
+  try { noticeClosed = localStorage.getItem("nb-cookie-notice") === "closed"; } catch (_) { /* storage unavailable */ }
+  cookieNotice.hidden = noticeClosed;
+  $("cookie-ok").addEventListener("click", () => {
+    cookieNotice.hidden = true;
+    try { localStorage.setItem("nb-cookie-notice", "closed"); } catch (_) { /* storage unavailable */ }
+  });
+})();
+</script>
+</body>
+</html>

@@ -9,6 +9,7 @@ build step and nothing to install.
 | File | What it is |
 |---|---|
 | [`index.html`](index.html) | The website: Home (hero), Services (the three services, how a project runs, systems), a call to action, About me (photo, vision, beliefs) and Contact |
+| [`powerbi.html`](powerbi.html) | Power BI page: services, starting points, approach, FAQ and the 40-second Power BI video (`assets/video/`). Its contact links go to `index.html?emne=powerbi#contact`, which pre-fills the message |
 | [`privacy.html`](privacy.html) | Privacy policy, in English and Danish |
 | `assets/site.css` | Shared styles: fonts, colour tokens and the policy text styles |
 | `assets/fonts/` | Self-hosted fonts (Fraunces, Inter, IBM Plex Mono) with their licences |
