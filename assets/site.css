@@ -1,0 +1,176 @@
+/* =============================================================
+   Northbound Data: shared styles for index.html and privacy.html
+   (Tailwind utilities are generated in each page; see the
+   <style type="text/tailwindcss"> block in each file.)
+   ============================================================= */
+
+/* ---------- Fonts: self-hosted, so no visitor data goes to Google.
+   SIL Open Font License; see fonts/LICENSE-*.txt ---------- */
+@font-face { font-family: "Fraunces"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("fonts/fraunces-latin-opsz-normal.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-style: italic; font-weight: 100 900; font-display: swap; src: url("fonts/fraunces-latin-opsz-italic.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("fonts/inter-latin-wght-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); }
+
+/* ---------- Theme tokens (Northbound Data brand) ---------- */
+:root {
+  --c-ground: #ffffff;
+  --c-frost: #f2f5f8;
+  --c-surface: #ffffff;
+  --c-line: #dce5ee;
+  --c-ink: #0b1f33;
+  --c-muted: #48627f;
+  --c-deep: #0b1f33;
+  --c-deep-2: #122b47;
+  --c-on-deep: #ffffff;
+  --c-on-deep-muted: #b6c7d9;
+  --c-accent: #0fb5a6;
+  --c-accent-hi: #2fcbbd;
+  --c-accent-ink: #0b7169;
+  --c-accent-soft: #e3f6f3;
+  --c-on-accent: #04121d;
+  --c-danger: #b42318;
+  --c-shadow: 0 1px 2px rgb(11 31 51 / 0.05), 0 12px 32px -16px rgb(11 31 51 / 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --c-ground: #071320;
+    --c-frost: #0a1a2b;
+    --c-surface: #0e2135;
+    --c-line: #1e3650;
+    --c-ink: #e7eef5;
+    --c-muted: #9db3c9;
+    --c-deep: #0c2238;
+    --c-deep-2: #133152;
+    --c-on-deep: #ffffff;
+    --c-on-deep-muted: #b6c7d9;
+    --c-accent: #2cc1b4;
+    --c-accent-hi: #5cd9cb;
+    --c-accent-ink: #5fd6c9;
+    --c-accent-soft: #0f3437;
+    --c-on-accent: #04121d;
+    --c-danger: #ff9b8f;
+    --c-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 36px -18px rgb(0 0 0 / 0.6);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --c-ground: #071320;
+  --c-frost: #0a1a2b;
+  --c-surface: #0e2135;
+  --c-line: #1e3650;
+  --c-ink: #e7eef5;
+  --c-muted: #9db3c9;
+  --c-deep: #0c2238;
+  --c-deep-2: #133152;
+  --c-on-deep: #ffffff;
+  --c-on-deep-muted: #b6c7d9;
+  --c-accent: #2cc1b4;
+  --c-accent-hi: #5cd9cb;
+  --c-accent-ink: #5fd6c9;
+  --c-accent-soft: #0f3437;
+  --c-on-accent: #04121d;
+  --c-danger: #ff9b8f;
+  --c-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 36px -18px rgb(0 0 0 / 0.6);
+}
+
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--c-ground);
+  color: var(--c-ink);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: color-mix(in srgb, var(--c-accent) 35%, transparent); }
+:where(a, button):focus-visible { outline: 2px solid var(--c-accent); outline-offset: 3px; }
+
+/* Header gains a hairline once the page scrolls */
+#site-header.is-scrolled { border-bottom-color: var(--c-line); }
+
+/* Topographic contour lines — a quiet Nordic map texture on deep sections */
+.nb-contours {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    repeating-radial-gradient(ellipse 130% 95% at 95% -5%, transparent 0 30px, rgb(255 255 255 / 0.05) 30px 31.5px),
+    repeating-radial-gradient(ellipse 90% 70% at 75% 115%, transparent 0 42px, rgb(255 255 255 / 0.035) 42px 43.5px);
+  -webkit-mask-image: linear-gradient(to left, #000 25%, transparent 85%);
+  mask-image: linear-gradient(to left, #000 25%, transparent 85%);
+}
+
+.nb-card { box-shadow: var(--c-shadow); }
+
+/* Hamburger icon that turns into a close icon */
+.burger { position: relative; display: block; width: 18px; height: 12px; }
+.burger span {
+  position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
+  background: currentColor; transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+}
+.burger span:nth-child(1) { top: 0; }
+.burger span:nth-child(2) { top: 5px; }
+.burger span:nth-child(3) { top: 10px; }
+[aria-expanded="true"] .burger span:nth-child(1) { top: 5px; transform: rotate(45deg); }
+[aria-expanded="true"] .burger span:nth-child(2) { opacity: 0; }
+[aria-expanded="true"] .burger span:nth-child(3) { top: 5px; transform: rotate(-45deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* ---------- Privacy policy text (privacy.html) ---------- */
+.policy { max-width: 42rem; }
+.policy h1 {
+  margin-top: 1rem;
+  font-family: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.policy h2 {
+  margin-top: 2.75rem;
+  font-family: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  scroll-margin-top: 1.5rem;
+}
+.policy p:not(.eyebrow), .policy ul, .policy .policy-card { margin-top: 1rem; }
+.policy p:not(.eyebrow), .policy li { color: var(--c-muted); line-height: 1.7; }
+.policy p.policy-updated { margin-top: 0.75rem; font-size: 0.875rem; }
+.policy p.policy-lead { margin-top: 1.5rem; font-size: 1.2rem; line-height: 1.6; color: var(--c-ink); }
+.policy strong { color: var(--c-ink); font-weight: 600; }
+.policy ul { padding-left: 1.25rem; list-style: disc; }
+.policy li + li { margin-top: 0.4rem; }
+.policy li::marker { color: var(--c-accent); }
+.policy a { color: var(--c-accent-ink); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.policy a:hover { text-decoration: none; }
+.policy code {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--c-frost);
+  color: var(--c-ink);
+}
+.policy .policy-card {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--c-line);
+  border-radius: 1rem;
+  background: var(--c-frost);
+  font-style: normal;
+  line-height: 1.8;
+  color: var(--c-ink);
+}
